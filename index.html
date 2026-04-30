@@ -26,9 +26,8 @@
             --primary-light: #66D9FF;
             --dark-bg: #0a1628;
             --darker-bg: #060f1a;
-            /* --- ألوان مضافة للتعديل --- */
-            --hero-bg-light: #E6F4FF; /* الأزرق الفاتح الجديد للهيرو */
-            --section-bg-alt: #f4f7fa; /* لون بديل للأبيض أسفل الصفحات */
+            --hero-bg-light: #E6F4FF;
+            --section-bg-alt: #f4f7fa;
         }
         
         /* ========== شريط علوي ========== */
@@ -53,6 +52,60 @@
         .top-bar a:hover { color: var(--primary-light); }
         .top-bar .social-links a { color: #ccc; margin: 0 6px; font-size: 0.9rem; transition: 0.3s; }
         .top-bar .social-links a:hover { color: var(--primary); }
+
+        /* ========== شريط التنقل (Navbar) ========== */
+        .navbar {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 180, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.4rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+        }
+        .logo-img {
+            height: 42px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #1A2A3A;
+            font-weight: 600;
+            font-size: 0.82rem;
+            padding: 7px 13px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: var(--primary);
+            color: white;
+        }
         
         /* ========== الهيرو مع خلفية ثلاثية الأبعاد (خلفية زرقاء فاتحة) ========== */
         .hero {
@@ -62,12 +115,9 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
             padding: 80px 20px;
             overflow: hidden;
-            /* --- تم تغيير الخلفية إلى الأزرق الفاتح --- */
             background: linear-gradient(135deg, var(--hero-bg-light) 0%, #cceeff 100%);
-            /* تم تغيير لون النص في الهيرو ليكون داكناً ومناسباً للخلفية الفاتحة */
             color: var(--dark-bg);
         }
         
@@ -78,7 +128,7 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-            opacity: 0.7; /* شفافية بسيطة لتنسجم مع الخلفية الفاتحة */
+            opacity: 0.7;
         }
         
         .hero-overlay {
@@ -87,7 +137,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* تم تعديل التدرج ليتناسب مع الأزرق الفاتح */
             background: radial-gradient(ellipse at center, rgba(230,244,255,0.3) 0%, rgba(204,238,255,0.8) 70%);
             z-index: 2;
         }
@@ -96,7 +145,6 @@
             position: absolute;
             bottom: -2px; left: 0; right: 0;
             height: 80px;
-            /* تم تغيير لون الموجة إلى اللون البديل الجديد بدلاً من الأبيض */
             background: var(--section-bg-alt);
             clip-path: ellipse(70% 100% at 50% 100%);
             z-index: 4;
@@ -106,7 +154,6 @@
             max-width: 900px; 
             position: relative; 
             z-index: 3; 
-            /* تم تعزيز لون النصوص في المحتوى */
             color: var(--dark-bg);
         }
         
@@ -121,7 +168,6 @@
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             width: 280px; height: 280px;
-            /* تم تعديل لون التوهج ليكون مناسباً للخلفية الفاتحة */
             background: radial-gradient(circle, rgba(0,180,255,0.3) 0%, rgba(0,180,255,0.1) 40%, transparent 70%);
             border-radius: 50%;
             z-index: 0;
@@ -144,7 +190,6 @@
             50% { width: 320px; height: 320px; opacity: 1; }
         }
         
-        /* تم تغيير ألوان النصوص والعناصر لتتناسب مع الخلفية الفاتحة */
         .hero-tagline {
             font-size: 2rem;
             font-weight: 800;
@@ -176,7 +221,6 @@
         .btn i { margin-left: 8px; flex-shrink: 0; }
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 8px 25px rgba(0,180,255,0.5); border-color: var(--primary); }
         .btn-primary:hover { background: var(--primary-dark); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,180,255,0.7); }
-        /* تم تغيير الزر الشفاف ليكون داكناً قليلاً ليتناسب مع الفاتح */
         .btn-outline { border-color: var(--primary-dark); color: var(--primary-dark); background: rgba(255,255,255,0.5); backdrop-filter: blur(10px); }
         .btn-outline:hover { background: var(--primary-dark); color: white; transform: translateY(-4px); border-color: var(--primary-dark); }
         
@@ -186,7 +230,7 @@
         .trust-item { display: flex; align-items: center; gap: 10px; color: var(--dark-bg); font-weight: 600; font-size: 0.95rem; }
         .trust-item i { color: var(--primary); font-size: 1.3rem; }
         
-        /* ========== بقية الأقسام (تم تغيير الأبيض إلى اللون البديل) ========== */
+        /* ========== بقية الأقسام ========== */
         .quotes-section { padding: 80px 20px; background: var(--section-bg-alt); }
         .quotes-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
         .quote-card { background: white; border-radius: 18px; padding: 40px 28px; text-align: center; box-shadow: 0 4px 25px rgba(0,0,0,0.04); border: 1px solid #f0f0f0; transition: all 0.3s ease; position: relative; }
@@ -201,7 +245,6 @@
         .quote-card:nth-child(3) .quote-icon { color: var(--primary-light); }
         .quote-card p { font-size: 1.1rem; color: var(--dark-bg); line-height: 1.9; font-weight: 700; }
         
-        /* تم تغيير الخلفية من الأبيض إلى اللون البديل */
         .stats-section { padding: 80px 20px; background: var(--section-bg-alt); }
         .stats-container { max-width: 1000px; margin: 0 auto; }
         .section-title { text-align: center; font-size: 2.2rem; color: var(--dark-bg); margin-bottom: 50px; font-weight: 800; }
@@ -236,7 +279,6 @@
         .service-box h4 { font-size: 1.1rem; color: var(--dark-bg); margin-bottom: 10px; font-weight: 800; }
         .service-box p { color: #666; font-size: 0.88rem; line-height: 1.7; }
         
-        /* تم تغيير خلفية CTA Project إلى اللون البديل */
         .cta-project-section { padding: 60px 20px; background: var(--section-bg-alt); }
         .cta-project-container { max-width: 900px; margin: 0 auto; }
         .cta-project-card {
@@ -261,7 +303,6 @@
         }
         .btn-project:hover { background: var(--primary-dark); transform: translateY(-4px); }
         
-        /* تم تغيير الخلفية إلى اللون البديل */
         .why-us-section { padding: 80px 20px; background: var(--section-bg-alt); }
         .why-us-container { max-width: 1000px; margin: 0 auto; }
         .why-us-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
@@ -285,8 +326,63 @@
         footer a:hover { text-decoration: underline; }
         footer .footer-links { margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
         footer .copyright { color: #888; font-size: 0.8rem; }
+
+        /* ========== الأيقونات العائمة ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 52px;
+            height: 52px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            z-index: 999;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+        .consult-float {
+            position: fixed;
+            bottom: 82px;
+            right: 20px;
+            width: 52px;
+            height: 52px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0,180,255,0.4);
+            z-index: 999;
+            text-decoration: none;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+            70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
         
         @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 6px;
+                padding: 0.3rem 0.8rem;
+            }
+            .nav-menu a {
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
+            .logo-img {
+                height: 36px;
+                max-width: 140px;
+            }
             .hero-logo-img { height: 130px; }
             .hero-logo-wrapper::before { width: 200px; height: 200px; }
             .hero-tagline { font-size: 1.3rem; }
@@ -295,8 +391,21 @@
             .stats-grid { grid-template-columns: 1fr 1fr; }
             .services-grid-4 { grid-template-columns: 1fr 1fr; }
             .why-us-grid { grid-template-columns: 1fr; }
+            .whatsapp-float,
+            .consult-float {
+                width: 46px;
+                height: 46px;
+                font-size: 22px;
+            }
+            .consult-float {
+                bottom: 75px;
+            }
         }
         @media (max-width: 480px) {
+            .logo-img {
+                height: 30px;
+                max-width: 120px;
+            }
             .hero-logo-img { height: 100px; }
             .hero-logo-wrapper::before { width: 150px; height: 150px; }
             .hero-tagline { font-size: 1.1rem; }
@@ -326,13 +435,15 @@
         </div>
     </div>
 
-    <a href="https://wa.me/963933438019" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="consultation.html" class="consult-float"><i class="fas fa-comment-dots"></i></a>
+    <a href="https://wa.me/963933438019" class="whatsapp-float" target="_blank" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+    <a href="consultation.html" class="consult-float" aria-label="استشارة"><i class="fas fa-comment-dots"></i></a>
 
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-area">
-                <a href="index.html"><img src="https://i.imgur.com/bnNJ6Kh.png" alt="Kyntrava AI" class="logo-img"></a>
+                <a href="index.html">
+                    <img src="https://i.imgur.com/bnNJ6Kh.png" alt="Kyntrava AI - الذكاء الاصطناعي والحلول البرمجية" class="logo-img">
+                </a>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">الرئيسية</a></li>
@@ -345,7 +456,7 @@
         </div>
     </nav>
 
-    <!-- ============ الهيرو مع خلفية روبوتات ثلاثية الأبعاد (أزرق فاتح) ============ -->
+    <!-- ============ الهيرو ============ -->
     <header class="hero">
         <canvas id="heroCanvas"></canvas>
         <div class="hero-overlay"></div>
@@ -453,7 +564,6 @@
     
     <script src="script.js"></script>
     
-    <!-- Three.js للخلفية ثلاثية الأبعاد -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         (function() {
@@ -469,7 +579,6 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             
-            // إضاءة معدلة للخلفية الفاتحة
             const ambientLight = new THREE.AmbientLight(0x00B4FF, 0.6);
             scene.add(ambientLight);
             const pointLight1 = new THREE.PointLight(0x00B4FF, 0.7, 20);
@@ -479,34 +588,28 @@
             pointLight2.position.set(-5, -2, 3);
             scene.add(pointLight2);
             
-            // شبكة أرضية بلون أغمق قليلاً ليتناسب
             const gridHelper = new THREE.GridHelper(25, 25, 0x0066CC, 0x99ccff);
             gridHelper.position.y = -5;
             scene.add(gridHelper);
             
-            // مجموعة الروبوتات
             const robotsGroup = new THREE.Group();
             scene.add(robotsGroup);
             
-            // دالة إنشاء روبوت
             function createRobot(x, y, z, color) {
                 const robot = new THREE.Group();
                 
-                // الجسم
                 const bodyGeo = new THREE.BoxGeometry(1, 1.5, 0.8);
                 const bodyMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.5, shininess: 100 });
                 const body = new THREE.Mesh(bodyGeo, bodyMat);
                 body.position.y = 0;
                 robot.add(body);
                 
-                // الرأس
                 const headGeo = new THREE.SphereGeometry(0.45, 16, 16);
                 const headMat = new THREE.MeshPhongMaterial({ color: 0xeeeeee, emissive: 0x333333, emissiveIntensity: 0.3, shininess: 100 });
                 const head = new THREE.Mesh(headGeo, headMat);
                 head.position.y = 1.2;
                 robot.add(head);
                 
-                // عيون
                 const eyeGeo = new THREE.SphereGeometry(0.12, 8, 8);
                 const eyeMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.9 });
                 const leftEye = new THREE.Mesh(eyeGeo, eyeMat);
@@ -516,20 +619,17 @@
                 rightEye.position.set(0.15, 1.35, 0.4);
                 robot.add(rightEye);
                 
-                // هوائي
                 const antennaGeo = new THREE.CylinderGeometry(0.03, 0.03, 0.4);
                 const antennaMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.7 });
                 const antenna = new THREE.Mesh(antennaGeo, antennaMat);
                 antenna.position.y = 1.8;
                 robot.add(antenna);
                 
-                // كرة الهوائي
                 const antennaBallGeo = new THREE.SphereGeometry(0.08, 8, 8);
                 const antennaBall = new THREE.Mesh(antennaBallGeo, eyeMat);
                 antennaBall.position.y = 2.05;
                 robot.add(antennaBall);
                 
-                // ذراعين
                 const armGeo = new THREE.CylinderGeometry(0.12, 0.12, 1);
                 const armMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.4 });
                 
@@ -554,7 +654,6 @@
                 return robot;
             }
             
-            // إنشاء 6 روبوتات
             const robots = [];
             const robotColors = [0x00B4FF, 0x0066CC, 0x66D9FF, 0x00B4FF, 0x0066CC, 0x66D9FF];
             
@@ -570,7 +669,6 @@
                 robotsGroup.add(robot);
             }
             
-            // جزيئات
             const particlesGroup = new THREE.Group();
             scene.add(particlesGroup);
             
@@ -599,7 +697,6 @@
                 particlesGroup.add(particle);
             }
             
-            // حلقات دائرية
             for (let j = 0; j < 4; j++) {
                 const ringGeo = new THREE.TorusGeometry(4 + j * 2, 0.02, 8, 100);
                 const ringMat = new THREE.MeshPhongMaterial({
@@ -616,12 +713,10 @@
                 scene.add(ring);
             }
             
-            // تحريك المشهد
             function animate() {
                 requestAnimationFrame(animate);
                 const time = Date.now() * 0.001;
                 
-                // تحريك الروبوتات
                 robots.forEach(robot => {
                     robot.position.y += Math.sin(time * robot.userData.floatSpeed + robot.userData.floatPhase) * 0.008;
                     robot.rotation.y += robot.userData.rotateSpeed * 0.005;
@@ -630,7 +725,6 @@
                 robotsGroup.rotation.y += 0.001;
                 particlesGroup.rotation.y += 0.0005;
                 
-                // تحريك الجزيئات
                 particlesGroup.children.forEach(p => {
                     p.position.y += p.userData.speedY;
                     if (Math.abs(p.position.y - p.userData.baseY) > p.userData.amplitude) {
@@ -638,7 +732,6 @@
                     }
                 });
                 
-                // تحريك الحلقات
                 scene.children.forEach(child => {
                     if (child.geometry && child.geometry.type === 'TorusGeometry') {
                         child.rotation.z += child.userData.speed;
@@ -650,14 +743,12 @@
             
             animate();
             
-            // استجابة لتغيير حجم النافذة
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
             
-            // تفاعل مع الماوس
             let mouseX = 0, mouseY = 0;
             window.addEventListener('mousemove', (e) => {
                 mouseX = (e.clientX / window.innerWidth) * 2 - 1;
