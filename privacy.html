@@ -11,8 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* ========== ألوان Kyntrava AI - سماوي وأزرق فاتح لامع ========== */
+        :root {
+            --primary: #00B4D8; /* سماوي */
+            --primary-dark: #0096C7; /* أزرق فاتح غامق قليلاً */
+            --primary-light: #48CAE4; /* أزرق فاتح لامع */
+            --dark-bg: #0a1628;
+            --darker-bg: #060f1a;
+        }
+
         .page-header {
-            background: linear-gradient(135deg, #0a1628 0%, #0d2137 100%);
+            background: linear-gradient(135deg, var(--darker-bg) 0%, #0d2137 100%);
             padding: 70px 20px 60px;
             text-align: center;
             color: white;
@@ -28,7 +37,7 @@
             clip-path: ellipse(65% 100% at 50% 100%);
         }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; }
-        .page-header h1 span { color: #00B4FF; }
+        .page-header h1 span { color: var(--primary); } /* سماوي */
         .page-header .last-update { opacity: 0.7; font-size: 0.9rem; margin-top: 8px; }
         
         .privacy-container {
@@ -47,10 +56,10 @@
         }
         .privacy-content h2 {
             font-size: 1.4rem;
-            color: #0a1628;
+            color: var(--dark-bg); /* داكن */
             margin: 30px 0 15px;
             font-weight: 800;
-            border-right: 4px solid #00B4FF;
+            border-right: 4px solid var(--primary); /* سماوي */
             padding-right: 15px;
         }
         .privacy-content h2:first-of-type { margin-top: 0; }
@@ -68,18 +77,30 @@
         .privacy-content ul li::before {
             content: '\f058';
             font-family: 'Font Awesome 6 Free';
-            color: #00B4FF;
+            color: var(--primary); /* سماوي */
             margin-left: 10px;
             font-weight: 900;
         }
         .highlight-box {
-            background: #E6F7FF;
-            border: 1px solid #00B4FF;
+            background: #E0F7FA; /* سماوي فاتح جداً */
+            border: 1px solid var(--primary); /* سماوي */
             border-radius: 14px;
             padding: 20px 25px;
             margin: 25px 0;
         }
-        .highlight-box p { margin-bottom: 0; color: #0a1628; font-weight: 600; }
+        .highlight-box p { margin-bottom: 0; color: var(--dark-bg); font-weight: 600; }
+        
+        /* تنسيق الروابط داخل المحتوى */
+        .privacy-content a {
+            color: var(--primary); /* سماوي */
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .privacy-content a:hover {
+            color: var(--primary-dark); /* أزرق فاتح */
+            text-decoration: underline;
+        }
         
         @media (max-width: 768px) {
             .page-header h1 { font-size: 1.8rem; }
@@ -116,7 +137,7 @@
         <div class="privacy-content">
             
             <div class="highlight-box">
-                <p><i class="fas fa-shield-alt" style="color:#00B4FF; margin-left:8px;"></i> في Kyntrava AI، ندرك أهمية خصوصيتكم. توضح هذه السياسة كيفية جمعنا واستخدامنا وحمايتنا لمعلوماتكم الشخصية عند استخدام موقعنا الإلكتروني أو التعامل مع خدماتنا.</p>
+                <p><i class="fas fa-shield-alt" style="color:var(--primary); margin-left:8px;"></i> في Kyntrava AI، ندرك أهمية خصوصيتكم. توضح هذه السياسة كيفية جمعنا واستخدامنا وحمايتنا لمعلوماتكم الشخصية عند استخدام موقعنا الإلكتروني أو التعامل مع خدماتنا.</p>
             </div>
 
             <h2>1. المعلومات التي نقوم بجمعها</h2>
@@ -178,9 +199,9 @@
             <h2>10. الاتصال بنا</h2>
             <p>لأي استفسار حول سياسة الخصوصية أو لممارسة حقوقكم، يرجى التواصل معنا عبر:</p>
             <ul>
-                <li>البريد الإلكتروني: <a href="mailto:hussexpo@gmail.com" style="color:#00B4FF;">hussexpo@gmail.com</a></li>
-                <li>واتساب: <a href="https://wa.me/963933438019" style="color:#00B4FF;">+963 933 438 019</a></li>
-                <li>أو عبر <a href="contact.html" style="color:#00B4FF;">صفحة اتصل بنا</a></li>
+                <li>البريد الإلكتروني: <a href="mailto:hussexpo@gmail.com">hussexpo@gmail.com</a></li>
+                <li>واتساب: <a href="https://wa.me/963933438019">+963 933 438 019</a></li>
+                <li>أو عبر <a href="contact.html">صفحة اتصل بنا</a></li>
             </ul>
 
         </div>
