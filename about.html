@@ -13,58 +13,80 @@
     <style>
         /* ========== متغيرات الألوان الموحدة ========== */
         :root {
-            --primary: #00B4FF;
-            --primary-dark: #0066CC;
-            --primary-light: #66D9FF;
-            --dark-bg: #0a1628;
-            --darker-bg: #060f1a;
-            --hero-bg-light: #E6F4FF;
-            --section-bg-alt: #f4f7fa;
+            --primary: #0095E8;
+            --primary-dark: #005BB5;
+            --primary-light: #40B8F0;
+            --primary-glow: #00B4FF;
+            --dark-bg: #0B1E33;
+            --darker-bg: #060F1C;
+            --section-bg: #f5f7fa;
         }
 
-        /* ========== هيدر الصفحة (أزرق فاتح) ========== */
+        body { background: var(--section-bg); }
+
+        /* ========== هيدر الصفحة (أزرق غامق - متناسق مع الهيرو الجديد) ========== */
         .page-header {
-            background: linear-gradient(135deg, var(--hero-bg-light) 0%, #cceeff 100%);
-            padding: 70px 20px 60px;
+            background: linear-gradient(160deg, #0B1E33 0%, #0D2B45 40%, #0E3A5C 100%);
+            padding: 80px 20px 70px;
             text-align: center;
-            color: var(--dark-bg); /* نص غامق ليتناسب مع الخلفية الفاتحة */
+            color: white;
             position: relative;
             overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(0,180,255,0.12) 0%, transparent 70%);
+            z-index: 0;
         }
         .page-header::after {
             content: '';
             position: absolute;
             bottom: -2px; left: 0; right: 0;
             height: 60px;
-            /* تم تغيير لون الموجة إلى اللون البديل */
-            background: var(--section-bg-alt);
+            background: var(--section-bg);
             clip-path: ellipse(65% 100% at 50% 100%);
+            z-index: 2;
         }
-        .page-header h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; color: var(--dark-bg); }
-        .page-header h1 span { color: var(--primary-dark); }
-        .page-header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; color: #333; }
+        .page-header h1 { 
+            font-size: 2.8rem; 
+            font-weight: 900; 
+            margin-bottom: 12px; 
+            color: white; 
+            position: relative; 
+            z-index: 1; 
+        }
+        .page-header h1 span { 
+            background: linear-gradient(135deg, var(--primary-glow), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-header p { 
+            font-size: 1.15rem; 
+            opacity: 0.85; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            color: #e0e0e0; 
+            position: relative; 
+            z-index: 1; 
+        }
         
-        /* تم تغيير خلفية الحاوية الرئيسية إلى اللون البديل */
         .about-container {
             max-width: 1000px;
             margin: -30px auto 60px;
             padding: 0 20px;
             position: relative;
-            z-index: 2;
-            background: transparent; /* نعتمد على خلفية body أو خلفية الصفحة */
-        }
-        
-        /* ضبط خلفية الجسم لتناسب الأقسام */
-        body {
-            background-color: var(--section-bg-alt);
+            z-index: 3;
         }
 
         .about-intro {
             background: white;
             border-radius: 20px;
             padding: 40px 35px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.06);
-            border: 1px solid #eee;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,180,255,0.08);
             margin-bottom: 25px;
             border-right: 5px solid var(--primary);
         }
@@ -79,9 +101,9 @@
         .info-card {
             background: white;
             border-radius: 18px;
-            padding: 30px 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border: 1px solid #f0f0f0;
+            padding: 32px 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,180,255,0.06);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -92,16 +114,31 @@
             top: 0; left: 0; right: 0;
             height: 4px;
         }
-        .info-card:nth-child(1)::before { background: var(--primary); }
-        .info-card:nth-child(2)::before { background: var(--primary-dark); }
-        .info-card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
-        .card-icon { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin-bottom: 15px; }
-        .info-card h3 { font-size: 1.2rem; color: var(--dark-bg); margin-bottom: 10px; font-weight: 800; }
-        .info-card p { color: #666; font-size: 0.95rem; line-height: 1.8; }
+        .info-card:nth-child(1)::before { background: linear-gradient(90deg, var(--primary), var(--primary-glow)); }
+        .info-card:nth-child(2)::before { background: linear-gradient(90deg, var(--primary-dark), var(--primary)); }
+        .info-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 12px 35px rgba(0,148,232,0.1); 
+        }
+        .card-icon { 
+            width: 60px; height: 60px; 
+            border-radius: 16px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.5rem; 
+            color: white; 
+            margin-bottom: 18px; 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+        .info-card:nth-child(1) .card-icon { background: linear-gradient(135deg, var(--primary), var(--primary-glow)); }
+        .info-card:nth-child(2) .card-icon { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); }
+        .info-card h3 { font-size: 1.2rem; color: #1A2A3A; margin-bottom: 10px; font-weight: 800; }
+        .info-card p { color: #5A6A7A; font-size: 0.95rem; line-height: 1.9; }
         
         .section-title {
             font-size: 1.8rem;
-            color: var(--dark-bg);
+            color: #1A2A3A;
             margin: 45px 0 25px;
             text-align: center;
             font-weight: 800;
@@ -111,11 +148,16 @@
             display: block;
             width: 60px;
             height: 3px;
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--primary), var(--primary-glow));
             margin: 10px auto 0;
             border-radius: 2px;
         }
-        .section-title span { color: var(--primary); }
+        .section-title span { 
+            background: linear-gradient(135deg, var(--primary), var(--primary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
         
         .values-grid {
             display: grid;
@@ -124,22 +166,28 @@
             margin-bottom: 30px;
         }
         .value-item {
-            background: white; /* خلفية بيضاء للعناصر لتبرز فوق الخلفية البديلة */
-            padding: 20px 18px;
-            border-radius: 12px;
+            background: white;
+            padding: 22px 20px;
+            border-radius: 14px;
             border-right: 3px solid var(--primary);
             font-size: 0.9rem;
-            color: #444;
-            line-height: 1.7;
+            color: #5A6A7A;
+            line-height: 1.8;
             transition: 0.3s;
+            border: 1px solid rgba(0,180,255,0.06);
+            border-right: 3px solid var(--primary);
         }
         .value-item:nth-child(2) { border-right-color: var(--primary-dark); }
-        .value-item:nth-child(3) { border-right-color: var(--primary-light); }
+        .value-item:nth-child(3) { border-right-color: var(--primary-glow); }
         .value-item:nth-child(4) { border-right-color: var(--primary); }
         .value-item:nth-child(5) { border-right-color: var(--primary-dark); }
-        .value-item:nth-child(6) { border-right-color: var(--primary-light); }
-        .value-item:hover { background: #E6F7FF; transform: translateX(-3px); }
-        .value-item strong { display: block; margin-bottom: 4px; color: var(--dark-bg); }
+        .value-item:nth-child(6) { border-right-color: var(--primary-glow); }
+        .value-item:hover { 
+            background: #EDF6FF; 
+            transform: translateX(-4px); 
+            box-shadow: 0 6px 20px rgba(0,148,232,0.08);
+        }
+        .value-item strong { display: block; margin-bottom: 5px; color: #1A2A3A; font-size: 1rem; }
         
         .why-us-grid {
             display: grid;
@@ -151,34 +199,64 @@
             display: flex;
             align-items: flex-start;
             gap: 18px;
-            padding: 25px;
-            background: white; /* بيضاء */
-            border-radius: 16px;
+            padding: 28px;
+            background: white;
+            border-radius: 18px;
+            border: 1px solid rgba(0,180,255,0.06);
             border-right: 4px solid var(--primary);
             transition: all 0.3s ease;
         }
         .why-us-item:nth-child(2) { border-right-color: var(--primary-dark); }
-        .why-us-item:nth-child(3) { border-right-color: var(--primary-light); }
+        .why-us-item:nth-child(3) { border-right-color: var(--primary-glow); }
         .why-us-item:nth-child(4) { border-right-color: var(--primary); }
-        .why-us-item:hover { background: #E6F7FF; transform: translateX(-5px); }
-        .why-icon { width: 55px; height: 55px; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.4rem; flex-shrink: 0; }
-        .why-us-item h4 { color: var(--dark-bg); margin-bottom: 5px; font-weight: 800; font-size: 1.05rem; }
-        .why-us-item p { color: #666; font-size: 0.9rem; line-height: 1.7; }
+        .why-us-item:hover { 
+            background: #EDF6FF; 
+            transform: translateX(-5px); 
+            box-shadow: 0 8px 25px rgba(0,148,232,0.1);
+        }
+        .why-icon { 
+            width: 55px; height: 55px; 
+            border-radius: 16px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-size: 1.4rem; 
+            flex-shrink: 0;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+        .why-us-item:nth-child(1) .why-icon { background: linear-gradient(135deg, var(--primary), var(--primary-glow)); }
+        .why-us-item:nth-child(2) .why-icon { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); }
+        .why-us-item:nth-child(3) .why-icon { background: linear-gradient(135deg, var(--primary-glow), var(--primary-light)); }
+        .why-us-item:nth-child(4) .why-icon { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+        .why-us-item h4 { color: #1A2A3A; margin-bottom: 5px; font-weight: 800; font-size: 1.05rem; }
+        .why-us-item p { color: #5A6A7A; font-size: 0.9rem; line-height: 1.7; }
         
         .cta-section {
-            background: linear-gradient(135deg, var(--dark-bg), #0d2137);
-            border-radius: 22px;
-            padding: 45px 35px;
+            background: linear-gradient(135deg, #0B1E33, #0E3A5C);
+            border-radius: 24px;
+            padding: 50px 40px;
             text-align: center;
             color: white;
             margin-top: 40px;
+            border: 1px solid rgba(0,180,255,0.15);
+            position: relative;
+            overflow: hidden;
         }
-        .cta-section h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 800; }
-        .cta-section h3 span { color: var(--primary); }
-        .cta-section p { opacity: 0.9; margin-bottom: 28px; line-height: 2; }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px; right: -50px;
+            width: 200px; height: 200px;
+            background: rgba(0,180,255,0.08);
+            border-radius: 50%;
+        }
+        .cta-section h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 800; position: relative; z-index: 1; }
+        .cta-section h3 span { color: var(--primary-glow); }
+        .cta-section p { opacity: 0.9; margin-bottom: 28px; line-height: 2; position: relative; z-index: 1; }
         .btn-cta {
             display: inline-block;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             padding: 16px 40px;
             border-radius: 50px;
@@ -186,16 +264,38 @@
             font-weight: 700;
             font-size: 1.05rem;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,180,255,0.3);
+            box-shadow: 0 8px 25px rgba(0,148,232,0.35);
+            position: relative;
+            z-index: 1;
         }
-        .btn-cta:hover { background: var(--primary-dark); transform: translateY(-4px); }
+        .btn-cta:hover { 
+            background: linear-gradient(135deg, var(--primary-dark), #004499); 
+            transform: translateY(-4px); 
+            box-shadow: 0 15px 40px rgba(0,148,232,0.5);
+        }
+        
+        /* ========== الفوتر ========== */
+        footer { 
+            background: var(--darker-bg); 
+            color: #ccc; 
+            padding: 30px 15px 20px; 
+            text-align: center; 
+            font-size: 0.85rem; 
+            border-top: 5px solid var(--primary); 
+        }
+        footer a { color: var(--primary-glow); text-decoration: none; margin: 5px 8px; font-weight: 600; }
+        footer a:hover { text-decoration: underline; color: var(--primary-light); }
+        footer .footer-links { margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+        footer .copyright { color: #888; font-size: 0.8rem; }
         
         @media (max-width: 768px) {
-            .page-header h1 { font-size: 1.8rem; }
+            .page-header h1 { font-size: 2rem; }
+            .page-header { padding: 60px 20px 50px; }
             .cards-row { grid-template-columns: 1fr; }
             .values-grid { grid-template-columns: 1fr; }
             .why-us-grid { grid-template-columns: 1fr; }
             .about-intro { padding: 25px 20px; }
+            .cta-section { padding: 35px 25px; }
         }
     </style>
 </head>
@@ -206,7 +306,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-area">
-                <a href="index.html"><img src="https://i.imgur.com/XKKHCTr.png" alt="Kyntrava AI" class="logo-img"></a>
+                <a href="index.html"><img src="https://imgur.com/JQD8eG0.png" alt="Kyntrava AI" class="logo-img"></a>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html">الرئيسية</a></li>
@@ -219,7 +319,7 @@
         </div>
     </nav>
 
-    <!-- ========== هيدر الصفحة (أزرق فاتح) ========== -->
+    <!-- ========== هيدر الصفحة (أزرق غامق - متناسق مع الهيرو الجديد) ========== -->
     <header class="page-header">
         <h1>عن <span>الشركة</span></h1>
         <p>تعرف على Kyntrava AI - شريكك التقني الأول في رحلة التحول الرقمي</p>
@@ -233,19 +333,19 @@
 
         <div class="cards-row">
             <div class="info-card">
-                <div class="card-icon" style="background:#00B4FF;"><i class="fas fa-history"></i></div>
+                <div class="card-icon"><i class="fas fa-history"></i></div>
                 <h3>تاريخنا وتطورنا</h3>
                 <p>تأسست Kyntrava AI على أيدي مجموعة من خبراء البرمجيات والذكاء الاصطناعي. بدأنا كمكتب صغير لنصبح اليوم إحدى الشركات الواعدة في مجال الحلول التقنية المتكاملة. نمتلك فريقاً متكاملاً من المطورين والمصممين وخبراء الذكاء الاصطناعي.</p>
             </div>
             <div class="info-card">
-                <div class="card-icon" style="background:#0066CC;"><i class="fas fa-eye"></i></div>
+                <div class="card-icon"><i class="fas fa-eye"></i></div>
                 <h3>رؤيتنا ورسالتنا</h3>
                 <p><strong>رؤيتنا:</strong> أن نكون الخيار الأول للشركات الطموحة في المنطقة العربية للحصول على حلول تقنية ذكية ومبتكرة.<br><strong>رسالتنا:</strong> تقديم خدمات برمجية وحلول ذكاء اصطناعي عالية الجودة لنمنح عملاءنا ميزة تنافسية حقيقية في أسواقهم.</p>
             </div>
         </div>
 
         <div class="info-card" style="margin-bottom:25px;">
-            <div class="card-icon" style="background:#66D9FF;"><i class="fas fa-medal"></i></div>
+            <div class="card-icon" style="background: linear-gradient(135deg, var(--primary-glow), var(--primary-light));"><i class="fas fa-medal"></i></div>
             <h3>خبراتنا المتراكمة</h3>
             <p>يضم فريقنا نخبة من المطورين والمبرمجين وخبراء الذكاء الاصطناعي الذين عملوا على مشاريع متنوعة في مختلف القطاعات. نمتلك خبرة واسعة في تطوير تطبيقات الويب والجوال، أنظمة الذكاء الاصطناعي، وتحليل البيانات. نستخدم أحدث التقنيات والأدوات لضمان تقديم حلول عالية الجودة تلبي احتياجات عملائنا.</p>
         </div>
@@ -263,19 +363,19 @@
         <h3 class="section-title">لماذا <span>Kyntrava AI</span>؟</h3>
         <div class="why-us-grid">
             <div class="why-us-item">
-                <div class="why-icon" style="background:#00B4FF;"><i class="fas fa-microchip"></i></div>
+                <div class="why-icon"><i class="fas fa-microchip"></i></div>
                 <div><h4>تقنيات متطورة</h4><p>نستخدم أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي لتقديم حلول مبتكرة.</p></div>
             </div>
             <div class="why-us-item">
-                <div class="why-icon" style="background:#0066CC;"><i class="fas fa-users-cog"></i></div>
+                <div class="why-icon"><i class="fas fa-users-cog"></i></div>
                 <div><h4>فريق متكامل</h4><p>مطورون، مصممون، وخبراء AI يعملون معاً لتحقيق رؤيتك.</p></div>
             </div>
             <div class="why-us-item">
-                <div class="why-icon" style="background:#66D9FF;"><i class="fas fa-lock"></i></div>
+                <div class="why-icon"><i class="fas fa-lock"></i></div>
                 <div><h4>أمان وحماية</h4><p>نلتزم بأعلى معايير الأمان السيبراني وحماية بيانات عملائنا.</p></div>
             </div>
             <div class="why-us-item">
-                <div class="why-icon" style="background:#00B4FF;"><i class="fas fa-headset"></i></div>
+                <div class="why-icon"><i class="fas fa-headset"></i></div>
                 <div><h4>دعم فني مستمر</h4><p>نقدم دعماً فنياً وتحديثات دورية لضمان استمرارية عمل حلولك.</p></div>
             </div>
         </div>
