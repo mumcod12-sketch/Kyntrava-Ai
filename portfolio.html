@@ -11,8 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* ========== ألوان Kyntrava AI - سماوي وأزرق فاتح لامع ========== */
+        :root {
+            --primary: #00B4D8; /* سماوي */
+            --primary-dark: #0096C7; /* أزرق فاتح غامق قليلاً */
+            --primary-light: #48CAE4; /* أزرق فاتح لامع */
+            --dark-bg: #0a1628;
+            --darker-bg: #060f1a;
+        }
+
         .page-header {
-            background: linear-gradient(135deg, #0a1628 0%, #0d2137 100%);
+            background: linear-gradient(135deg, var(--darker-bg) 0%, #0d2137 100%);
             padding: 70px 20px 60px;
             text-align: center;
             color: white;
@@ -28,7 +37,7 @@
             clip-path: ellipse(65% 100% at 50% 100%);
         }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; }
-        .page-header h1 span { color: #00B4FF; }
+        .page-header h1 span { color: var(--primary); } /* سماوي */
         .page-header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
         
         .portfolio-container {
@@ -54,8 +63,8 @@
             border: 1px solid #f0f0f0;
             transition: 0.3s;
         }
-        .quick-stat:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,180,255,0.1); }
-        .quick-stat .qs-num { font-size: 2.2rem; font-weight: 900; color: #00B4FF; }
+        .quick-stat:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,180,216,0.1); } /* ظل سماوي */
+        .quick-stat .qs-num { font-size: 2.2rem; font-weight: 900; color: var(--primary); } /* سماوي */
         .quick-stat .qs-label { color: #555; font-size: 0.85rem; font-weight: 600; }
         
         .portfolio-grid {
@@ -72,7 +81,7 @@
             border: 1px solid #f0f0f0;
             transition: all 0.3s ease;
         }
-        .portfolio-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,180,255,0.15); }
+        .portfolio-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,180,216,0.15); } /* ظل سماوي */
         .portfolio-img-container {
             height: 200px;
             overflow: hidden;
@@ -110,12 +119,12 @@
         }
         
         .portfolio-info { padding: 20px; }
-        .portfolio-info h3 { font-size: 1.15rem; color: #0a1628; margin-bottom: 6px; font-weight: 800; }
+        .portfolio-info h3 { font-size: 1.15rem; color: var(--dark-bg); margin-bottom: 6px; font-weight: 800; }
         .portfolio-desc { color: #666; font-size: 0.88rem; margin-bottom: 12px; line-height: 1.6; }
         .portfolio-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
         .portfolio-tags span {
-            background: #E6F7FF;
-            color: #0066CC;
+            background: #E0F7FA; /* سماوي فاتح جداً */
+            color: var(--primary-dark); /* أزرق فاتح */
             font-size: 0.7rem;
             font-weight: 600;
             padding: 3px 10px;
@@ -125,7 +134,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #00B4FF;
+            background: var(--primary); /* سماوي */
             color: white;
             text-decoration: none;
             padding: 9px 20px;
@@ -134,10 +143,10 @@
             font-size: 0.85rem;
             transition: 0.3s;
         }
-        .portfolio-btn:hover { background: #0066CC; transform: translateX(-5px); }
+        .portfolio-btn:hover { background: var(--primary-dark); transform: translateX(-5px); } /* أزرق فاتح */
         
         .cta-section {
-            background: linear-gradient(135deg, #0a1628, #0d2137);
+            background: linear-gradient(135deg, var(--dark-bg), #0d2137);
             border-radius: 22px;
             padding: 45px 35px;
             text-align: center;
@@ -145,11 +154,11 @@
             margin-top: 50px;
         }
         .cta-section h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 800; }
-        .cta-section h3 span { color: #00B4FF; }
+        .cta-section h3 span { color: var(--primary); } /* سماوي */
         .cta-section p { opacity: 0.9; margin-bottom: 28px; line-height: 2; }
         .btn-cta {
             display: inline-block;
-            background: #00B4FF;
+            background: var(--primary); /* سماوي */
             color: white;
             padding: 16px 40px;
             border-radius: 50px;
@@ -157,9 +166,9 @@
             font-weight: 700;
             font-size: 1.05rem;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,180,255,0.3);
+            box-shadow: 0 8px 25px rgba(0,180,216,0.3); /* ظل سماوي */
         }
-        .btn-cta:hover { background: #0066CC; transform: translateY(-4px); }
+        .btn-cta:hover { background: var(--primary-dark); transform: translateY(-4px); } /* أزرق فاتح */
         
         @media (max-width: 992px) { .portfolio-grid { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 768px) {
