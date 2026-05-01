@@ -11,8 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* ========== ألوان Kyntrava AI - سماوي وأزرق فاتح لامع ========== */
+        :root {
+            --primary: #00B4D8; /* سماوي */
+            --primary-dark: #0096C7; /* أزرق فاتح غامق قليلاً */
+            --primary-light: #48CAE4; /* أزرق فاتح لامع */
+            --dark-bg: #0a1628;
+            --darker-bg: #060f1a;
+        }
+
         .page-header {
-            background: linear-gradient(135deg, #0a1628 0%, #0d2137 100%);
+            background: linear-gradient(135deg, var(--darker-bg) 0%, #0d2137 100%);
             padding: 70px 20px 60px;
             text-align: center;
             color: white;
@@ -28,7 +37,7 @@
             clip-path: ellipse(65% 100% at 50% 100%);
         }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; }
-        .page-header h1 span { color: #00B4FF; }
+        .page-header h1 span { color: var(--primary); } /* سماوي */
         .page-header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
         
         .services-container {
@@ -45,7 +54,7 @@
         }
         .section-divider h2 {
             font-size: 1.6rem;
-            color: #0a1628;
+            color: var(--dark-bg); /* داكن */
             font-weight: 800;
             display: inline-block;
         }
@@ -54,11 +63,11 @@
             display: block;
             width: 45px;
             height: 3px;
-            background: #00B4FF;
+            background: var(--primary); /* سماوي */
             margin: 8px auto 0;
             border-radius: 2px;
         }
-        .section-divider h2 span { color: #00B4FF; }
+        .section-divider h2 span { color: var(--primary); } /* سماوي */
         
         .service-card {
             background: white;
@@ -79,9 +88,9 @@
             position: absolute;
             top: 0; right: 0;
             width: 5px; height: 100%;
-            background: #00B4FF;
+            background: var(--primary); /* سماوي */
         }
-        .service-card:nth-child(even)::before { background: #0066CC; }
+        .service-card:nth-child(even)::before { background: var(--primary-dark); } /* أزرق فاتح */
         .service-card:hover { transform: translateX(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
         
         .service-num {
@@ -93,7 +102,7 @@
             text-align: center;
             transition: 0.3s;
         }
-        .service-card:hover .service-num { color: #00B4FF; }
+        .service-card:hover .service-num { color: var(--primary); } /* سماوي عند التحويم */
         
         .service-icon-wrapper {
             width: 55px; height: 55px;
@@ -107,13 +116,13 @@
             box-shadow: 0 6px 18px rgba(0,0,0,0.1);
         }
         .service-content { flex: 1; }
-        .service-content h3 { font-size: 1.2rem; color: #0a1628; margin-bottom: 8px; font-weight: 800; }
+        .service-content h3 { font-size: 1.2rem; color: var(--dark-bg); margin-bottom: 8px; font-weight: 800; }
         .service-content p { color: #666; font-size: 0.9rem; line-height: 1.8; margin-bottom: 12px; }
         
         .service-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
         .service-features span {
-            background: #E6F7FF;
-            color: #0066CC;
+            background: #E0F7FA; /* سماوي فاتح جداً */
+            color: var(--primary-dark); /* أزرق فاتح */
             font-size: 0.75rem;
             font-weight: 600;
             padding: 5px 12px;
@@ -123,7 +132,7 @@
         .service-cta-btn {
             display: inline-block;
             padding: 10px 22px;
-            background: #00B4FF;
+            background: var(--primary); /* سماوي */
             color: white;
             border-radius: 50px;
             text-decoration: none;
@@ -131,11 +140,11 @@
             font-size: 0.88rem;
             transition: 0.3s;
         }
-        .service-cta-btn:hover { background: #0066CC; transform: translateX(-5px); }
+        .service-cta-btn:hover { background: var(--primary-dark); transform: translateX(-5px); } /* أزرق فاتح */
         .service-cta-btn i { margin-right: 6px; }
         
         .cta-section {
-            background: linear-gradient(135deg, #0a1628, #0d2137);
+            background: linear-gradient(135deg, var(--dark-bg), #0d2137);
             border-radius: 22px;
             padding: 45px 35px;
             text-align: center;
@@ -143,11 +152,11 @@
             margin-top: 50px;
         }
         .cta-section h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 800; }
-        .cta-section h3 span { color: #00B4FF; }
+        .cta-section h3 span { color: var(--primary); } /* سماوي */
         .cta-section p { opacity: 0.9; margin-bottom: 28px; line-height: 2; }
         .btn-cta {
             display: inline-block;
-            background: #00B4FF;
+            background: var(--primary); /* سماوي */
             color: white;
             padding: 16px 40px;
             border-radius: 50px;
@@ -155,9 +164,9 @@
             font-weight: 700;
             font-size: 1.05rem;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,180,255,0.3);
+            box-shadow: 0 8px 25px rgba(0,180,216,0.3); /* ظل سماوي */
         }
-        .btn-cta:hover { background: #0066CC; transform: translateY(-4px); }
+        .btn-cta:hover { background: var(--primary-dark); transform: translateY(-4px); } /* أزرق فاتح */
         
         @media (max-width: 768px) {
             .page-header h1 { font-size: 1.8rem; }
@@ -195,12 +204,12 @@
     <main class="services-container">
         
         <div class="section-divider">
-            <h2><i class="fas fa-code" style="color:#00B4FF; margin-left:8px;"></i> تطوير <span>البرمجيات</span></h2>
+            <h2><i class="fas fa-code" style="color:var(--primary); margin-left:8px;"></i> تطوير <span>البرمجيات</span></h2>
         </div>
 
         <div class="service-card">
             <div class="service-num">01</div>
-            <div class="service-icon-wrapper" style="background:#00B4FF;"><i class="fas fa-laptop-code"></i></div>
+            <div class="service-icon-wrapper" style="background:var(--primary);"><i class="fas fa-laptop-code"></i></div>
             <div class="service-content">
                 <h3>تصميم وتطوير مواقع ويب</h3>
                 <p>نصمم ونطور مواقع عصرية متجاوبة مع جميع الأجهزة، بواجهات مستخدم جذابة وتجربة مستخدم سلسة. نستخدم أحدث تقنيات الويب مثل React, Next.js, و Laravel لضمان أداء عالي وقابلية للتطوير.</p>
@@ -213,7 +222,7 @@
 
         <div class="service-card">
             <div class="service-num">02</div>
-            <div class="service-icon-wrapper" style="background:#0066CC;"><i class="fas fa-mobile-alt"></i></div>
+            <div class="service-icon-wrapper" style="background:var(--primary-dark);"><i class="fas fa-mobile-alt"></i></div>
             <div class="service-content">
                 <h3>تطبيقات جوال أصلية وهجينة</h3>
                 <p>نطور تطبيقات Android و iOS أصلية أو عبر المنصات باستخدام Flutter و React Native مع أداء عالي وتجربة استخدام استثنائية تلبي احتياجات المستخدمين.</p>
@@ -226,7 +235,7 @@
 
         <div class="service-card">
             <div class="service-num">03</div>
-            <div class="service-icon-wrapper" style="background:#00B4FF;"><i class="fas fa-cloud"></i></div>
+            <div class="service-icon-wrapper" style="background:var(--primary);"><i class="fas fa-cloud"></i></div>
             <div class="service-content">
                 <h3>حلول سحابية وبنية تحتية</h3>
                 <p>نصمم وننشر بنى تحتية سحابية آمنة وقابلة للتطوير على AWS، Google Cloud، و Azure. نضمن لك استضافة موثوقة وأداء عالي مع حماية متكاملة.</p>
@@ -238,12 +247,12 @@
         </div>
 
         <div class="section-divider">
-            <h2><i class="fas fa-robot" style="color:#0066CC; margin-left:8px;"></i> الذكاء <span>الاصطناعي</span></h2>
+            <h2><i class="fas fa-robot" style="color:var(--primary-dark); margin-left:8px;"></i> الذكاء <span>الاصطناعي</span></h2>
         </div>
 
         <div class="service-card">
             <div class="service-num">04</div>
-            <div class="service-icon-wrapper" style="background:#0066CC;"><i class="fas fa-robot"></i></div>
+            <div class="service-icon-wrapper" style="background:var(--primary-dark);"><i class="fas fa-robot"></i></div>
             <div class="service-content">
                 <h3>أنظمة ذكاء اصطناعي وتعلم آلة</h3>
                 <p>نطور حلول ذكاء اصطناعي متكاملة تشمل تعلم الآلة، معالجة اللغة الطبيعية، ورؤية الحاسوب. نساعدك في أتمتة عملياتك واتخاذ قرارات ذكية مبنية على البيانات.</p>
@@ -256,7 +265,7 @@
 
         <div class="service-card">
             <div class="service-num">05</div>
-            <div class="service-icon-wrapper" style="background:#00B4FF;"><i class="fas fa-chart-bar"></i></div>
+            <div class="service-icon-wrapper" style="background:var(--primary);"><i class="fas fa-chart-bar"></i></div>
             <div class="service-content">
                 <h3>تحليل البيانات ولوحات المعلومات</h3>
                 <p>نحول بياناتك الخام إلى رؤى قابلة للتنفيذ. نبني لوحات معلومات تفاعلية وأنظمة تحليل بيانات متقدمة تساعدك في مراقبة أداء أعمالك واتخاذ القرارات الصائبة.</p>
@@ -268,12 +277,12 @@
         </div>
 
         <div class="section-divider">
-            <h2><i class="fas fa-headset" style="color:#00B4FF; margin-left:8px;"></i> خدمات <span>إضافية</span></h2>
+            <h2><i class="fas fa-headset" style="color:var(--primary); margin-left:8px;"></i> خدمات <span>إضافية</span></h2>
         </div>
 
         <div class="service-card">
             <div class="service-num">06</div>
-            <div class="service-icon-wrapper" style="background:#00B4FF;"><i class="fas fa-shield-alt"></i></div>
+            <div class="service-icon-wrapper" style="background:var(--primary);"><i class="fas fa-shield-alt"></i></div>
             <div class="service-content">
                 <h3>الأمن السيبراني وحماية البيانات</h3>
                 <p>نقدم حلول أمنية متكاملة لحماية تطبيقاتك وبياناتك من التهديدات. تقييم الثغرات، اختبار الاختراق، وتأمين البنية التحتية.</p>
@@ -286,7 +295,7 @@
 
         <div class="service-card">
             <div class="service-num">07</div>
-            <div class="service-icon-wrapper" style="background:#0066CC;"><i class="fas fa-paint-brush"></i></div>
+            <div class="service-icon-wrapper" style="background:var(--primary-dark);"><i class="fas fa-paint-brush"></i></div>
             <div class="service-content">
                 <h3>تصميم UI/UX وتجربة مستخدم</h3>
                 <p>نصمم واجهات مستخدم بديهية وتجربة مستخدم استثنائية. نجري أبحاث المستخدم ونبني نماذج أولية تفاعلية لضمان أفضل تجربة لعملائك.</p>
@@ -299,7 +308,7 @@
 
         <div class="service-card">
             <div class="service-num">08</div>
-            <div class="service-icon-wrapper" style="background:#00B4FF;"><i class="fas fa-headset"></i></div>
+            <div class="service-icon-wrapper" style="background:var(--primary);"><i class="fas fa-headset"></i></div>
             <div class="service-content">
                 <h3>استشارات تقنية متخصصة</h3>
                 <p>نقدم استشارات تقنية متخصصة لمساعدتك في اختيار التقنيات المناسبة لمشروعك، وتخطيط البنية التقنية، وتقدير التكاليف والجداول الزمنية.</p>
