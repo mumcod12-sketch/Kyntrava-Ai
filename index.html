@@ -37,13 +37,24 @@
             --shadow-primary: 0 8px 30px rgba(0,148,232,0.2);
         }
         
-        /* ========== شريط علوي ========== */
+        /* ========== شريط علوي - تم تعديله ========== */
         .top-bar {
-            background: var(--darker-bg);
-            color: #ccc;
+            background: linear-gradient(135deg, #060F1C, #0B1E33);
+            color: #e0e0e0;
             font-size: 0.8rem;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,180,255,0.2);
+            position: relative;
+            z-index: 1002;
+        }
+        .top-bar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,180,255,0.4), transparent);
         }
         .top-bar .container {
             max-width: 1200px;
@@ -53,12 +64,58 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
-        .top-bar a { color: var(--primary-glow); text-decoration: none; margin: 0 10px; transition: 0.3s; }
-        .top-bar a:hover { color: var(--primary-light); }
-        .top-bar .social-links a { color: #ccc; margin: 0 6px; font-size: 0.9rem; transition: 0.3s; }
-        .top-bar .social-links a:hover { color: var(--primary-glow); }
+        .top-bar .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .top-bar .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .top-bar .contact-info i {
+            color: var(--primary-glow);
+            font-size: 0.85rem;
+        }
+        .top-bar a { 
+            color: #e0e0e0; 
+            text-decoration: none; 
+            transition: 0.3s; 
+            font-weight: 500;
+        }
+        .top-bar a:hover { color: var(--primary-glow); }
+        .top-bar .social-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .top-bar .social-links span {
+            color: #aaa;
+            margin-left: 8px;
+            font-size: 0.75rem;
+        }
+        .top-bar .social-links a { 
+            color: #ccc; 
+            margin: 0 3px; 
+            font-size: 0.85rem; 
+            transition: 0.3s;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .top-bar .social-links a:hover { 
+            color: #fff; 
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
 
         /* ========== شريط التنقل (Navbar) - تأثير زجاجي محسّن ========== */
         .navbar {
@@ -492,6 +549,11 @@
         }
         
         @media (max-width: 768px) {
+            .top-bar { font-size: 0.72rem; padding: 8px 0; }
+            .top-bar .container { gap: 8px; justify-content: center; text-align: center; }
+            .top-bar .contact-info { gap: 10px; justify-content: center; }
+            .top-bar .social-links a { width: 28px; height: 28px; font-size: 0.75rem; }
+            
             .nav-container {
                 flex-direction: column;
                 gap: 6px;
@@ -524,6 +586,9 @@
             }
         }
         @media (max-width: 480px) {
+            .top-bar .container { flex-direction: column; gap: 6px; }
+            .top-bar .contact-info { font-size: 0.7rem; }
+            
             .logo-img {
                 height: 30px;
                 max-width: 120px;
@@ -539,16 +604,22 @@
     </style>
 </head>
 <body>
+    <!-- ========== شريط علوي - تم تعديله ========== -->
     <div class="top-bar">
         <div class="container">
-            <div>
-                <i class="fas fa-phone-alt" style="color:#00B4FF; margin-left:5px;"></i> 
-                <a href="tel:+963933438019">+963 933 438 019</a> |
-                <i class="far fa-envelope" style="color:#00B4FF; margin:0 5px;"></i> 
-                <a href="mailto:info@kyntrava.com">info@kyntrava.com</a>
+            <div class="contact-info">
+                <span>
+                    <i class="fas fa-phone-alt"></i> 
+                    <a href="tel:+963933438019">+963 933 438 019</a>
+                </span>
+                <span style="color:#555;">|</span>
+                <span>
+                    <i class="far fa-envelope"></i> 
+                    <a href="mailto:info@kyntrava.com">info@kyntrava.com</a>
+                </span>
             </div>
             <div class="social-links">
-                <span style="margin-left:10px;">تابعونا:</span>
+                <span>تابعونا:</span>
                 <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
