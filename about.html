@@ -11,8 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* ========== ألوان Kyntrava AI - تم التعديل إلى السماوي والأزرق الفاتح اللامع ========== */
+        :root {
+            --primary: #00B4D8; /* سماوي */
+            --primary-dark: #0096C7; /* أزرق فاتح غامق قليلاً */
+            --primary-light: #48CAE4; /* أزرق فاتح لامع */
+            --dark-bg: #0a1628;
+            --darker-bg: #060f1a;
+        }
+
         .page-header {
-            background: linear-gradient(135deg, #0a1628 0%, #0d2137 100%);
+            background: linear-gradient(135deg, var(--darker-bg) 0%, #0d2137 100%);
             padding: 70px 20px 60px;
             text-align: center;
             color: white;
@@ -28,7 +37,7 @@
             clip-path: ellipse(65% 100% at 50% 100%);
         }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; }
-        .page-header h1 span { color: #00B4FF; }
+        .page-header h1 span { color: var(--primary); } /* سماوي */
         .page-header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
         
         .about-container {
@@ -46,7 +55,7 @@
             box-shadow: 0 4px 25px rgba(0,0,0,0.06);
             border: 1px solid #eee;
             margin-bottom: 25px;
-            border-right: 5px solid #00B4FF;
+            border-right: 5px solid var(--primary); /* سماوي */
         }
         .about-intro p { color: #444; font-size: 1.05rem; line-height: 2.1; text-align: justify; }
         
@@ -72,16 +81,16 @@
             top: 0; left: 0; right: 0;
             height: 4px;
         }
-        .info-card:nth-child(1)::before { background: #00B4FF; }
-        .info-card:nth-child(2)::before { background: #0066CC; }
+        .info-card:nth-child(1)::before { background: var(--primary); } /* سماوي */
+        .info-card:nth-child(2)::before { background: var(--primary-dark); } /* أزرق فاتح */
         .info-card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
         .card-icon { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin-bottom: 15px; }
-        .info-card h3 { font-size: 1.2rem; color: #0a1628; margin-bottom: 10px; font-weight: 800; }
+        .info-card h3 { font-size: 1.2rem; color: var(--dark-bg); margin-bottom: 10px; font-weight: 800; }
         .info-card p { color: #666; font-size: 0.95rem; line-height: 1.8; }
         
         .section-title {
             font-size: 1.8rem;
-            color: #0a1628;
+            color: var(--dark-bg);
             margin: 45px 0 25px;
             text-align: center;
             font-weight: 800;
@@ -91,11 +100,11 @@
             display: block;
             width: 60px;
             height: 3px;
-            background: #00B4FF;
+            background: var(--primary); /* سماوي */
             margin: 10px auto 0;
             border-radius: 2px;
         }
-        .section-title span { color: #00B4FF; }
+        .section-title span { color: var(--primary); } /* سماوي */
         
         .values-grid {
             display: grid;
@@ -107,19 +116,19 @@
             background: #f8f9fa;
             padding: 20px 18px;
             border-radius: 12px;
-            border-right: 3px solid #00B4FF;
+            border-right: 3px solid var(--primary); /* سماوي */
             font-size: 0.9rem;
             color: #444;
             line-height: 1.7;
             transition: 0.3s;
         }
-        .value-item:nth-child(2) { border-right-color: #0066CC; }
-        .value-item:nth-child(3) { border-right-color: #66D9FF; }
-        .value-item:nth-child(4) { border-right-color: #00B4FF; }
-        .value-item:nth-child(5) { border-right-color: #0066CC; }
-        .value-item:nth-child(6) { border-right-color: #66D9FF; }
-        .value-item:hover { background: #E6F7FF; transform: translateX(-3px); }
-        .value-item strong { display: block; margin-bottom: 4px; color: #0a1628; }
+        .value-item:nth-child(2) { border-right-color: var(--primary-dark); } /* أزرق فاتح */
+        .value-item:nth-child(3) { border-right-color: var(--primary-light); } /* أزرق لامع */
+        .value-item:nth-child(4) { border-right-color: var(--primary); } /* سماوي */
+        .value-item:nth-child(5) { border-right-color: var(--primary-dark); } /* أزرق فاتح */
+        .value-item:nth-child(6) { border-right-color: var(--primary-light); } /* أزرق لامع */
+        .value-item:hover { background: #E0F7FA; transform: translateX(-3px); } /* خلفية سماوي فاتح */
+        .value-item strong { display: block; margin-bottom: 4px; color: var(--dark-bg); }
         
         .why-us-grid {
             display: grid;
@@ -134,19 +143,24 @@
             padding: 25px;
             background: #f8f9fa;
             border-radius: 16px;
-            border-right: 4px solid #00B4FF;
+            border-right: 4px solid var(--primary); /* سماوي */
             transition: all 0.3s ease;
         }
-        .why-us-item:nth-child(2) { border-right-color: #0066CC; }
-        .why-us-item:nth-child(3) { border-right-color: #66D9FF; }
-        .why-us-item:nth-child(4) { border-right-color: #00B4FF; }
-        .why-us-item:hover { background: #E6F7FF; transform: translateX(-5px); }
+        .why-us-item:nth-child(2) { border-right-color: var(--primary-dark); } /* أزرق فاتح */
+        .why-us-item:nth-child(3) { border-right-color: var(--primary-light); } /* أزرق لامع */
+        .why-us-item:nth-child(4) { border-right-color: var(--primary); } /* سماوي */
+        .why-us-item:hover { background: #E0F7FA; transform: translateX(-5px); } /* خلفية سماوي فاتح */
         .why-icon { width: 55px; height: 55px; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.4rem; flex-shrink: 0; }
-        .why-us-item h4 { color: #0a1628; margin-bottom: 5px; font-weight: 800; font-size: 1.05rem; }
+        /* تحديث ألوان الأيقونات */
+        .why-us-item:nth-child(1) .why-icon { background: var(--primary); }
+        .why-us-item:nth-child(2) .why-icon { background: var(--primary-dark); }
+        .why-us-item:nth-child(3) .why-icon { background: var(--primary-light); }
+        .why-us-item:nth-child(4) .why-icon { background: var(--primary); }
+        .why-us-item h4 { color: var(--dark-bg); margin-bottom: 5px; font-weight: 800; font-size: 1.05rem; }
         .why-us-item p { color: #666; font-size: 0.9rem; line-height: 1.7; }
         
         .cta-section {
-            background: linear-gradient(135deg, #0a1628, #0d2137);
+            background: linear-gradient(135deg, var(--dark-bg), #0d2137);
             border-radius: 22px;
             padding: 45px 35px;
             text-align: center;
@@ -154,11 +168,11 @@
             margin-top: 40px;
         }
         .cta-section h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 800; }
-        .cta-section h3 span { color: #00B4FF; }
+        .cta-section h3 span { color: var(--primary); } /* سماوي */
         .cta-section p { opacity: 0.9; margin-bottom: 28px; line-height: 2; }
         .btn-cta {
             display: inline-block;
-            background: #00B4FF;
+            background: var(--primary); /* سماوي */
             color: white;
             padding: 16px 40px;
             border-radius: 50px;
@@ -166,9 +180,9 @@
             font-weight: 700;
             font-size: 1.05rem;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,180,255,0.3);
+            box-shadow: 0 8px 25px rgba(0,180,216,0.3); /* ظل سماوي */
         }
-        .btn-cta:hover { background: #0066CC; transform: translateY(-4px); }
+        .btn-cta:hover { background: var(--primary-dark); transform: translateY(-4px); } /* أزرق فاتح */
         
         @media (max-width: 768px) {
             .page-header h1 { font-size: 1.8rem; }
@@ -212,19 +226,19 @@
 
         <div class="cards-row">
             <div class="info-card">
-                <div class="card-icon" style="background:#00B4FF;"><i class="fas fa-history"></i></div>
+                <div class="card-icon" style="background:#00B4D8;"><i class="fas fa-history"></i></div> <!-- سماوي -->
                 <h3>تاريخنا وتطورنا</h3>
                 <p>تأسست Kyntrava AI على أيدي مجموعة من خبراء البرمجيات والذكاء الاصطناعي. بدأنا كمكتب صغير لنصبح اليوم إحدى الشركات الواعدة في مجال الحلول التقنية المتكاملة. نمتلك فريقاً متكاملاً من المطورين والمصممين وخبراء الذكاء الاصطناعي.</p>
             </div>
             <div class="info-card">
-                <div class="card-icon" style="background:#0066CC;"><i class="fas fa-eye"></i></div>
+                <div class="card-icon" style="background:#0096C7;"><i class="fas fa-eye"></i></div> <!-- أزرق فاتح -->
                 <h3>رؤيتنا ورسالتنا</h3>
                 <p><strong>رؤيتنا:</strong> أن نكون الخيار الأول للشركات الطموحة في المنطقة العربية للحصول على حلول تقنية ذكية ومبتكرة.<br><strong>رسالتنا:</strong> تقديم خدمات برمجية وحلول ذكاء اصطناعي عالية الجودة لنمنح عملاءنا ميزة تنافسية حقيقية في أسواقهم.</p>
             </div>
         </div>
 
         <div class="info-card" style="margin-bottom:25px;">
-            <div class="card-icon" style="background:#66D9FF;"><i class="fas fa-medal"></i></div>
+            <div class="card-icon" style="background:#48CAE4;"><i class="fas fa-medal"></i></div> <!-- أزرق لامع -->
             <h3>خبراتنا المتراكمة</h3>
             <p>يضم فريقنا نخبة من المطورين والمبرمجين وخبراء الذكاء الاصطناعي الذين عملوا على مشاريع متنوعة في مختلف القطاعات. نمتلك خبرة واسعة في تطوير تطبيقات الويب والجوال، أنظمة الذكاء الاصطناعي، وتحليل البيانات. نستخدم أحدث التقنيات والأدوات لضمان تقديم حلول عالية الجودة تلبي احتياجات عملائنا.</p>
         </div>
@@ -242,19 +256,19 @@
         <h3 class="section-title">لماذا <span>Kyntrava AI</span>؟</h3>
         <div class="why-us-grid">
             <div class="why-us-item">
-                <div class="why-icon" style="background:#00B4FF;"><i class="fas fa-microchip"></i></div>
+                <div class="why-icon" style="background:#00B4D8;"><i class="fas fa-microchip"></i></div> <!-- سماوي -->
                 <div><h4>تقنيات متطورة</h4><p>نستخدم أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي لتقديم حلول مبتكرة.</p></div>
             </div>
             <div class="why-us-item">
-                <div class="why-icon" style="background:#0066CC;"><i class="fas fa-users-cog"></i></div>
+                <div class="why-icon" style="background:#0096C7;"><i class="fas fa-users-cog"></i></div> <!-- أزرق فاتح -->
                 <div><h4>فريق متكامل</h4><p>مطورون، مصممون، وخبراء AI يعملون معاً لتحقيق رؤيتك.</p></div>
             </div>
             <div class="why-us-item">
-                <div class="why-icon" style="background:#66D9FF;"><i class="fas fa-lock"></i></div>
+                <div class="why-icon" style="background:#48CAE4;"><i class="fas fa-lock"></i></div> <!-- أزرق لامع -->
                 <div><h4>أمان وحماية</h4><p>نلتزم بأعلى معايير الأمان السيبراني وحماية بيانات عملائنا.</p></div>
             </div>
             <div class="why-us-item">
-                <div class="why-icon" style="background:#00B4FF;"><i class="fas fa-headset"></i></div>
+                <div class="why-icon" style="background:#00B4D8;"><i class="fas fa-headset"></i></div> <!-- سماوي -->
                 <div><h4>دعم فني مستمر</h4><p>نقدم دعماً فنياً وتحديثات دورية لضمان استمرارية عمل حلولك.</p></div>
             </div>
         </div>
