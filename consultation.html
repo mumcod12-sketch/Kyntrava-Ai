@@ -11,8 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* ========== ألوان Kyntrava AI - سماوي وأزرق فاتح لامع ========== */
+        :root {
+            --primary: #00B4D8; /* سماوي */
+            --primary-dark: #0096C7; /* أزرق فاتح غامق قليلاً */
+            --primary-light: #48CAE4; /* أزرق فاتح لامع */
+            --dark-bg: #0a1628;
+            --darker-bg: #060f1a;
+        }
+
         .page-header {
-            background: linear-gradient(135deg, #0a1628 0%, #0d2137 100%);
+            background: linear-gradient(135deg, var(--darker-bg) 0%, #0d2137 100%);
             padding: 70px 20px 60px;
             text-align: center;
             color: white;
@@ -28,7 +37,7 @@
             clip-path: ellipse(65% 100% at 50% 100%);
         }
         .page-header h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; }
-        .page-header h1 span { color: #00B4FF; }
+        .page-header h1 span { color: var(--primary); } /* سماوي */
         .page-header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
         
         .consult-container {
@@ -54,10 +63,10 @@
             border: 1px solid #f0f0f0;
             transition: 0.3s;
         }
-        .process-step:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,180,255,0.1); }
+        .process-step:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,180,216,0.1); } /* ظل سماوي */
         .step-number {
             width: 50px; height: 50px;
-            background: linear-gradient(135deg, #00B4FF, #0066CC);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); /* سماوي وأزرق فاتح */
             color: white;
             border-radius: 50%;
             display: flex;
@@ -67,7 +76,7 @@
             font-weight: 900;
             margin: 0 auto 15px;
         }
-        .process-step h4 { font-size: 1.05rem; color: #0a1628; margin-bottom: 6px; font-weight: 800; }
+        .process-step h4 { font-size: 1.05rem; color: var(--dark-bg); margin-bottom: 6px; font-weight: 800; }
         .process-step p { color: #777; font-size: 0.88rem; line-height: 1.7; }
         
         .consult-grid {
@@ -90,11 +99,11 @@
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 5px;
-            background: linear-gradient(90deg, #00B4FF, #0066CC);
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark)); /* سماوي وأزرق فاتح */
         }
         .form-header-icon {
             width: 70px; height: 70px;
-            background: linear-gradient(135deg, #00B4FF, #0066CC);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); /* سماوي وأزرق فاتح */
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -102,13 +111,13 @@
             font-size: 1.8rem;
             color: white;
             margin: 0 auto 20px;
-            box-shadow: 0 8px 25px rgba(0,180,255,0.2);
+            box-shadow: 0 8px 25px rgba(0,180,216,0.2); /* ظل سماوي */
         }
-        .form-wrapper h3 { font-size: 1.5rem; color: #0a1628; margin-bottom: 6px; text-align: center; font-weight: 800; }
+        .form-wrapper h3 { font-size: 1.5rem; color: var(--dark-bg); margin-bottom: 6px; text-align: center; font-weight: 800; }
         .form-subtitle { color: #888; text-align: center; margin-bottom: 30px; font-size: 0.95rem; }
         
         .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; margin-bottom: 8px; color: #0a1628; font-weight: 700; font-size: 0.92rem; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--dark-bg); font-weight: 700; font-size: 0.92rem; }
         .form-group label .required { color: #E74C3C; margin-right: 3px; }
         .form-group input,
         .form-group select,
@@ -125,10 +134,10 @@
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
-            border-color: #00B4FF;
+            border-color: var(--primary); /* سماوي */
             outline: none;
             background: #fff;
-            box-shadow: 0 0 0 5px rgba(0,180,255,0.06);
+            box-shadow: 0 0 0 5px rgba(0,180,216,0.06); /* ظل سماوي */
         }
         .form-group textarea { resize: vertical; min-height: 100px; }
         
@@ -141,13 +150,13 @@
             line-height: 1.7;
             margin-bottom: 20px;
         }
-        .consent-group input[type="checkbox"] { width: auto; margin-top: 4px; accent-color: #00B4FF; }
-        .consent-group a { color: #00B4FF; text-decoration: underline; }
+        .consent-group input[type="checkbox"] { width: auto; margin-top: 4px; accent-color: var(--primary); } /* سماوي */
+        .consent-group a { color: var(--primary); text-decoration: underline; } /* سماوي */
         
         .btn-submit {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #00B4FF, #0066CC);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); /* سماوي وأزرق فاتح */
             color: white;
             border: none;
             border-radius: 14px;
@@ -156,9 +165,9 @@
             cursor: pointer;
             font-family: 'Cairo', sans-serif;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0,180,255,0.25);
+            box-shadow: 0 6px 20px rgba(0,180,216,0.25); /* ظل سماوي */
         }
-        .btn-submit:hover { background: #0066CC; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,180,255,0.4); }
+        .btn-submit:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,180,216,0.4); } /* أزرق فاتح */
         
         .info-side { display: flex; flex-direction: column; gap: 20px; }
         .info-card {
@@ -189,7 +198,7 @@
             color: white;
             flex-shrink: 0;
         }
-        .info-card h4 { font-size: 1rem; color: #0a1628; margin-bottom: 4px; font-weight: 800; }
+        .info-card h4 { font-size: 1rem; color: var(--dark-bg); margin-bottom: 4px; font-weight: 800; }
         .info-card p { color: #666; font-size: 0.88rem; line-height: 1.7; }
         
         .direct-contact {
@@ -201,23 +210,23 @@
             border: 1px solid #eee;
             text-align: center;
         }
-        .direct-contact h3 { font-size: 1.4rem; color: #0a1628; margin-bottom: 22px; font-weight: 800; }
+        .direct-contact h3 { font-size: 1.4rem; color: var(--dark-bg); margin-bottom: 22px; font-weight: 800; }
         .contact-methods { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
         .contact-link {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #0a1628;
+            color: var(--dark-bg);
             text-decoration: none;
             font-weight: 700;
             font-size: 1rem;
             padding: 14px 22px;
-            background: #E6F7FF;
+            background: #E0F7FA; /* خلفية سماوي فاتح جداً */
             border-radius: 14px;
             transition: 0.3s;
         }
-        .contact-link:hover { background: #00B4FF; color: white; }
-        .contact-link i { font-size: 1.3rem; color: #00B4FF; }
+        .contact-link:hover { background: var(--primary); color: white; } /* سماوي */
+        .contact-link i { font-size: 1.3rem; color: var(--primary); } /* سماوي */
         .contact-link:hover i { color: white; }
         
         @media (max-width: 768px) {
@@ -327,30 +336,30 @@
             
             <aside class="info-side">
                 <div class="info-card" style="position:relative;">
-                    <div style="position:absolute; top:0; right:0; width:4px; height:100%; background:#00B4FF;"></div>
-                    <div class="info-icon" style="background:#00B4FF;"><i class="fas fa-clock"></i></div>
+                    <div style="position:absolute; top:0; right:0; width:4px; height:100%; background:var(--primary);"></div> <!-- سماوي -->
+                    <div class="info-icon" style="background:var(--primary);"><i class="fas fa-clock"></i></div> <!-- سماوي -->
                     <div><h4>سرعة الاستجابة</h4><p>نلتزم بالرد على كافة الاستفسارات خلال مدة أقصاها 24 ساعة عمل.</p></div>
                 </div>
                 <div class="info-card" style="position:relative;">
-                    <div style="position:absolute; top:0; right:0; width:4px; height:100%; background:#0066CC;"></div>
-                    <div class="info-icon" style="background:#0066CC;"><i class="fas fa-user-tie"></i></div>
+                    <div style="position:absolute; top:0; right:0; width:4px; height:100%; background:var(--primary-dark);"></div> <!-- أزرق فاتح -->
+                    <div class="info-icon" style="background:var(--primary-dark);"><i class="fas fa-user-tie"></i></div> <!-- أزرق فاتح -->
                     <div><h4>مستشارون متخصصون</h4><p>يضم فريقنا نخبة من المطورين وخبراء الذكاء الاصطناعي المعتمدين.</p></div>
                 </div>
                 <div class="info-card" style="position:relative;">
-                    <div style="position:absolute; top:0; right:0; width:4px; height:100%; background:#66D9FF;"></div>
-                    <div class="info-icon" style="background:#66D9FF;"><i class="fas fa-shield-alt"></i></div>
+                    <div style="position:absolute; top:0; right:0; width:4px; height:100%; background:var(--primary-light);"></div> <!-- أزرق لامع -->
+                    <div class="info-icon" style="background:var(--primary-light);"><i class="fas fa-shield-alt"></i></div> <!-- أزرق لامع -->
                     <div><h4>سرية وخصوصية تامة</h4><p>جميع بياناتكم ومعلومات مشاريعكم محمية بموجب اتفاقية عدم إفصاح (NDA).</p></div>
                 </div>
                 <div class="info-card" style="position:relative;">
-                    <div style="position:absolute; top:0; right:0; width:4px; height:100%; background:#00B4FF;"></div>
-                    <div class="info-icon" style="background:#00B4FF;"><i class="fas fa-globe"></i></div>
+                    <div style="position:absolute; top:0; right:0; width:4px; height:100%; background:var(--primary);"></div> <!-- سماوي -->
+                    <div class="info-icon" style="background:var(--primary);"><i class="fas fa-globe"></i></div> <!-- سماوي -->
                     <div><h4>تغطية إقليمية</h4><p>نقدم خدماتنا في سوريا والوطن العربي مع فريق عمل محلي ودولي.</p></div>
                 </div>
             </aside>
         </div>
 
         <section class="direct-contact">
-            <h3><i class="fas fa-headset" style="color:#00B4FF; margin-left:10px;"></i> تفضل بالتواصل المباشر</h3>
+            <h3><i class="fas fa-headset" style="color:var(--primary); margin-left:10px;"></i> تفضل بالتواصل المباشر</h3> <!-- سماوي -->
             <div class="contact-methods">
                 <a href="https://wa.me/963933438019" target="_blank" class="contact-link">
                     <i class="fab fa-whatsapp"></i> واتساب الأعمال
