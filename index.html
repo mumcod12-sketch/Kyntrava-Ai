@@ -8,7 +8,8 @@
     <meta name="keywords" content="ذكاء اصطناعي, تطوير برمجيات, Kyntrava AI, حلول رقمية, تطبيقات ويب">
     <meta property="og:title" content="Kyntrava AI | الذكاء الاصطناعي والحلول البرمجية">
     <meta property="og:description" content="المستقبل بالذكاء الاصطناعي. حلول رقمية تدفع أعمالك للأمام.">
-    <meta property="og:image" content="https://i.imgur.com/XKKHCTr.png">
+    <!-- ✅ تم تغيير اللوجو إلى الرابط الجديد -->
+    <meta property="og:image" content="https://i.imgur.com/aRilL9C.png">
     <meta property="og:type" content="website">
     
     <link rel="stylesheet" href="style.css">
@@ -29,7 +30,7 @@
         
         /* ========== شريط علوي - رمادي ========== */
         .top-bar {
-            background: var(--dark-bg); /* #4A4A4A رمادي */
+            background: var(--dark-bg);
             color: #ccc;
             font-size: 0.8rem;
             padding: 8px 0;
@@ -61,7 +62,7 @@
             color: white;
             padding: 80px 20px;
             overflow: hidden;
-            background: #1a1a2e; /* خلفية غامقة مناسبة */
+            background: #1a1a2e;
         }
         
         #heroCanvas {
@@ -114,6 +115,7 @@
             margin: 0 auto 25px;
             border-radius: 2px;
         }
+        /* ✅ تم تعديل العنوان */
         .hero-title { font-size: 1.8rem; font-weight: 600; margin-bottom: 22px; line-height: 1.6; opacity: 0.95; }
         .hero-title span { color: var(--primary); font-weight: 800; }
         .hero-desc { font-size: 1.15rem; opacity: 0.9; margin-bottom: 40px; line-height: 2.1; max-width: 650px; margin-left: auto; margin-right: auto; }
@@ -273,7 +275,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-area">
-                <a href="index.html"><img src="https://i.imgur.com/XKKHCTr.png" alt="Kyntrava AI" class="logo-img"></a>
+                <!-- ✅ تم تغيير اللوجو إلى الرابط الجديد -->
+                <a href="index.html"><img src="https://i.imgur.com/aRilL9C.png" alt="Kyntrava AI" class="logo-img"></a>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">الرئيسية</a></li>
@@ -294,8 +297,10 @@
         <div class="hero-content">
             <p class="hero-tagline"><span>Kyntrava AI</span> للذكاء الاصطناعي والحلول البرمجية المتكاملة</p>
             <div class="hero-divider"></div>
-            <h1 class="hero-title">نحو المستقبل مع <span>الذكاء الاصطناعي</span></h1>
-            <p class="hero-desc">نبني الحلول الرقمية الذكية التي تدفع أعمالك للأمام باستخدام أحدث تقنيات الذكاء الاصطناعي وتطوير البرمجيات</p>
+            <!-- ✅ تم تعديل العنوان الرئيسي -->
+            <h1 class="hero-title">المستقبل <span>بالذكاء الاصطناعي</span></h1>
+            <!-- ✅ تم تعديل النص الوصفي -->
+            <p class="hero-desc">نبني الحلول الرقمية الذكية التي تدفع أعمالك للأمام باستخدام خبراتنا في تقنيات الذكاء الاصطناعي وتطوير البرمجيات</p>
             <div class="hero-btns">
                 <a href="services.html" class="btn btn-primary"><i class="fas fa-briefcase"></i> اكتشف خدماتنا</a>
                 <a href="consultation.html" class="btn btn-outline"><i class="fas fa-calendar-check"></i> احجز استشارة مجانية</a>
@@ -405,7 +410,6 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             
-            // إضاءة ذهبية
             const ambientLight = new THREE.AmbientLight(0xD4AF37, 0.3);
             scene.add(ambientLight);
             const pointLight1 = new THREE.PointLight(0xD4AF37, 0.6, 20);
@@ -415,34 +419,28 @@
             pointLight2.position.set(-5, -2, 3);
             scene.add(pointLight2);
             
-            // شبكة أرضية
             const gridHelper = new THREE.GridHelper(25, 25, 0xD4AF37, 0x333333);
             gridHelper.position.y = -5;
             scene.add(gridHelper);
             
-            // مجموعة الروبوتات
             const robotsGroup = new THREE.Group();
             scene.add(robotsGroup);
             
-            // دالة إنشاء روبوت
             function createRobot(x, y, z, color) {
                 const robot = new THREE.Group();
                 
-                // الجسم
                 const bodyGeo = new THREE.BoxGeometry(1, 1.5, 0.8);
                 const bodyMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.4, shininess: 100 });
                 const body = new THREE.Mesh(bodyGeo, bodyMat);
                 body.position.y = 0;
                 robot.add(body);
                 
-                // الرأس
                 const headGeo = new THREE.SphereGeometry(0.45, 16, 16);
                 const headMat = new THREE.MeshPhongMaterial({ color: 0xF5F5F5, emissive: 0xE0E0E0, emissiveIntensity: 0.2, shininess: 100 });
                 const head = new THREE.Mesh(headGeo, headMat);
                 head.position.y = 1.2;
                 robot.add(head);
                 
-                // عيون
                 const eyeGeo = new THREE.SphereGeometry(0.12, 8, 8);
                 const eyeMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.8 });
                 const leftEye = new THREE.Mesh(eyeGeo, eyeMat);
@@ -452,20 +450,17 @@
                 rightEye.position.set(0.15, 1.35, 0.4);
                 robot.add(rightEye);
                 
-                // هوائي
                 const antennaGeo = new THREE.CylinderGeometry(0.03, 0.03, 0.4);
                 const antennaMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.6 });
                 const antenna = new THREE.Mesh(antennaGeo, antennaMat);
                 antenna.position.y = 1.8;
                 robot.add(antenna);
                 
-                // كرة الهوائي
                 const antennaBallGeo = new THREE.SphereGeometry(0.08, 8, 8);
                 const antennaBall = new THREE.Mesh(antennaBallGeo, eyeMat);
                 antennaBall.position.y = 2.05;
                 robot.add(antennaBall);
                 
-                // ذراعين
                 const armGeo = new THREE.CylinderGeometry(0.12, 0.12, 1);
                 const armMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.3 });
                 
@@ -490,7 +485,6 @@
                 return robot;
             }
             
-            // إنشاء 6 روبوتات بألوان ذهبية وفضية ورمادية
             const robots = [];
             const robotColors = [0xD4AF37, 0xC0C0C0, 0xA0A0A0, 0xD4AF37, 0xC0C0C0, 0xA0A0A0];
             
@@ -506,7 +500,6 @@
                 robotsGroup.add(robot);
             }
             
-            // جزيئات
             const particlesGroup = new THREE.Group();
             scene.add(particlesGroup);
             
@@ -535,7 +528,6 @@
                 particlesGroup.add(particle);
             }
             
-            // حلقات دائرية
             for (let j = 0; j < 4; j++) {
                 const ringGeo = new THREE.TorusGeometry(4 + j * 2, 0.02, 8, 100);
                 const ringMat = new THREE.MeshPhongMaterial({
@@ -552,12 +544,10 @@
                 scene.add(ring);
             }
             
-            // تحريك المشهد
             function animate() {
                 requestAnimationFrame(animate);
                 const time = Date.now() * 0.001;
                 
-                // تحريك الروبوتات
                 robots.forEach(robot => {
                     robot.position.y += Math.sin(time * robot.userData.floatSpeed + robot.userData.floatPhase) * 0.008;
                     robot.rotation.y += robot.userData.rotateSpeed * 0.005;
@@ -566,7 +556,6 @@
                 robotsGroup.rotation.y += 0.001;
                 particlesGroup.rotation.y += 0.0005;
                 
-                // تحريك الجزيئات
                 particlesGroup.children.forEach(p => {
                     p.position.y += p.userData.speedY;
                     if (Math.abs(p.position.y - p.userData.baseY) > p.userData.amplitude) {
@@ -574,7 +563,6 @@
                     }
                 });
                 
-                // تحريك الحلقات
                 scene.children.forEach(child => {
                     if (child.geometry && child.geometry.type === 'TorusGeometry') {
                         child.rotation.z += child.userData.speed;
@@ -586,14 +574,12 @@
             
             animate();
             
-            // استجابة لتغيير حجم النافذة
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
             
-            // تفاعل مع الماوس
             let mouseX = 0, mouseY = 0;
             window.addEventListener('mousemove', (e) => {
                 mouseX = (e.clientX / window.innerWidth) * 2 - 1;
