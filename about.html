@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدماتنا - Kyntrava AI</title>
-    <meta name="description" content="خدمات Kyntrava AI: تطوير برمجيات، ذكاء اصطناعي، حلول تقنية">
+    <title>عن الشركة - Kyntrava AI</title>
+    <meta name="description" content="تعرف على Kyntrava AI - شركة رائدة في الذكاء الاصطناعي والحلول البرمجية">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -31,13 +31,12 @@
         .page-header h1 { font-size: 2.2rem; }
         .page-header h1 span { color: var(--primary); }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        .service-card { background: white; border-radius: 16px; padding: 25px; margin-bottom: 18px; display: flex; gap: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-right: 4px solid var(--primary); }
-        .service-icon { width: 60px; height: 60px; background: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; flex-shrink: 0; }
-        .service-info h3 { color: #444; margin-bottom: 6px; }
-        .service-info p { color: #666; line-height: 1.8; }
-        .service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .service-tags span { background: #f0f0f0; color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
-        @media (max-width: 768px) { .service-card { flex-direction: column; } .page-header h1 { font-size: 1.6rem; } }
+        .card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-right: 4px solid var(--primary); }
+        .card h3 { color: #444; margin-bottom: 10px; }
+        .card p { color: #666; line-height: 2; }
+        .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .value-item { background: #f8f9fa; padding: 20px; border-radius: 12px; border-right: 3px solid var(--primary); }
+        @media (max-width: 768px) { .values-grid { grid-template-columns: 1fr; } .page-header h1 { font-size: 1.6rem; } }
         footer { background: var(--dark-bg); color: #ccc; text-align: center; padding: 30px 20px; font-size: 0.85rem; border-top: 4px solid var(--primary); }
         footer a { color: var(--primary); text-decoration: none; margin: 5px 8px; font-weight: 600; }
         footer .footer-links { margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
@@ -56,8 +55,8 @@
             <button class="menu-toggle"><i class="fas fa-bars"></i></button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="about.html">عن الشركة</a></li>
-                <li><a href="services.html" class="active">خدماتنا</a></li>
+                <li><a href="about.html" class="active">عن الشركة</a></li>
+                <li><a href="services.html">خدماتنا</a></li>
                 <li><a href="portfolio.html">أعمالنا</a></li>
                 <li><a href="consultation.html">الاستشارات</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
@@ -66,42 +65,25 @@
     </nav>
 
     <header class="page-header">
-        <h1><span>خدماتنا</span> المتكاملة</h1>
-        <p>حلول برمجية وذكاء اصطناعي متطورة</p>
+        <h1>عن <span>الشركة</span></h1>
+        <p>تعرف على Kyntrava AI - شريكك التقني الأول</p>
     </header>
 
     <main class="container">
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-robot"></i></div>
-            <div class="service-info">
-                <h3>أنظمة ذكاء اصطناعي</h3>
-                <p>نطور حلول ذكاء اصطناعي متكاملة تشمل تعلم الآلة، معالجة اللغة الطبيعية، ورؤية الحاسوب.</p>
-                <div class="service-tags"><span>Machine Learning</span><span>NLP</span><span>Deep Learning</span></div>
-            </div>
+        <div class="card">
+            <h3>من نحن</h3>
+            <p>شركة Kyntrava AI هي شركة رائدة في مجال الحلول البرمجية المتكاملة والذكاء الاصطناعي، تأسست بهدف تمكين الشركات والمؤسسات من التحول الرقمي بكل سلاسة واحترافية. نقدم خدماتنا في سوريا والوطن العربي.</p>
         </div>
-        <div class="service-card" style="border-right-color:#C0C0C0;">
-            <div class="service-icon" style="background:#C0C0C0;"><i class="fas fa-code"></i></div>
-            <div class="service-info">
-                <h3>تطوير البرمجيات</h3>
-                <p>تطبيقات ويب وجوال مخصصة باستخدام أحدث التقنيات مثل React و Flutter.</p>
-                <div class="service-tags"><span>React</span><span>Flutter</span><span>Next.js</span></div>
-            </div>
+        <div class="card" style="border-right-color:#C0C0C0;">
+            <h3>رؤيتنا</h3>
+            <p>أن نكون الخيار الأول للشركات الطموحة في المنطقة العربية للحصول على حلول تقنية ذكية ومبتكرة.</p>
         </div>
-        <div class="service-card" style="border-right-color:#A0A0A0;">
-            <div class="service-icon" style="background:#A0A0A0;"><i class="fas fa-cloud"></i></div>
-            <div class="service-info">
-                <h3>حلول سحابية</h3>
-                <p>بنية تحتية سحابية آمنة وقابلة للتطوير على AWS و Google Cloud.</p>
-                <div class="service-tags"><span>AWS</span><span>Azure</span><span>Cloud</span></div>
-            </div>
-        </div>
-        <div class="service-card" style="border-right-color:#808080;">
-            <div class="service-icon" style="background:#808080;"><i class="fas fa-chart-bar"></i></div>
-            <div class="service-info">
-                <h3>تحليل البيانات</h3>
-                <p>لوحات معلومات تفاعلية وأنظمة تحليل بيانات متقدمة لمساعدتك في اتخاذ القرارات.</p>
-                <div class="service-tags"><span>Power BI</span><span>Dashboards</span></div>
-            </div>
+        <h2 style="text-align:center;margin:30px 0;color:#555;">قيمنا</h2>
+        <div class="values-grid">
+            <div class="value-item"><strong>الجودة أولاً</strong><p>نلتزم بأعلى معايير الجودة في كل مشروع.</p></div>
+            <div class="value-item"><strong>الابتكار المستمر</strong><p>نواكب أحدث التقنيات ونطبقها في حلولنا.</p></div>
+            <div class="value-item"><strong>الشفافية</strong><p>نعمل بشفافية كاملة مع عملائنا.</p></div>
+            <div class="value-item"><strong>الالتزام بالمواعيد</strong><p>نحترم وقت عملائنا ونسلّم في الوقت المحدد.</p></div>
         </div>
     </main>
 
