@@ -166,6 +166,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
         .logo-img {
             height: 42px;
@@ -204,6 +205,23 @@
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        /* ===== ✅ زر القائمة للموبايل ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #555;
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 5px 12px;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle:hover {
+            color: var(--primary);
+            border-color: var(--primary);
         }
         
         /* ===== الهيرو ===== */
@@ -853,7 +871,7 @@
             100% { box-shadow: 0 0 0 0 rgba(37,211,102,0), 0 0 20px rgba(37,211,102,0.3); }
         }
         
-        /* ===== ميديا كويري ===== */
+        /* ===== ✅ ميديا كويري للموبايل ===== */
         @media (max-width: 768px) {
             .custom-cursor, .custom-cursor-dot { display: none; }
             body { cursor: auto; }
@@ -863,7 +881,13 @@
             .stats-grid { grid-template-columns: 1fr 1fr; }
             .services-grid-4 { grid-template-columns: 1fr 1fr; }
             .why-us-grid { grid-template-columns: 1fr; }
-            .nav-menu { display: none; }
+            
+            /* ✅ إظهار زر الهمبرغر */
+            .menu-toggle { display: block; }
+            /* ✅ إخفاء القائمة وإظهارها عند الضغط */
+            .nav-menu { display: none; flex-direction: column; width: 100%; background: white; position: absolute; top: 100%; left: 0; right: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.15); padding: 15px; border-radius: 0 0 15px 15px; gap: 5px; z-index: 1000; }
+            .nav-menu.show { display: flex; animation: slideDown 0.3s ease; }
+            .nav-menu a { width: 100%; text-align: center; padding: 12px; font-size: 0.95rem; }
         }
         @media (max-width: 480px) {
             .hero-tagline { font-size: 1.1rem; }
@@ -872,6 +896,8 @@
             .hero-btns { flex-direction: column; gap: 12px; }
             .hero-btns .btn { width: 90%; max-width: 320px; }
         }
+        
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -910,13 +936,16 @@
         </div>
     </div>
 
-    <!-- ===== نافبار ===== -->
+    <!-- ===== ✅ نافبار مع زر الهمبرغر ===== -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-area">
                 <a href="index.html"><img src="https://imgur.com/x5sJ7l7.png" alt="Kyntrava AI" class="logo-img"></a>
             </div>
-            <ul class="nav-menu">
+            <!-- ✅ زر الهمبرغر -->
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+            <!-- ✅ أضفنا id="navMenu" -->
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="active">الرئيسية</a></li>
                 <li><a href="about.html">عن الشركة</a></li>
                 <li><a href="services.html">خدماتنا</a></li>
@@ -1051,6 +1080,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
     <script>
+        // ===== ✅ قائمة الموبايل =====
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
+            const icon = menuToggle.querySelector('i');
+            icon.className = navMenu.classList.contains('show') ? 'fas fa-times' : 'fas fa-bars';
+        });
+        navMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('show');
+                menuToggle.querySelector('i').className = 'fas fa-bars';
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (navMenu.classList.contains('show') && !e.target.closest('.nav-container')) {
+                navMenu.classList.remove('show');
+                menuToggle.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+
         // ===== مؤشر الفأرة المخصص =====
         const cursor = document.querySelector('.custom-cursor');
         const cursorDot = document.querySelector('.custom-cursor-dot');
@@ -1148,7 +1198,7 @@
             document.documentElement.style.fontSize = currentFontSize + '%';
         }
         
-        // ===== Three.js للروبوتات (الكود الأصلي) =====
+        // ===== Three.js للروبوتات =====
         (function() {
             const canvas = document.getElementById('heroCanvas');
             if (!canvas) return;
