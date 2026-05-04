@@ -8,6 +8,7 @@
     <meta name="keywords" content="ذكاء اصطناعي, تطوير برمجيات, Kyntrava AI, حلول رقمية, تطبيقات ويب">
     <meta property="og:title" content="Kyntrava AI | الذكاء الاصطناعي والحلول البرمجية">
     <meta property="og:description" content="المستقبل بالذكاء الاصطناعي. حلول رقمية تدفع أعمالك للأمام.">
+    <!-- ✅ تم تغيير اللوجو إلى الرابط الجديد -->
     <meta property="og:image" content="https://i.imgur.com/aRilL9C.png">
     <meta property="og:type" content="website">
     
@@ -27,7 +28,7 @@
             --darker-bg: #333333;
         }
         
-        /* ========== شريط علوي ========== */
+        /* ========== شريط علوي - رمادي ========== */
         .top-bar {
             background: var(--dark-bg);
             color: #ccc;
@@ -50,166 +51,7 @@
         .top-bar .social-links a { color: #ccc; margin: 0 6px; font-size: 0.9rem; transition: 0.3s; }
         .top-bar .social-links a:hover { color: var(--primary); }
         
-        /* ========== شريط التنقل ========== */
-        .navbar {
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 3px solid var(--primary);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.4rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .nav-menu a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 600;
-            font-size: 0.82rem;
-            padding: 7px 13px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            background: var(--primary);
-            color: white;
-        }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            padding: 5px 0;
-        }
-        .logo-img {
-            height: 42px;
-            width: auto;
-            max-width: 160px;
-            object-fit: contain;
-            display: block;
-        }
-        
-        /* ========== أيقونات عائمة ========== */
-        .floating-buttons {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .whatsapp-float {
-            width: 58px;
-            height: 58px;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            animation: pulse-whatsapp 2s infinite;
-            cursor: pointer;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-        
-        .consult-float {
-            width: 58px;
-            height: 58px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            animation: pulse-gold 2s infinite 0.5s;
-            cursor: pointer;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-        
-        @keyframes pulse-whatsapp {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-            70% { box-shadow: 0 0 0 22px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-        
-        @keyframes pulse-gold {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
-            70% { box-shadow: 0 0 0 22px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-        }
-        
-        .whatsapp-float:hover {
-            transform: scale(1.15) translateY(-5px);
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.7);
-            background: linear-gradient(135deg, #20bd5a, #0f7c5e);
-        }
-        
-        .consult-float:hover {
-            transform: scale(1.15) translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.7);
-            background: linear-gradient(135deg, #c9a84c, #9a7b2c);
-        }
-        
-        /* تلميح عند التحويم */
-        .floating-tooltip {
-            position: absolute;
-            right: 70px;
-            background: rgba(0,0,0,0.85);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .floating-tooltip::after {
-            content: '';
-            position: absolute;
-            right: -6px;
-            top: 50%;
-            transform: translateY(-50%);
-            border-width: 6px;
-            border-style: solid;
-            border-color: transparent transparent transparent rgba(0,0,0,0.85);
-        }
-        
-        .whatsapp-float:hover .floating-tooltip,
-        .consult-float:hover .floating-tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        /* ========== الهيرو ========== */
+        /* ========== الهيرو مع روبوتات ثلاثية الأبعاد ========== */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -405,20 +247,6 @@
             .stats-grid { grid-template-columns: 1fr 1fr; }
             .services-grid-4 { grid-template-columns: 1fr 1fr; }
             .why-us-grid { grid-template-columns: 1fr; }
-            .floating-buttons {
-                bottom: 20px;
-                right: 20px;
-                gap: 10px;
-            }
-            .whatsapp-float,
-            .consult-float {
-                width: 52px;
-                height: 52px;
-                font-size: 26px;
-            }
-            .consult-float {
-                font-size: 22px;
-            }
         }
         @media (max-width: 480px) {
             .hero-tagline { font-size: 1.1rem; }
@@ -426,29 +254,16 @@
             .services-grid-4 { grid-template-columns: 1fr; }
             .hero-btns { flex-direction: column; gap: 12px; }
             .hero-btns .btn { width: 90%; max-width: 320px; }
-            .floating-buttons {
-                bottom: 15px;
-                right: 15px;
-                gap: 8px;
-            }
-            .whatsapp-float,
-            .consult-float {
-                width: 48px;
-                height: 48px;
-                font-size: 24px;
-            }
-            .consult-float {
-                font-size: 20px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- ========== شريط علوي ========== -->
+    <!-- ========== شريط علوي - رمادي ========== -->
     <div class="top-bar">
         <div class="container">
             <div class="social-links">
                 <span style="margin-left:15px; font-weight: 600;">تابعونا على الصفحات الرسمية</span>
+                <!-- ✅ تم تحديث الروابط وإزالة لينكد إن وتويتر -->
                 <a href="https://www.facebook.com/profile.php?id=61589126883663" target="_blank" title="فيسبوك" aria-label="صفحتنا على فيسبوك">
                     <i class="fab fa-facebook-f"></i>
                 </a>
@@ -577,21 +392,6 @@
         </div>
         <p class="copyright">© 2026 Kyntrava AI. جميع الحقوق محفوظة. | شركة مسجلة رسمياً</p>
     </footer>
-    
-    <!-- ============ أيقونات عائمة (واتساب + استشارة) ============ -->
-    <div class="floating-buttons">
-        <!-- أيقونة الواتساب -->
-        <a href="https://wa.me/9665XXXXXXXXX" class="whatsapp-float" target="_blank" title="تواصل عبر الواتساب" aria-label="واتساب">
-            <i class="fab fa-whatsapp"></i>
-            <span class="floating-tooltip">واتساب</span>
-        </a>
-        
-        <!-- أيقونة الاستشارة -->
-        <a href="tel:+9665XXXXXXXXX" class="consult-float" title="استشارة هاتفية" aria-label="اتصل للاستشارة">
-            <i class="fas fa-phone-alt"></i>
-            <span class="floating-tooltip">استشارة مجانية</span>
-        </a>
-    </div>
     
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
