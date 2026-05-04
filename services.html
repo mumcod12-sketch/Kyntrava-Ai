@@ -3,622 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدمات Kyntrava AI | تطوير برمجيات، ذكاء اصطناعي، حلول تقنية</title>
-    <meta name="description" content="خدمات Kyntrava AI: تطوير مواقع ويب، تطبيقات جوال، أنظمة ذكاء اصطناعي، تعلم آلي، تحليل بيانات، استشارات تقنية.">
-    <meta property="og:title" content="خدمات Kyntrava AI">
-    <meta property="og:description" content="حلول برمجية وذكاء اصطناعي متطورة لعملائنا في الوطن العربي">
-    <meta property="og:image" content="https://i.imgur.com/aRilL9C.png">
-    
+    <title>خدماتنا - Kyntrava AI</title>
+    <meta name="description" content="خدمات Kyntrava AI: تطوير برمجيات، ذكاء اصطناعي، حلول تقنية">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        
-        :root {
-            --primary: #D4AF37;
-            --primary-dark: #B49430;
-            --primary-light: #E0C35A;
-            --primary-glow: rgba(212, 175, 55, 0.6);
-            --dark-bg: #1A1A2E;
-            --darker-bg: #0a0a1a;
-            --silver: #C0C0C0;
-            --gray: #A0A0A0;
-            --darkgray: #808080;
-            --neon-blue: #00d4ff;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-blur: blur(15px);
-            --neu-light: #ffffff;
-            --neu-dark: #d1d9e6;
-            --shadow-gold: 0 8px 30px rgba(212, 175, 55, 0.3);
-            --bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        body { 
-            background: #f8f9fa; 
-            cursor: none;
-            overflow-x: hidden;
-        }
-        
-        /* ===== مؤشر الفأرة ===== */
-        .custom-cursor {
-            width: 40px; height: 40px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-            transition: width 0.3s, height 0.3s;
-            mix-blend-mode: difference;
-        }
-        .custom-cursor-dot {
-            width: 8px; height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-        }
-        .custom-cursor.hover {
-            width: 60px; height: 60px;
-            border-color: var(--primary-light);
-            background: rgba(212,175,55,0.1);
-        }
-        
-        /* ===== شريط التقدم ===== */
-        .reading-progress {
-            position: fixed; top: 0; left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--neon-blue), var(--primary));
-            z-index: 10000;
-            box-shadow: 0 0 10px var(--primary-glow);
-        }
-        
-        /* ===== خلفية الجسيمات ===== */
-        #particles-js {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        /* ===== أزرار التحكم ===== */
-        .theme-switcher {
-            position: fixed; bottom: 20px; left: 20px;
-            z-index: 999;
-            display: flex; flex-direction: column; gap: 10px;
-        }
-        .theme-toggle, .font-size-toggle {
-            width: 45px; height: 45px;
-            border-radius: 50%;
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            color: var(--dark-bg);
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .theme-toggle:hover, .font-size-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px var(--primary-glow);
-            color: var(--primary);
-        }
-        
-        /* ===== نافبار زجاجي ===== */
-        .navbar {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.4rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo-img {
-            height: 42px;
-            filter: drop-shadow(0 0 5px var(--primary-glow));
-        }
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2px;
-        }
-        .nav-menu a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 600;
-            font-size: 0.82rem;
-            padding: 7px 13px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .nav-menu a::before {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 50%;
-            width: 0; height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--neon-blue));
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        .nav-menu a:hover::before { width: 70%; }
+        :root { --primary: #D4AF37; --primary-dark: #B49430; --dark-bg: #1A1A2E; }
+        body { background: #f8f9fa; overflow-x: hidden; }
+        .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--primary); z-index: 10000; }
+        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 2px solid rgba(212,175,55,0.3); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0.4rem 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo-img { height: 40px; }
+        .nav-menu { display: flex; list-style: none; gap: 2px; flex-wrap: wrap; }
+        .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 0.82rem; padding: 7px 13px; border-radius: 8px; white-space: nowrap; }
         .nav-menu a:hover { color: var(--primary); }
-        .nav-menu a.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            box-shadow: 0 0 15px var(--primary-glow);
-        }
-        
-        /* ===== هيدر الصفحة ===== */
-        .page-header {
-            background: linear-gradient(135deg, #2a2a4a, #1a1a3e);
-            padding: 80px 20px 70px;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(0,212,255,0.08) 0%, transparent 50%);
-            animation: rotateBg 20s linear infinite;
-        }
-        .page-header::after {
-            content: '';
-            position: absolute;
-            bottom: -2px; left: 0; right: 0;
-            height: 60px;
-            background: #f8f9fa;
-            clip-path: ellipse(65% 100% at 50% 100%);
-        }
-        .page-header > * { position: relative; z-index: 1; }
-        .page-header h1 { 
-            font-size: 2.8rem; 
-            font-weight: 900; 
-            margin-bottom: 15px;
-            animation: fadeInUp 0.8s ease;
-            text-shadow: 0 0 30px rgba(255,255,255,0.2);
-        }
-        .page-header h1 span { 
-            color: var(--primary);
-            text-shadow: 0 0 30px var(--primary-glow);
-        }
-        .page-header p { 
-            font-size: 1.2rem; 
-            opacity: 0.9; 
-            max-width: 600px; 
-            margin: 0 auto;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-        
-        @keyframes rotateBg {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* ===== المحتوى ===== */
-        .services-container {
-            max-width: 1000px;
-            margin: -30px auto 60px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* ===== فواصل الأقسام ===== */
-        .section-divider {
-            text-align: center;
-            margin: 50px 0 30px;
-        }
-        .section-divider h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            display: inline-block;
-            background: linear-gradient(135deg, #555, var(--primary-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .section-divider h2::after {
-            content: '';
-            display: block;
-            width: 55px; height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--neon-blue));
-            margin: 10px auto 0;
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--primary-glow);
-        }
-        .section-divider h2 span {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* ===== بطاقات الخدمات - 3D Tilt + Glassmorphism ===== */
-        .service-card {
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 35px 32px;
-            margin-bottom: 22px;
-            display: flex;
-            align-items: flex-start;
-            gap: 25px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-            border: 1px solid rgba(255,255,255,0.3);
-            transition: all 0.4s var(--bounce);
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 6px; height: 100%;
-            border-radius: 0 20px 20px 0;
-            transition: width 0.3s ease;
-        }
-        .service-card::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-            opacity: 0;
-            transition: all 0.5s ease;
-            z-index: 0;
-        }
-        .service-card > * { position: relative; z-index: 1; }
-        .service-card:nth-child(2)::before,
-        .service-card:nth-child(4)::before,
-        .service-card:nth-child(6)::before { background: var(--silver); }
-        .service-card:nth-child(8)::before { background: var(--gray); }
-        .service-card:nth-child(3)::before,
-        .service-card:nth-child(5)::before,
-        .service-card:nth-child(7)::before { background: var(--primary); }
-        .service-card:hover::before { width: 12px; }
-        .service-card:hover::after { opacity: 0.03; }
-        .service-card:hover { 
-            transform: translateX(-8px) rotateX(2deg); 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.12), 0 0 30px var(--primary-glow);
-            border-color: var(--primary);
-        }
-        
-        /* ===== رقم الخدمة ===== */
-        .service-num {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #e0e0e0;
-            line-height: 1;
-            min-width: 55px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        .service-card:hover .service-num { 
-            color: var(--primary);
-            text-shadow: 0 0 20px var(--primary-glow);
-            transform: scale(1.1);
-        }
-        
-        /* ===== أيقونة الخدمة ===== */
-        .service-icon-wrapper {
-            width: 65px; height: 65px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            color: white;
-            flex-shrink: 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-        }
-        .service-card:hover .service-icon-wrapper {
-            transform: scale(1.2) rotate(10deg);
-        }
-        
-        /* ===== محتوى الخدمة ===== */
-        .service-content { flex: 1; }
-        .service-content h3 { 
-            font-size: 1.3rem; 
-            color: #444; 
-            margin-bottom: 10px; 
-            font-weight: 800;
-            transition: all 0.3s ease;
-        }
-        .service-card:hover .service-content h3 { color: var(--primary-dark); }
-        .service-content p { 
-            color: #666; 
-            font-size: 0.93rem; 
-            line-height: 2; 
-            margin-bottom: 14px; 
-        }
-        
-        /* ===== وسوم الميزات ===== */
-        .service-features { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 10px; 
-            margin-bottom: 18px; 
-        }
-        .service-features span {
-            background: #f0f0f0;
-            color: var(--primary-dark);
-            font-size: 0.78rem;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            box-shadow: 2px 2px 4px rgba(0,0,0,0.05);
-        }
-        .service-card:hover .service-features span {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 12px rgba(212,175,55,0.3);
-        }
-        
-        /* ===== زر الخدمة ===== */
-        .service-cta-btn {
-            display: inline-block;
-            padding: 11px 26px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #333;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: all 0.3s var(--bounce);
-            box-shadow: 0 4px 15px rgba(212,175,55,0.25);
-            cursor: none;
-        }
-        .service-cta-btn:hover { 
-            background: var(--primary-dark); 
-            transform: translateX(-5px);
-            box-shadow: 0 8px 25px rgba(212,175,55,0.4);
-            color: white;
-        }
-        .service-cta-btn i { margin-right: 6px; }
-        
-        /* ===== CTA Section ===== */
-        .cta-section {
-            background: linear-gradient(135deg, #2a2a4a, #1a1a3e);
-            border-radius: 25px;
-            padding: 55px 40px;
-            text-align: center;
-            color: white;
-            margin-top: 55px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            border: 1px solid rgba(212,175,55,0.2);
-            transition: all 0.4s var(--bounce);
-        }
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50px; right: -50px;
-            width: 200px; height: 200px;
-            background: rgba(212,175,55,0.1);
-            border-radius: 50%;
-            animation: floatCircle 6s ease-in-out infinite;
-        }
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            bottom: -30px; left: -30px;
-            width: 150px; height: 150px;
-            background: rgba(0,212,255,0.08);
-            border-radius: 50%;
-            animation: floatCircle 8s ease-in-out infinite reverse;
-        }
-        .cta-section > * { position: relative; z-index: 1; }
-        .cta-section:hover {
-            transform: scale(1.02);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 50px var(--primary-glow);
-        }
-        .cta-section h3 { 
-            font-size: 1.8rem; 
-            margin-bottom: 15px; 
-            font-weight: 800;
-            text-shadow: 0 0 20px rgba(255,255,255,0.2);
-        }
-        .cta-section h3 span { 
-            color: var(--primary);
-            text-shadow: 0 0 30px var(--primary-glow);
-        }
-        .cta-section p { opacity: 0.9; margin-bottom: 30px; line-height: 2; font-size: 1.1rem; }
-        .btn-cta {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #333;
-            padding: 16px 42px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s var(--bounce);
-            box-shadow: 0 10px 30px rgba(212,175,55,0.4), 0 0 20px var(--primary-glow);
-            cursor: none;
-        }
-        .btn-cta:hover { 
-            background: var(--primary-dark); 
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(212,175,55,0.6), 0 0 40px var(--primary-glow);
-        }
-        
-        @keyframes floatCircle {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(20px, -20px) scale(1.1); }
-        }
-        
-        /* ===== أنيميشن الظهور ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            filter: blur(3px);
-            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-        }
-        
-        /* ===== أيقونات عائمة ===== */
-        .whatsapp-float {
-            position: fixed; bottom: 20px; right: 20px;
-            width: 55px; height: 55px;
-            background: #25D366; color: white;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 8px 25px rgba(37,211,102,0.4), 0 0 20px rgba(37,211,102,0.3);
-            z-index: 998;
-            animation: pulseGreen 2s infinite;
-            transition: all 0.3s var(--bounce);
-            cursor: none;
-        }
-        .consult-float {
-            position: fixed; bottom: 85px; right: 20px;
-            width: 55px; height: 55px;
-            background: var(--primary); color: #333;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 26px;
-            box-shadow: 0 8px 25px rgba(212,175,55,0.4), 0 0 20px var(--primary-glow);
-            z-index: 998;
-            transition: all 0.3s var(--bounce);
-            cursor: none;
-        }
-        .back-to-top {
-            position: fixed; bottom: 150px; right: 20px;
-            width: 48px; height: 48px;
-            background: rgba(26,26,46,0.8);
-            backdrop-filter: blur(10px);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 22px;
-            cursor: pointer;
-            z-index: 998;
-            opacity: 0; visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.4s var(--bounce);
-            border: 1px solid var(--primary);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        .back-to-top.show {
-            opacity: 1; visibility: visible;
-            transform: translateY(0);
-        }
-        .back-to-top:hover {
-            background: var(--primary); color: #333;
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px var(--primary-glow);
-        }
-        
-        @keyframes pulseGreen {
-            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6), 0 0 20px rgba(37,211,102,0.3); }
-            70% { box-shadow: 0 0 0 20px rgba(37,211,102,0), 0 0 40px rgba(37,211,102,0.1); }
-            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0), 0 0 20px rgba(37,211,102,0.3); }
-        }
-        
-        /* ===== فوتر ===== */
-        footer { 
-            background: var(--dark-bg); 
-            color: #ccc; 
-            padding: 30px 15px 20px; 
-            text-align: center; 
-            font-size: 0.85rem; 
-            border-top: 3px solid var(--primary); 
-            position: relative; 
-            z-index: 1;
-        }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: -3px; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--neon-blue), var(--primary));
-            box-shadow: 0 0 20px var(--primary-glow);
-        }
-        footer a { color: var(--primary); text-decoration: none; margin: 5px 8px; font-weight: 600; transition: 0.3s; }
-        footer a:hover { color: var(--neon-blue); text-shadow: 0 0 10px rgba(0,212,255,0.5); }
-        footer .footer-links { margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
-        footer .copyright { color: #999; font-size: 0.8rem; }
-        
-        /* ===== ميديا كويري ===== */
+        .nav-menu a.active { background: var(--primary); color: white; }
+        .menu-toggle { display: none; font-size: 1.6rem; cursor: pointer; background: none; border: 1px solid #ddd; border-radius: 8px; padding: 5px 12px; color: #555; }
         @media (max-width: 768px) {
-            .custom-cursor, .custom-cursor-dot { display: none; }
-            body { cursor: auto; }
-            .page-header h1 { font-size: 2rem; }
-            .service-card { flex-direction: column; gap: 15px; padding: 25px 20px; }
-            .service-num { display: none; }
-            .section-divider h2 { font-size: 1.4rem; }
-            .cta-section { padding: 35px 25px; }
-            .nav-menu { display: none; }
+            .menu-toggle { display: block; }
+            .nav-menu { display: none; flex-direction: column; width: 100%; background: white; position: absolute; top: 100%; left: 0; padding: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 0 0 15px 15px; gap: 5px; }
+            .nav-menu.show { display: flex; animation: slideDown 0.3s ease; }
+            .nav-menu a { width: 100%; text-align: center; padding: 12px; }
         }
-        @media (max-width: 480px) {
-            .page-header h1 { font-size: 1.6rem; }
-            .service-content h3 { font-size: 1.1rem; }
-        }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+        .page-header { background: linear-gradient(135deg, #1a1a2e, #16213e); padding: 60px 20px; text-align: center; color: white; }
+        .page-header h1 { font-size: 2.2rem; }
+        .page-header h1 span { color: var(--primary); }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .service-card { background: white; border-radius: 16px; padding: 25px; margin-bottom: 18px; display: flex; gap: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-right: 4px solid var(--primary); }
+        .service-icon { width: 60px; height: 60px; background: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; flex-shrink: 0; }
+        .service-info h3 { color: #444; margin-bottom: 6px; }
+        .service-info p { color: #666; line-height: 1.8; }
+        .service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .service-tags span { background: #f0f0f0; color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+        @media (max-width: 768px) { .service-card { flex-direction: column; } .page-header h1 { font-size: 1.6rem; } }
+        footer { background: var(--dark-bg); color: #ccc; text-align: center; padding: 30px 20px; font-size: 0.85rem; border-top: 4px solid var(--primary); }
+        footer a { color: var(--primary); text-decoration: none; margin: 5px 8px; font-weight: 600; }
+        footer .footer-links { margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 999; text-decoration: none; }
+        .consult-float { position: fixed; bottom: 85px; right: 20px; width: 55px; height: 55px; background: var(--primary); color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; z-index: 999; text-decoration: none; }
+        .back-to-top { position: fixed; bottom: 150px; right: 20px; width: 48px; height: 48px; background: #333; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; z-index: 999; cursor: pointer; opacity: 0; visibility: hidden; transition: 0.3s; border: 2px solid var(--primary); }
+        .back-to-top.show { opacity: 1; visibility: visible; }
     </style>
 </head>
 <body>
-    <!-- ===== مؤشر الفأرة ===== -->
-    <div class="custom-cursor"></div>
-    <div class="custom-cursor-dot"></div>
-    
-    <!-- ===== شريط التقدم ===== -->
     <div class="reading-progress"></div>
     
-    <!-- ===== خلفية الجسيمات ===== -->
-    <div id="particles-js"></div>
-    
-    <!-- ===== أزرار التحكم ===== -->
-    <div class="theme-switcher">
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="تغيير الثيم">
-            <i class="fas fa-moon"></i>
-        </button>
-        <button class="font-size-toggle" onclick="toggleFontSize()" aria-label="تكبير الخط">
-            <i class="fas fa-text-height"></i>
-        </button>
-    </div>
-
-    <!-- ===== نافبار ===== -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo-area">
-                <a href="index.html"><img src="https://imgur.com/x5sJ7l7.png" alt="Kyntrava AI" class="logo-img"></a>
-            </div>
-            <ul class="nav-menu">
+            <a href="index.html"><img src="https://imgur.com/x5sJ7l7.png" alt="Kyntrava AI" class="logo-img"></a>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="about.html">عن الشركة</a></li>
                 <li><a href="services.html" class="active">خدماتنا</a></li>
@@ -629,237 +65,67 @@
         </div>
     </nav>
 
-    <!-- ===== هيدر الصفحة ===== -->
     <header class="page-header">
         <h1><span>خدماتنا</span> المتكاملة</h1>
-        <p>حلول برمجية وذكاء اصطناعي متطورة لعملائنا في الوطن العربي</p>
+        <p>حلول برمجية وذكاء اصطناعي متطورة</p>
     </header>
 
-    <!-- ===== المحتوى الرئيسي ===== -->
-    <main class="services-container">
-        
-        <!-- تطوير البرمجيات -->
-        <div class="section-divider reveal">
-            <h2><i class="fas fa-code" style="color:var(--primary); margin-left:10px;"></i> تطوير <span>البرمجيات</span></h2>
-        </div>
-
-        <div class="service-card reveal">
-            <div class="service-num">01</div>
-            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #D4AF37, #B49430);"><i class="fas fa-laptop-code"></i></div>
-            <div class="service-content">
-                <h3>تصميم وتطوير مواقع ويب</h3>
-                <p>نصمم ونطور مواقع عصرية متجاوبة مع جميع الأجهزة، بواجهات مستخدم جذابة وتجربة مستخدم سلسة. نستخدم أحدث تقنيات الويب مثل React, Next.js, و Laravel لضمان أداء عالي وقابلية للتطوير.</p>
-                <div class="service-features">
-                    <span>React/Next.js</span><span>واجهات جذابة</span><span>متجاوبة</span><span>SEO متقدم</span>
-                </div>
-                <a href="consultation.html" class="service-cta-btn">اطلب موقعك الآن <i class="fas fa-arrow-left"></i></a>
+    <main class="container">
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-robot"></i></div>
+            <div class="service-info">
+                <h3>أنظمة ذكاء اصطناعي</h3>
+                <p>نطور حلول ذكاء اصطناعي متكاملة تشمل تعلم الآلة، معالجة اللغة الطبيعية، ورؤية الحاسوب.</p>
+                <div class="service-tags"><span>Machine Learning</span><span>NLP</span><span>Deep Learning</span></div>
             </div>
         </div>
-
-        <div class="service-card reveal">
-            <div class="service-num">02</div>
-            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #C0C0C0, #A0A0A0);"><i class="fas fa-mobile-alt"></i></div>
-            <div class="service-content">
-                <h3>تطبيقات جوال أصلية وهجينة</h3>
-                <p>نطور تطبيقات Android و iOS أصلية أو عبر المنصات باستخدام Flutter و React Native مع أداء عالي وتجربة استخدام استثنائية تلبي احتياجات المستخدمين.</p>
-                <div class="service-features">
-                    <span>Flutter</span><span>React Native</span><span>iOS & Android</span><span>أداء عالي</span>
-                </div>
-                <a href="consultation.html" class="service-cta-btn">اطلب تطبيقك الآن <i class="fas fa-arrow-left"></i></a>
+        <div class="service-card" style="border-right-color:#C0C0C0;">
+            <div class="service-icon" style="background:#C0C0C0;"><i class="fas fa-code"></i></div>
+            <div class="service-info">
+                <h3>تطوير البرمجيات</h3>
+                <p>تطبيقات ويب وجوال مخصصة باستخدام أحدث التقنيات مثل React و Flutter.</p>
+                <div class="service-tags"><span>React</span><span>Flutter</span><span>Next.js</span></div>
             </div>
         </div>
-
-        <div class="service-card reveal">
-            <div class="service-num">03</div>
-            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #A0A0A0, #808080);"><i class="fas fa-cloud"></i></div>
-            <div class="service-content">
-                <h3>حلول سحابية وبنية تحتية</h3>
-                <p>نصمم وننشر بنى تحتية سحابية آمنة وقابلة للتطوير على AWS، Google Cloud، و Azure. نضمن لك استضافة موثوقة وأداء عالي مع حماية متكاملة.</p>
-                <div class="service-features">
-                    <span>AWS</span><span>Google Cloud</span><span>Azure</span><span>أمان عالي</span>
-                </div>
-                <a href="consultation.html" class="service-cta-btn">اطلب حل سحابي الآن <i class="fas fa-arrow-left"></i></a>
+        <div class="service-card" style="border-right-color:#A0A0A0;">
+            <div class="service-icon" style="background:#A0A0A0;"><i class="fas fa-cloud"></i></div>
+            <div class="service-info">
+                <h3>حلول سحابية</h3>
+                <p>بنية تحتية سحابية آمنة وقابلة للتطوير على AWS و Google Cloud.</p>
+                <div class="service-tags"><span>AWS</span><span>Azure</span><span>Cloud</span></div>
             </div>
         </div>
-
-        <!-- الذكاء الاصطناعي -->
-        <div class="section-divider reveal">
-            <h2><i class="fas fa-robot" style="color:var(--primary); margin-left:10px;"></i> الذكاء <span>الاصطناعي</span></h2>
-        </div>
-
-        <div class="service-card reveal">
-            <div class="service-num">04</div>
-            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #D4AF37, #B49430);"><i class="fas fa-robot"></i></div>
-            <div class="service-content">
-                <h3>أنظمة ذكاء اصطناعي وتعلم آلة</h3>
-                <p>نطور حلول ذكاء اصطناعي متكاملة تشمل تعلم الآلة، معالجة اللغة الطبيعية، ورؤية الحاسوب. نساعدك في أتمتة عملياتك واتخاذ قرارات ذكية مبنية على البيانات.</p>
-                <div class="service-features">
-                    <span>Machine Learning</span><span>NLP</span><span>Computer Vision</span><span>Deep Learning</span>
-                </div>
-                <a href="consultation.html" class="service-cta-btn">اطلب نظام AI الآن <i class="fas fa-arrow-left"></i></a>
+        <div class="service-card" style="border-right-color:#808080;">
+            <div class="service-icon" style="background:#808080;"><i class="fas fa-chart-bar"></i></div>
+            <div class="service-info">
+                <h3>تحليل البيانات</h3>
+                <p>لوحات معلومات تفاعلية وأنظمة تحليل بيانات متقدمة لمساعدتك في اتخاذ القرارات.</p>
+                <div class="service-tags"><span>Power BI</span><span>Dashboards</span></div>
             </div>
         </div>
-
-        <div class="service-card reveal">
-            <div class="service-num">05</div>
-            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #C0C0C0, #A0A0A0);"><i class="fas fa-chart-bar"></i></div>
-            <div class="service-content">
-                <h3>تحليل البيانات ولوحات المعلومات</h3>
-                <p>نحول بياناتك الخام إلى رؤى قابلة للتنفيذ. نبني لوحات معلومات تفاعلية وأنظمة تحليل بيانات متقدمة تساعدك في مراقبة أداء أعمالك واتخاذ القرارات الصائبة.</p>
-                <div class="service-features">
-                    <span>Data Analysis</span><span>Dashboards</span><span>Power BI</span><span>تقارير ذكية</span>
-                </div>
-                <a href="consultation.html" class="service-cta-btn">اطلب تحليل بيانات الآن <i class="fas fa-arrow-left"></i></a>
-            </div>
-        </div>
-
-        <!-- خدمات إضافية -->
-        <div class="section-divider reveal">
-            <h2><i class="fas fa-headset" style="color:var(--primary); margin-left:10px;"></i> خدمات <span>إضافية</span></h2>
-        </div>
-
-        <div class="service-card reveal">
-            <div class="service-num">06</div>
-            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #D4AF37, #B49430);"><i class="fas fa-shield-alt"></i></div>
-            <div class="service-content">
-                <h3>الأمن السيبراني وحماية البيانات</h3>
-                <p>نقدم حلول أمنية متكاملة لحماية تطبيقاتك وبياناتك من التهديدات. تقييم الثغرات، اختبار الاختراق، وتأمين البنية التحتية.</p>
-                <div class="service-features">
-                    <span>تقييم ثغرات</span><span>حماية بيانات</span><span>أمان تطبيقات</span>
-                </div>
-                <a href="consultation.html" class="service-cta-btn">اطلب حماية الآن <i class="fas fa-arrow-left"></i></a>
-            </div>
-        </div>
-
-        <div class="service-card reveal">
-            <div class="service-num">07</div>
-            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #C0C0C0, #A0A0A0);"><i class="fas fa-paint-brush"></i></div>
-            <div class="service-content">
-                <h3>تصميم UI/UX وتجربة مستخدم</h3>
-                <p>نصمم واجهات مستخدم بديهية وتجربة مستخدم استثنائية. نجري أبحاث المستخدم ونبني نماذج أولية تفاعلية لضمان أفضل تجربة لعملائك.</p>
-                <div class="service-features">
-                    <span>UI Design</span><span>UX Research</span><span>Figma</span><span>نماذج تفاعلية</span>
-                </div>
-                <a href="consultation.html" class="service-cta-btn">اطلب تصميم الآن <i class="fas fa-arrow-left"></i></a>
-            </div>
-        </div>
-
-        <div class="service-card reveal">
-            <div class="service-num">08</div>
-            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #A0A0A0, #808080);"><i class="fas fa-headset"></i></div>
-            <div class="service-content">
-                <h3>استشارات تقنية متخصصة</h3>
-                <p>نقدم استشارات تقنية متخصصة لمساعدتك في اختيار التقنيات المناسبة لمشروعك، وتخطيط البنية التقنية، وتقدير التكاليف والجداول الزمنية.</p>
-                <div class="service-features">
-                    <span>تخطيط تقني</span><span>اختيار تقنيات</span><span>تقدير تكاليف</span>
-                </div>
-                <a href="consultation.html" class="service-cta-btn">احجز استشارة الآن <i class="fas fa-arrow-left"></i></a>
-            </div>
-        </div>
-
-        <!-- CTA -->
-        <section class="cta-section reveal">
-            <h3>هل أنت جاهز <span>للبدء بمشروعك؟</span></h3>
-            <p>فريقنا التقني على أتم الاستعداد لتقديم استشارة أولية مجانية وتقييم احتياجات مشروعك البرمجي.</p>
-            <a href="consultation.html" class="btn-cta"><i class="fas fa-paper-plane" style="margin-left:8px;"></i> احجز استشارتك الآن</a>
-        </section>
-
     </main>
 
-    <!-- ===== فوتر ===== -->
-    <footer role="contentinfo">
+    <footer>
         <div class="footer-links">
-            <a href="index.html">الرئيسية</a>
-            <a href="about.html">عن الشركة</a>
-            <a href="services.html">خدماتنا</a>
-            <a href="portfolio.html">أعمالنا</a>
-            <a href="consultation.html">الاستشارات</a>
-            <a href="contact.html">اتصل بنا</a>
-            <a href="privacy.html">سياسة الخصوصية</a>
-            <a href="terms.html">الشروط والأحكام</a>
+            <a href="index.html">الرئيسية</a><a href="about.html">عن الشركة</a><a href="services.html">خدماتنا</a><a href="portfolio.html">أعمالنا</a><a href="consultation.html">الاستشارات</a><a href="contact.html">اتصل بنا</a><a href="privacy.html">سياسة الخصوصية</a><a href="terms.html">الشروط والأحكام</a>
         </div>
-        <p class="copyright">© 2026 Kyntrava AI. جميع الحقوق محفوظة. | شركة مسجلة رسمياً</p>
+        <p>© 2026 Kyntrava AI. جميع الحقوق محفوظة.</p>
     </footer>
 
-    <!-- ===== أيقونات عائمة ===== -->
-    <a href="https://wa.me/963933438019" class="whatsapp-float" target="_blank" title="واتساب">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="consultation.html" class="consult-float" title="استشارة مجانية">
-        <i class="fas fa-comments"></i>
-    </a>
-    <div class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-        <i class="fas fa-chevron-up"></i>
-    </div>
+    <a href="https://wa.me/963933438019" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="consultation.html" class="consult-float"><i class="fas fa-comments"></i></a>
+    <div class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></div>
 
-    <script src="script.js"></script>
-    
     <script>
-        // ===== مؤشر الفأرة =====
-        const cursor = document.querySelector('.custom-cursor');
-        const cursorDot = document.querySelector('.custom-cursor-dot');
-        if (cursor && cursorDot && window.innerWidth > 768) {
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX - 20 + 'px';
-                cursor.style.top = e.clientY - 20 + 'px';
-                cursorDot.style.left = e.clientX - 4 + 'px';
-                cursorDot.style.top = e.clientY - 4 + 'px';
-            });
-            const interactiveEls = document.querySelectorAll('a, button, .service-card, .section-divider h2, .service-cta-btn, .btn-cta, .whatsapp-float, .consult-float, .back-to-top');
-            interactiveEls.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
-        }
-        
-        // ===== شريط التقدم =====
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('show'); menuToggle.querySelector('i').className = navMenu.classList.contains('show') ? 'fas fa-times' : 'fas fa-bars'; });
+        navMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { navMenu.classList.remove('show'); menuToggle.querySelector('i').className = 'fas fa-bars'; }));
+        document.addEventListener('click', (e) => { if (navMenu.classList.contains('show') && !e.target.closest('.nav-container')) { navMenu.classList.remove('show'); menuToggle.querySelector('i').className = 'fas fa-bars'; } });
         const progressBar = document.querySelector('.reading-progress');
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            if (progressBar) progressBar.style.width = Math.min(scrollPercent, 100) + '%';
-        });
-        
-        // ===== زر الرجوع للأعلى =====
-        const backToTop = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) backToTop.classList.add('show');
-            else backToTop.classList.remove('show');
-        });
-        
-        // ===== أنيميشن الظهور =====
-        const revealEls = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        revealEls.forEach(el => revealObserver.observe(el));
-        
-        // ===== Particles.js =====
-        if (document.getElementById('particles-js')) {
-            particlesJS('particles-js', {
-                particles: {
-                    number: { value: 35, density: { enable: true, value_area: 800 } },
-                    color: { value: '#D4AF37' },
-                    shape: { type: 'circle' },
-                    opacity: { value: 0.2, random: true, anim: { enable: true, speed: 1, opacity_min: 0.05, sync: false } },
-                    size: { value: 2, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#D4AF37', opacity: 0.1, width: 1 },
-                    move: { enable: true, speed: 0.8, direction: 'none', random: true }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'grab' } },
-                    modes: { grab: { distance: 140, line_linked: { opacity: 0.3 } } }
-                },
-                retina_detect: true
-            });
-        }
+        window.addEventListener('scroll', () => { const p = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100; if (progressBar) progressBar.style.width = Math.min(p, 100) + '%'; });
+        const backToTopBtn = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => { if (window.scrollY > 500) backToTopBtn.classList.add('show'); else backToTopBtn.classList.remove('show'); });
     </script>
 </body>
 </html>
