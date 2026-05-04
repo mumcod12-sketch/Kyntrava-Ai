@@ -1,14 +1,36 @@
 /**
- * Kyntrava AI - Main JavaScript File (Enhanced Version)
+ * Kyntrava AI - Main JavaScript File (Fully Enhanced Version)
  * شركة Kyntrava AI للذكاء الاصطناعي والحلول البرمجية
  * © 2026 جميع الحقوق محفوظة
  */
 
 document.addEventListener("DOMContentLoaded", function() {
     
+    // ========== 0. المؤشر المخصص ==========
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.custom-cursor-dot');
+    
+    if (cursor && cursorDot && window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 20 + 'px';
+            cursor.style.top = e.clientY - 20 + 'px';
+            cursorDot.style.left = e.clientX - 4 + 'px';
+            cursorDot.style.top = e.clientY - 4 + 'px';
+        });
+        
+        const interactiveElements = document.querySelectorAll('a, button, .btn, .btn-project, .service-box, .quote-card, .stat-item, input, select, textarea, .whatsapp-float, .consult-float, .back-to-top, .trust-item, .why-us-item');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+        
+        document.addEventListener('mousedown', () => cursor.style.transform = 'scale(0.8)');
+        document.addEventListener('mouseup', () => cursor.style.transform = 'scale(1)');
+    }
+    
     // ========== 1. حركات الظهور المتطورة عند التمرير ==========
     const revealElements = document.querySelectorAll(
-        '.reveal, .animate-on-scroll, .card, .service-box, .service-card, .study-item, .exhibition-item, .about-block, .feature-card, .stat-box, .info-card, .quote-card, .process-step, .why-us-item, .testimonial-card, .branch-card, .quick-contact-card, .quick-stat, .portfolio-card'
+        '.reveal, .animate-on-scroll, .card, .service-box, .service-card, .study-item, .exhibition-item, .about-block, .feature-card, .stat-box, .stat-item, .info-card, .quote-card, .process-step, .why-us-item, .testimonial-card, .branch-card, .quick-contact-card, .quick-stat, .portfolio-card, .trust-item'
     );
 
     const observerOptions = {
@@ -28,16 +50,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }, observerOptions);
 
     revealElements.forEach((el, index) => {
-        // إعدادات متقدمة للأنيميشن
         el.style.opacity = "0";
         el.style.transform = "translateY(40px)";
-        el.style.filter = "blur(2px)";
-        el.style.transition = `all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.08}s`;
+        el.style.filter = "blur(3px)";
+        el.style.transition = `all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.06}s`;
         el.style.willChange = "opacity, transform";
         
         revealObserver.observe(el);
         
-        // Fallback: ظهور فوري للعناصر المرئية
         setTimeout(() => {
             const rect = el.getBoundingClientRect();
             if (rect.top < window.innerHeight + 100 && rect.bottom > -100) {
@@ -63,12 +83,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const isOpen = navMenu.classList.toggle('show');
             menuToggle.setAttribute('aria-expanded', isOpen);
             menuToggle.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            
-            // إضافة تأثير تجميد التمرير عند فتح القائمة
             document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
-        // إغلاق القائمة عند النقر على رابط
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('show');
@@ -79,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // إغلاق القائمة عند النقر خارجها
     document.addEventListener('click', (e) => {
         if (navMenu && navMenu.classList.contains('show') && 
             !e.target.closest('.nav-container') && 
@@ -132,17 +148,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // ========== 5. إدارة الفورم المتطورة ==========
     document.querySelectorAll('form').forEach(form => {
-        // منع الإرسال المزدوج
         let isSubmitting = false;
         
-        // تحسين الحقول
         form.querySelectorAll('input, select, textarea').forEach(field => {
-            // إضافة تأثير floating label
             if (field.previousElementSibling && field.previousElementSibling.tagName === 'LABEL') {
                 const label = field.previousElementSibling;
                 
                 field.addEventListener('focus', () => {
-                    label.style.color = 'var(--gold, #D4AF37)';
+                    label.style.color = 'var(--primary, #D4AF37)';
                     label.style.transform = 'translateY(-2px)';
                     label.style.transition = 'all 0.3s ease';
                 });
@@ -153,12 +166,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             }
             
-            // التحقق الفوري
             field.addEventListener('blur', function() {
                 validateField(this);
             });
             
-            // إزالة رسائل الخطأ عند الكتابة
             field.addEventListener('input', function() {
                 this.style.borderColor = 'var(--border-color, #e8eaed)';
                 this.style.boxShadow = 'none';
@@ -173,11 +184,9 @@ document.addEventListener("DOMContentLoaded", function() {
             
             if (isSubmitting) return;
             
-            // التحقق من جميع الحقول
             let isValid = true;
             const requiredFields = form.querySelectorAll('[required]');
             
-            // إزالة رسائل الخطأ السابقة
             form.querySelectorAll('.error-message').forEach(msg => msg.remove());
             
             requiredFields.forEach(field => {
@@ -194,7 +203,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
             
-            // محاكاة الإرسال
             isSubmitting = true;
             const submitBtn = form.querySelector('button[type="submit"]');
             if (submitBtn) {
@@ -202,7 +210,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
             }
             
-            // محاكاة تأخير الشبكة
             setTimeout(() => {
                 showSuccessNotification();
                 form.reset();
@@ -220,7 +227,6 @@ document.addEventListener("DOMContentLoaded", function() {
         let isValid = true;
         let errorMessage = '';
         
-        // التحقق من البريد الإلكتروني
         if (field.type === 'email' && value) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(value)) {
@@ -229,7 +235,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         
-        // التحقق من رقم الهاتف
         if (field.type === 'tel' && value) {
             const phoneRegex = /^[\d\s\-\+\(\)]{7,20}$/;
             if (!phoneRegex.test(value)) {
@@ -238,13 +243,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         
-        // التحقق من الحقول الفارغة
         if (field.hasAttribute('required') && !value) {
             isValid = false;
             errorMessage = 'هذا الحقل مطلوب';
         }
         
-        // التحقق من الحد الأدنى للطول
         if (field.minLength && value.length < field.minLength) {
             isValid = false;
             errorMessage = `يجب أن يكون ${field.minLength} أحرف على الأقل`;
@@ -254,7 +257,6 @@ document.addEventListener("DOMContentLoaded", function() {
             field.style.borderColor = '#E74C3C';
             field.style.boxShadow = '0 0 0 3px rgba(231,76,60,0.15)';
             
-            // إضافة رسالة خطأ
             const errorDiv = document.createElement('div');
             errorDiv.className = 'error-message';
             errorDiv.style.cssText = `
@@ -282,7 +284,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function showSuccessNotification() {
-        // إزالة الإشعارات السابقة
         document.querySelectorAll('.success-overlay').forEach(el => el.remove());
         
         const overlay = document.createElement('div');
@@ -353,7 +354,6 @@ document.addEventListener("DOMContentLoaded", function() {
         
         document.body.appendChild(overlay);
         
-        // إغلاق الإشعار
         const closeBtns = overlay.querySelectorAll('.close-notification, .close-notification-outline');
         closeBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -372,7 +372,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
         
-        // إغلاق تلقائي
         setTimeout(() => {
             if (document.body.contains(overlay)) {
                 overlay.style.opacity = '0';
@@ -392,7 +391,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (target) {
                 e.preventDefault();
                 
-                // إغلاق قائمة الموبايل إذا كانت مفتوحة
                 if (navMenu && navMenu.classList.contains('show')) {
                     navMenu.classList.remove('show');
                     menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
@@ -406,16 +404,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     behavior: 'smooth' 
                 });
                 
-                // تحديث URL
                 history.pushState(null, null, targetId);
             }
         });
     });
 
-    // ========== 7. تأثيرات الأيقونات العائمة المتطورة ==========
+    // ========== 7. تأثيرات الأيقونات العائمة ==========
     const floatingButtons = [
-        { element: document.querySelector('.whatsapp-float'), originalBottom: '20px' },
-        { element: document.querySelector('.consult-float'), originalBottom: '82px' }
+        { element: document.querySelector('.whatsapp-float') },
+        { element: document.querySelector('.consult-float') }
     ];
     
     floatingButtons.forEach(btn => {
@@ -429,7 +426,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 btn.element.style.transform = 'scale(1) rotate(0deg)';
             });
             
-            // تأثير النقر
             btn.element.addEventListener('mousedown', () => {
                 btn.element.style.transform = 'scale(0.9)';
             });
@@ -502,9 +498,22 @@ document.addEventListener("DOMContentLoaded", function() {
             lightbox = document.createElement('div');
             lightbox.id = 'lightbox';
             lightbox.className = 'lightbox';
+            lightbox.style.cssText = `
+                display: none; position: fixed; top: 0; left: 0;
+                width: 100%; height: 100%; background: rgba(26,26,46,0.97);
+                z-index: 9999; align-items: center; justify-content: center;
+                cursor: pointer; animation: fadeIn 0.3s ease;
+            `;
             lightbox.innerHTML = `
-                <span class="close" onclick="closeLightbox()" aria-label="إغلاق">&times;</span>
-                <img id="lightboxImg" src="" alt="" />
+                <span class="close" onclick="closeLightbox()" aria-label="إغلاق" style="
+                    position: absolute; top: 25px; right: 35px; color: white;
+                    font-size: 45px; cursor: pointer; font-weight: bold;
+                    transition: all 0.3s ease; z-index: 10000;
+                ">&times;</span>
+                <img id="lightboxImg" src="" alt="" style="
+                    max-width: 90%; max-height: 90%; border-radius: 10px;
+                    animation: zoomIn 0.3s ease;
+                " />
             `;
             document.body.appendChild(lightbox);
             lightboxImg = document.getElementById('lightboxImg');
@@ -516,6 +525,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
         
+        lightbox.style.display = 'flex';
         lightbox.classList.add('active');
         if (lightboxImg) {
             lightboxImg.src = src;
@@ -533,6 +543,7 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(() => {
                 lightbox.classList.remove('active');
                 lightbox.style.opacity = '1';
+                lightbox.style.display = 'none';
                 document.body.style.overflow = '';
             }, 300);
             lightbox.setAttribute('aria-hidden', 'true');
@@ -541,17 +552,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // ========== 11. اختصارات لوحة المفاتيح ==========
     document.addEventListener('keydown', function(e) {
-        // Escape - إغلاق النوافذ
         if (e.key === 'Escape') {
             closeLightbox();
             document.querySelectorAll('.success-overlay').forEach(el => {
                 el.style.opacity = '0';
                 setTimeout(() => el.remove(), 300);
             });
+            if (navMenu && navMenu.classList.contains('show')) {
+                navMenu.classList.remove('show');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
             document.body.style.overflow = '';
         }
         
-        // Ctrl/Cmd + K - فتح البحث (للتحضير المستقبلي)
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault();
             console.log('🔍 ميزة البحث السريع قيد التطوير');
@@ -564,7 +577,6 @@ document.addEventListener("DOMContentLoaded", function() {
             img.src = img.dataset.src || img.src;
         });
     } else {
-        // Fallback للمتصفحات القديمة
         const lazyImages = document.querySelectorAll('img[data-src]');
         const imageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -590,13 +602,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // ========== 14. تحسينات الطباعة ==========
     window.addEventListener('beforeprint', () => {
-        document.querySelectorAll('.whatsapp-float, .consult-float, .back-to-top, .reading-progress, .menu-toggle')
+        document.querySelectorAll('.whatsapp-float, .consult-float, .back-to-top, .reading-progress, .menu-toggle, .custom-cursor, .custom-cursor-dot, .theme-switcher, #particles-js')
             .forEach(el => el.style.display = 'none');
     });
     
     window.addEventListener('afterprint', () => {
-        document.querySelectorAll('.whatsapp-float, .consult-float, .back-to-top, .reading-progress, .menu-toggle')
+        document.querySelectorAll('.whatsapp-float, .consult-float, .back-to-top, .reading-progress, .menu-toggle, .custom-cursor, .custom-cursor-dot, .theme-switcher, #particles-js')
             .forEach(el => el.style.display = '');
+    });
+
+    // ========== 15. تأثيرات Neumorphism عند اللمس ==========
+    document.querySelectorAll('.trust-item, .stat-item').forEach(item => {
+        item.addEventListener('mousedown', function() {
+            this.style.boxShadow = 'inset 4px 4px 8px var(--neu-dark), inset -4px -4px 8px var(--neu-light)';
+        });
+        item.addEventListener('mouseup', function() {
+            this.style.boxShadow = '4px 4px 8px var(--neu-dark), -4px -4px 8px var(--neu-light)';
+        });
+        item.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '4px 4px 8px var(--neu-dark), -4px -4px 8px var(--neu-light)';
+        });
     });
 
     // ========== الترحيب في الكونسول ==========
@@ -608,6 +633,7 @@ document.addEventListener("DOMContentLoaded", function() {
     © 2026 Kyntrava AI - جميع الحقوق محفوظة
     
     ✨ استمتع بتجربة مستخدم سلسة!
+    🎨 التصميم: Glassmorphism + Neumorphism + 3D + Particles
     `);
 });
 
@@ -634,3 +660,57 @@ window.throttle = function(func, limit = 250) {
         }
     };
 };
+
+// ========== دوال الثيم وحجم الخط (عالمية) ==========
+window.toggleTheme = function() {
+    const body = document.documentElement;
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    const icon = document.querySelector('.theme-toggle i');
+    if (icon) {
+        icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+    
+    body.style.transition = 'all 0.5s ease';
+    setTimeout(() => { body.style.transition = ''; }, 500);
+    
+    console.log(`🌓 تم تغيير الثيم إلى: ${newTheme === 'dark' ? 'الوضع الليلي 🌙' : 'الوضع النهاري ☀️'}`);
+};
+
+window.toggleFontSize = function() {
+    if (!window.currentFontSize) window.currentFontSize = 100;
+    
+    if (window.currentFontSize === 100) {
+        window.currentFontSize = 120;
+    } else if (window.currentFontSize === 120) {
+        window.currentFontSize = 140;
+    } else {
+        window.currentFontSize = 100;
+    }
+    
+    document.documentElement.style.fontSize = window.currentFontSize + '%';
+    localStorage.setItem('fontSize', window.currentFontSize);
+    
+    console.log(`🔤 حجم الخط: ${window.currentFontSize}%`);
+};
+
+// تحميل الإعدادات المحفوظة
+(function() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+        window.currentFontSize = parseInt(savedFontSize);
+        document.documentElement.style.fontSize = savedFontSize + '%';
+    }
+    
+    const themeIcon = document.querySelector('.theme-toggle i');
+    if (themeIcon) {
+        themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+})();
