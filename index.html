@@ -35,10 +35,8 @@
         
         body { background: #f8f9fa; overflow-x: hidden; }
 
-        /* ===== شريط التقدم ===== */
         .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--neon-blue), var(--primary)); z-index: 10000; box-shadow: 0 0 10px var(--primary-glow); }
 
-        /* ===== شريط علوي ===== */
         .top-bar { background: rgba(26, 26, 46, 0.9); backdrop-filter: blur(10px); color: #ccc; font-size: 0.8rem; padding: 8px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
         .top-bar .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; }
         .top-bar a { color: var(--primary); text-decoration: none; margin: 0 10px; transition: 0.3s; }
@@ -46,7 +44,6 @@
         .top-bar .social-links a { color: #ccc; margin: 0 6px; font-size: 0.9rem; transition: 0.3s; }
         .top-bar .social-links a:hover { color: var(--neon-blue); }
 
-        /* ===== نافبار ===== */
         .navbar { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 0.4rem 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .logo-img { height: 42px; }
@@ -55,7 +52,6 @@
         .nav-menu a:hover { color: var(--primary); background: rgba(212, 175, 55, 0.08); }
         .nav-menu a.active { background: var(--primary); color: white; }
 
-        /* ===== زر القائمة للموبايل ===== */
         .menu-toggle { display: none; font-size: 1.6rem; cursor: pointer; color: #555; background: none; border: 1px solid #ddd; border-radius: 8px; padding: 5px 12px; transition: all 0.3s ease; }
         .menu-toggle:hover { color: var(--primary); border-color: var(--primary); }
 
@@ -68,7 +64,6 @@
 
         @keyframes slideDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ===== الهيرو ===== */
         .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 80px 20px; overflow: hidden; background: #1a1a2e; }
         .hero-content { max-width: 900px; position: relative; z-index: 3; }
         .hero-tagline { font-size: 2rem; font-weight: 800; margin-bottom: 20px; }
@@ -78,20 +73,17 @@
         .hero-title span { color: var(--primary); font-weight: 800; }
         .hero-desc { font-size: 1.15rem; opacity: 0.9; margin-bottom: 40px; max-width: 650px; margin-left: auto; margin-right: auto; }
 
-        /* ===== أزرار ===== */
         .btn { display: inline-block; padding: 14px 32px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1.05rem; transition: all 0.3s ease; margin: 5px; }
         .btn-primary { background: var(--primary); color: #333; }
         .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
         .btn-outline { border: 2px solid white; color: white; background: transparent; }
         .btn-outline:hover { background: white; color: var(--dark-bg); transform: translateY(-3px); }
 
-        /* ===== شريط الثقة ===== */
         .trust-bar { background: #f8f9fa; padding: 25px 20px; border-bottom: 1px solid #f0f0f0; }
         .trust-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 35px; flex-wrap: wrap; }
         .trust-item { display: flex; align-items: center; gap: 10px; color: var(--dark-bg); font-weight: 600; font-size: 0.95rem; padding: 10px 20px; border-radius: 15px; background: #f0f0f0; box-shadow: 4px 4px 8px var(--neu-dark), -4px -4px 8px var(--neu-light); }
         .trust-item i { color: var(--primary); font-size: 1.3rem; }
 
-        /* ===== قسم الاقتباسات ===== */
         .quotes-section { padding: 60px 20px; background: #f8f9fa; }
         .quotes-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
         .quote-card { background: white; border-radius: 18px; padding: 40px 28px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #f0f0f0; transition: all 0.3s ease; }
@@ -99,7 +91,6 @@
         .quote-icon { font-size: 2.8rem; margin-bottom: 18px; color: var(--primary); }
         .quote-card p { font-size: 1.1rem; color: #555; font-weight: 700; }
 
-        /* ===== الإحصائيات ===== */
         .stats-section { padding: 60px 20px; background: white; }
         .stats-container { max-width: 1000px; margin: 0 auto; }
         .section-title { text-align: center; font-size: 2rem; color: #555; margin-bottom: 40px; font-weight: 800; }
@@ -110,7 +101,6 @@
         .stat-item .num { font-size: 2.8rem; font-weight: 900; color: var(--primary); margin-bottom: 10px; }
         .stat-item .label { color: #777; font-size: 1rem; font-weight: 600; }
 
-        /* ===== الخدمات ===== */
         .services-section { padding: 60px 20px; background: #f8f9fa; }
         .services-container { max-width: 1100px; margin: 0 auto; }
         .services-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
@@ -120,14 +110,12 @@
         .service-box h4 { font-size: 1.1rem; color: #555; margin-bottom: 10px; font-weight: 800; }
         .service-box p { color: #666; font-size: 0.88rem; }
 
-        /* ===== CTA ===== */
         .cta-section { padding: 60px 20px; background: linear-gradient(135deg, #2a2a4a, #1a1a3e); text-align: center; color: white; }
         .cta-container { max-width: 700px; margin: 0 auto; }
         .cta-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 15px; }
         .cta-section h2 span { color: var(--primary); }
         .cta-section p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; }
 
-        /* ===== لماذا نحن ===== */
         .why-us-section { padding: 60px 20px; background: white; }
         .why-us-container { max-width: 1000px; margin: 0 auto; }
         .why-us-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
@@ -136,20 +124,17 @@
         .why-us-item h4 { color: #555; margin-bottom: 5px; font-weight: 800; }
         .why-us-item p { color: #777; font-size: 0.9rem; }
 
-        /* ===== فوتر ===== */
         footer { background: var(--dark-bg); color: #ccc; padding: 30px 15px 20px; text-align: center; font-size: 0.85rem; border-top: 4px solid var(--primary); }
         footer a { color: var(--primary); text-decoration: none; margin: 5px 8px; font-weight: 600; }
         footer a:hover { color: var(--primary-light); }
         footer .footer-links { margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
         footer .copyright { color: #999; font-size: 0.8rem; }
 
-        /* ===== أيقونات عائمة ===== */
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 999; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
         .consult-float { position: fixed; bottom: 85px; right: 20px; width: 55px; height: 55px; background: var(--primary); color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; z-index: 999; text-decoration: none; }
         .back-to-top { position: fixed; bottom: 150px; right: 20px; width: 48px; height: 48px; background: #333; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; z-index: 999; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s ease; border: 2px solid var(--primary); }
         .back-to-top.show { opacity: 1; visibility: visible; }
 
-        /* ===== ميديا كويري ===== */
         @media (max-width: 768px) {
             .hero-tagline { font-size: 1.3rem; }
             .hero-title { font-size: 1.2rem; }
@@ -166,10 +151,8 @@
 </head>
 <body>
 
-    <!-- شريط التقدم -->
     <div class="reading-progress"></div>
 
-    <!-- شريط علوي -->
     <div class="top-bar">
         <div class="container">
             <div class="social-links">
@@ -180,7 +163,6 @@
         </div>
     </div>
 
-    <!-- نافبار -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-area">
@@ -198,7 +180,6 @@
         </div>
     </nav>
 
-    <!-- هيرو -->
     <header class="hero">
         <div class="hero-content">
             <p class="hero-tagline"><span>Kyntrava AI</span> للذكاء الاصطناعي والحلول البرمجية</p>
@@ -212,7 +193,6 @@
         </div>
     </header>
 
-    <!-- شريط الثقة -->
     <section class="trust-bar">
         <div class="trust-container">
             <div class="trust-item"><i class="fas fa-check-circle"></i><span>ذكاء اصطناعي متقدم</span></div>
@@ -223,7 +203,6 @@
         </div>
     </section>
 
-    <!-- الاقتباسات -->
     <section class="quotes-section">
         <div class="quotes-container">
             <div class="quote-card"><div class="quote-icon"><i class="fas fa-robot"></i></div><p>"نصنع لك حلولاً ذكية تتكيف مع احتياجاتك وتنمو مع نمو أعمالك."</p></div>
@@ -232,7 +211,6 @@
         </div>
     </section>
 
-    <!-- الإحصائيات -->
     <section class="stats-section">
         <div class="stats-container">
             <h2 class="section-title"><span>Kyntrava AI</span> في أرقام</h2>
@@ -245,7 +223,6 @@
         </div>
     </section>
 
-    <!-- الخدمات -->
     <section class="services-section">
         <div class="services-container">
             <h2 class="section-title">ماذا <span>نقدم</span> لك؟</h2>
@@ -258,7 +235,6 @@
         </div>
     </section>
 
-    <!-- لماذا نحن -->
     <section class="why-us-section">
         <div class="why-us-container">
             <h2 class="section-title">لماذا <span>Kyntrava AI</span>؟</h2>
@@ -271,7 +247,6 @@
         </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta-section">
         <div class="cta-container">
             <h2>هل أنت مستعد <span>للانطلاق نحو المستقبل؟</span></h2>
@@ -280,7 +255,6 @@
         </div>
     </section>
 
-    <!-- فوتر -->
     <footer>
         <div class="footer-links">
             <a href="index.html">الرئيسية</a><a href="about.html">عن الشركة</a><a href="services.html">خدماتنا</a><a href="portfolio.html">أعمالنا</a><a href="consultation.html">الاستشارات</a><a href="contact.html">اتصل بنا</a><a href="privacy.html">سياسة الخصوصية</a><a href="terms.html">الشروط والأحكام</a>
@@ -288,13 +262,11 @@
         <p class="copyright">© 2026 Kyntrava AI. جميع الحقوق محفوظة.</p>
     </footer>
 
-    <!-- أيقونات عائمة -->
     <a href="https://wa.me/963933438019" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <a href="consultation.html" class="consult-float"><i class="fas fa-comments"></i></a>
     <div class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-chevron-up"></i></div>
 
     <script>
-        // ===== قائمة الموبايل =====
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.getElementById('navMenu');
         menuToggle.addEventListener('click', function() {
@@ -315,7 +287,6 @@
             }
         });
 
-        // ===== شريط التقدم =====
         const progressBar = document.querySelector('.reading-progress');
         window.addEventListener('scroll', function() {
             const scrollTop = window.pageYOffset;
@@ -324,20 +295,16 @@
             if (progressBar) progressBar.style.width = Math.min(scrollPercent, 100) + '%';
         });
 
-        // ===== زر الرجوع للأعلى =====
         const backToTopBtn = document.querySelector('.back-to-top');
         window.addEventListener('scroll', function() {
             if (window.scrollY > 500) backToTopBtn.classList.add('show');
             else backToTopBtn.classList.remove('show');
         });
 
-        // ===== تمييز الصفحة النشطة =====
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll('.nav-menu a').forEach(function(link) {
             if (link.getAttribute('href') === currentPage) link.classList.add('active');
         });
-
-        console.log('🚀 Kyntrava AI | الموقع جاهز للعمل');
     </script>
 </body>
 </html>
