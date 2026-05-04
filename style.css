@@ -32,6 +32,10 @@
     --transition: all 0.3s ease;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: var(--light-bg);
     color: var(--text-dark);
@@ -43,6 +47,18 @@ a {
     text-decoration: none;
     color: inherit;
     transition: var(--transition);
+}
+
+/* ===== شريط التقدم للقراءة ===== */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    z-index: 1001;
+    transition: width 0.1s ease;
+    border-radius: 0 2px 0 0;
 }
 
 /* ===== شريط علوي ===== */
@@ -117,11 +133,47 @@ a {
     border-radius: 8px;
     transition: var(--transition);
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+.nav-menu a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+.nav-menu a:hover::before {
+    width: 70%;
 }
 .nav-menu a:hover,
 .nav-menu a.active {
     background: var(--gold);
     color: var(--primary-dark);
+}
+.nav-menu a.active::before {
+    display: none;
+}
+
+/* ===== زر القائمة للموبايل ===== */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-dark);
+    background: none;
+    border: none;
+    padding: 5px;
+    transition: var(--transition);
+    z-index: 1001;
+}
+.menu-toggle:hover {
+    color: var(--gold);
+    transform: rotate(90deg);
 }
 
 /* ===== أيقونات عائمة ===== */
@@ -141,6 +193,7 @@ a {
     box-shadow: 0 4px 20px rgba(37,211,102,0.4);
     z-index: 999;
     animation: pulse 2s infinite;
+    transition: var(--transition);
 }
 .consult-float {
     position: fixed;
@@ -157,7 +210,44 @@ a {
     font-size: 24px;
     box-shadow: 0 4px 20px rgba(226,185,59,0.4);
     z-index: 999;
+    transition: var(--transition);
 }
+
+/* ===== زر الرجوع للأعلى ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 150px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: var(--primary-dark);
+    color: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 2px solid var(--gold);
+}
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.back-to-top:hover {
+    background: var(--gold);
+    color: var(--primary-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(226,185,59,0.5);
+}
+
 @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
     70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
@@ -165,7 +255,7 @@ a {
 }
 .whatsapp-float:hover,
 .consult-float:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 /* ===== الأقسام العامة ===== */
@@ -196,6 +286,17 @@ a {
 }
 .section-title span { color: var(--gold); }
 
+/* ===== أنيميشن الظهور عند التمرير ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ===== الأزرار ===== */
 .btn {
     display: inline-block;
@@ -207,6 +308,24 @@ a {
     transition: var(--transition);
     letter-spacing: 0.3px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+.btn:active::after {
+    width: 300px;
+    height: 300px;
 }
 .btn-primary {
     background: var(--gold);
@@ -228,6 +347,69 @@ a {
     color: var(--gray-dark);
 }
 
+/* ===== بطاقات الخدمات ===== */
+.service-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--gold) 0%, transparent 70%);
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 0;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--gold);
+}
+.service-card:hover::before {
+    left: 0;
+    opacity: 0.03;
+}
+.service-card > * {
+    position: relative;
+    z-index: 1;
+}
+.service-card .icon {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    transition: var(--transition);
+}
+.service-card:hover .icon {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--gold-dark);
+}
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+.service-card:hover h3 {
+    color: var(--gold-dark);
+}
+.service-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
 /* ===== فورم ===== */
 .form-card {
     background: white;
@@ -235,6 +417,10 @@ a {
     border-radius: 18px;
     box-shadow: var(--shadow);
     border-top: 4px solid var(--gold);
+    transition: var(--transition);
+}
+.form-card:hover {
+    box-shadow: var(--shadow-hover);
 }
 .form-card label {
     display: block;
@@ -263,10 +449,17 @@ a {
     outline: none;
     box-shadow: 0 0 0 4px rgba(226,185,59,0.1);
     background: white;
+    transform: translateY(-2px);
 }
 .form-card .required {
     color: #E74C3C;
     margin-right: 3px;
+}
+.form-card input:focus:invalid,
+.form-card select:focus:invalid,
+.form-card textarea:focus:invalid {
+    border-color: #E74C3C;
+    box-shadow: 0 0 0 4px rgba(231,76,60,0.1);
 }
 
 /* ===== Lightbox ===== */
@@ -280,12 +473,14 @@ a {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    animation: fadeIn 0.3s ease;
 }
 .lightbox.active { display: flex; }
 .lightbox img {
     max-width: 90%;
     max-height: 90%;
     border-radius: 10px;
+    animation: zoomIn 0.3s ease;
 }
 .lightbox .close {
     position: absolute;
@@ -297,7 +492,19 @@ a {
     transition: var(--transition);
     z-index: 10000;
 }
-.lightbox .close:hover { color: var(--gold); }
+.lightbox .close:hover { 
+    color: var(--gold); 
+    transform: rotate(90deg);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
 
 /* ===== شريط الثقة ===== */
 .trust-bar {
@@ -321,8 +528,22 @@ a {
     color: var(--text-dark);
     font-weight: 600;
     font-size: 0.95rem;
+    transition: var(--transition);
+    cursor: default;
 }
-.trust-item i { color: var(--gold); font-size: 1.3rem; }
+.trust-item:hover {
+    transform: translateY(-3px);
+    color: var(--gold-dark);
+}
+.trust-item i { 
+    color: var(--gold); 
+    font-size: 1.3rem; 
+    transition: var(--transition);
+}
+.trust-item:hover i {
+    color: var(--gold-dark);
+    transform: scale(1.2);
+}
 
 /* ===== CTA Section ===== */
 .cta-section {
@@ -332,6 +553,31 @@ a {
     text-align: center;
     color: white;
     margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(226,185,59,0.1) 0%, transparent 50%);
+    animation: rotate 20s linear infinite;
+}
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.cta-section > * {
+    position: relative;
+    z-index: 1;
+}
+.cta-section:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 .cta-section h3 {
     font-size: 1.7rem;
@@ -380,6 +626,7 @@ footer a {
     text-decoration: none;
     margin: 5px 8px;
     font-weight: 600;
+    transition: var(--transition);
 }
 footer a:hover {
     text-decoration: underline;
@@ -399,14 +646,36 @@ footer .copyright {
 
 /* ===== ميديا كويري ===== */
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
     .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+    }
+    .nav-menu {
+        display: none;
         flex-direction: column;
-        gap: 6px;
-        padding: 0.3rem 0.8rem;
+        width: 100%;
+        background: white;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        padding: 15px;
+        border-radius: 0 0 15px 15px;
+        gap: 8px;
+    }
+    .nav-menu.show {
+        display: flex;
+        animation: slideDown 0.3s ease;
     }
     .nav-menu a {
-        font-size: 0.75rem;
-        padding: 6px 10px;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 0.9rem;
     }
     .logo-img {
         height: 36px;
@@ -419,7 +688,8 @@ footer .copyright {
         font-size: 1.5rem;
     }
     .whatsapp-float,
-    .consult-float {
+    .consult-float,
+    .back-to-top {
         width: 46px;
         height: 46px;
         font-size: 22px;
@@ -427,16 +697,21 @@ footer .copyright {
     .consult-float {
         bottom: 75px;
     }
+    .back-to-top {
+        bottom: 140px;
+    }
+    .service-card {
+        margin-bottom: 20px;
+    }
 }
 
 @media (max-width: 480px) {
     .nav-menu {
-        gap: 1px;
+        gap: 3px;
     }
     .nav-menu a {
-        font-size: 0.7rem;
-        padding: 5px 8px;
-        border-radius: 6px;
+        font-size: 0.85rem;
+        padding: 8px;
     }
     .logo-img {
         height: 30px;
@@ -450,5 +725,39 @@ footer .copyright {
     }
     .section-title {
         font-size: 1.3rem;
+    }
+    .service-card {
+        padding: 20px 15px;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== تنسيق الطباعة ===== */
+@media print {
+    .navbar,
+    .top-bar,
+    .whatsapp-float,
+    .consult-float,
+    .back-to-top,
+    .reading-progress,
+    .menu-toggle {
+        display: none !important;
+    }
+    body {
+        background: white;
+        color: black;
+    }
+    .section {
+        padding: 20px 0;
     }
 }
