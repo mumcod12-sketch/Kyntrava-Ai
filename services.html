@@ -3,45 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدماتنا - Kyntrava AI</title>
-    <meta name="description" content="خدمات Kyntrava AI: تطوير برمجيات، ذكاء اصطناعي، حلول تقنية">
+    <title>خدمات Kyntrava AI | تطوير برمجيات، ذكاء اصطناعي، حلول تقنية</title>
+    <meta name="description" content="خدمات Kyntrava AI: تطوير مواقع ويب، تطبيقات جوال، أنظمة ذكاء اصطناعي، تعلم آلي، تحليل بيانات، استشارات تقنية.">
+    <meta property="og:title" content="خدمات Kyntrava AI">
+    <meta property="og:description" content="حلول برمجية وذكاء اصطناعي متطورة">
+    <meta property="og:image" content="https://i.imgur.com/aRilL9C.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        :root { --primary: #D4AF37; --primary-dark: #B49430; --dark-bg: #1A1A2E; }
+        
+        :root {
+            --primary: #D4AF37;
+            --primary-dark: #B49430;
+            --primary-light: #E0C35A;
+            --dark-bg: #1A1A2E;
+            --silver: #C0C0C0;
+            --gray: #A0A0A0;
+            --darkgray: #808080;
+            --neon-blue: #00d4ff;
+        }
+        
         body { background: #f8f9fa; overflow-x: hidden; }
-        .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--primary); z-index: 10000; }
-        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 2px solid rgba(212,175,55,0.3); position: sticky; top: 0; z-index: 1000; }
+
+        .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--primary); z-index: 10000; transition: width 0.1s; }
+
+        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 2px solid rgba(212,175,55,0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 0.4rem 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo-img { height: 40px; }
+        .logo-img { height: 42px; }
         .nav-menu { display: flex; list-style: none; gap: 2px; flex-wrap: wrap; }
-        .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 0.82rem; padding: 7px 13px; border-radius: 8px; white-space: nowrap; }
-        .nav-menu a:hover { color: var(--primary); }
+        .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 0.82rem; padding: 7px 13px; border-radius: 8px; transition: all 0.3s; white-space: nowrap; }
+        .nav-menu a:hover { color: var(--primary); background: rgba(212,175,55,0.08); }
         .nav-menu a.active { background: var(--primary); color: white; }
-        .menu-toggle { display: none; font-size: 1.6rem; cursor: pointer; background: none; border: 1px solid #ddd; border-radius: 8px; padding: 5px 12px; color: #555; }
+        .menu-toggle { display: none; font-size: 1.6rem; cursor: pointer; color: #555; background: none; border: 1px solid #ddd; border-radius: 8px; padding: 5px 12px; transition: 0.3s; }
+        .menu-toggle:hover { color: var(--primary); border-color: var(--primary); }
+
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
-            .nav-menu { display: none; flex-direction: column; width: 100%; background: white; position: absolute; top: 100%; left: 0; padding: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 0 0 15px 15px; gap: 5px; }
+            .nav-menu { display: none; flex-direction: column; width: 100%; background: white; position: absolute; top: 100%; left: 0; right: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.15); padding: 15px; border-radius: 0 0 15px 15px; gap: 5px; z-index: 1000; }
             .nav-menu.show { display: flex; animation: slideDown 0.3s ease; }
-            .nav-menu a { width: 100%; text-align: center; padding: 12px; }
+            .nav-menu a { width: 100%; text-align: center; padding: 12px; font-size: 0.95rem; }
         }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
-        .page-header { background: linear-gradient(135deg, #1a1a2e, #16213e); padding: 60px 20px; text-align: center; color: white; }
-        .page-header h1 { font-size: 2.2rem; }
+
+        .page-header { background: linear-gradient(135deg, #2a2a4a, #1a1a3e); padding: 70px 20px 60px; text-align: center; color: white; position: relative; overflow: hidden; }
+        .page-header::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 50px; background: #f8f9fa; clip-path: ellipse(65% 100% at 50% 100%); }
+        .page-header h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; position: relative; z-index: 1; }
         .page-header h1 span { color: var(--primary); }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        .service-card { background: white; border-radius: 16px; padding: 25px; margin-bottom: 18px; display: flex; gap: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-right: 4px solid var(--primary); }
-        .service-icon { width: 60px; height: 60px; background: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; flex-shrink: 0; }
-        .service-info h3 { color: #444; margin-bottom: 6px; }
-        .service-info p { color: #666; line-height: 1.8; }
-        .service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .service-tags span { background: #f0f0f0; color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
-        @media (max-width: 768px) { .service-card { flex-direction: column; } .page-header h1 { font-size: 1.6rem; } }
-        footer { background: var(--dark-bg); color: #ccc; text-align: center; padding: 30px 20px; font-size: 0.85rem; border-top: 4px solid var(--primary); }
+        .page-header p { font-size: 1.1rem; opacity: 0.9; position: relative; z-index: 1; }
+
+        .services-container { max-width: 1000px; margin: -30px auto 60px; padding: 0 20px; position: relative; z-index: 2; }
+
+        .section-divider { text-align: center; margin: 40px 0 25px; }
+        .section-divider h2 { font-size: 1.6rem; color: #555; font-weight: 800; display: inline-block; }
+        .section-divider h2::after { content: ''; display: block; width: 45px; height: 3px; background: var(--primary); margin: 8px auto 0; border-radius: 2px; }
+        .section-divider h2 span { color: var(--primary); }
+
+        .service-card { background: white; border-radius: 18px; padding: 30px 28px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 22px; box-shadow: 0 3px 20px rgba(0,0,0,0.04); border: 1px solid #f0f0f0; transition: all 0.3s; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; right: 0; width: 5px; height: 100%; background: var(--primary); }
+        .service-card:nth-child(2)::before { background: var(--silver); }
+        .service-card:nth-child(3)::before { background: var(--gray); }
+        .service-card:nth-child(5)::before { background: var(--silver); }
+        .service-card:nth-child(6)::before { background: var(--gray); }
+        .service-card:nth-child(7)::before { background: var(--silver); }
+        .service-card:nth-child(8)::before { background: var(--gray); }
+        .service-card:hover { transform: translateX(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
+
+        .service-num { font-size: 2.5rem; font-weight: 900; color: #e8e8e8; line-height: 1; min-width: 45px; text-align: center; transition: 0.3s; }
+        .service-card:hover .service-num { color: var(--primary); }
+
+        .service-icon-wrapper { width: 55px; height: 55px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; flex-shrink: 0; box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
+        .service-content { flex: 1; }
+        .service-content h3 { font-size: 1.2rem; color: #555; margin-bottom: 8px; font-weight: 800; }
+        .service-content p { color: #777; font-size: 0.9rem; line-height: 1.8; margin-bottom: 12px; }
+
+        .service-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+        .service-features span { background: #F5F5F5; color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 5px 12px; border-radius: 20px; }
+
+        .service-cta-btn { display: inline-block; padding: 10px 22px; background: var(--primary); color: #333; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: 0.3s; }
+        .service-cta-btn:hover { background: var(--primary-dark); transform: translateX(-5px); }
+
+        .cta-section { background: linear-gradient(135deg, #2a2a4a, #1a1a3e); border-radius: 22px; padding: 45px 35px; text-align: center; color: white; margin-top: 50px; }
+        .cta-section h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 800; }
+        .cta-section h3 span { color: var(--primary); }
+        .cta-section p { opacity: 0.9; margin-bottom: 28px; line-height: 2; }
+        .btn-cta { display: inline-block; background: var(--primary); color: #333; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: 0.3s; }
+        .btn-cta:hover { background: var(--primary-dark); transform: translateY(-4px); }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.8rem; }
+            .service-card { flex-direction: column; gap: 12px; padding: 22px 18px; }
+            .service-num { display: none; }
+        }
+
+        footer { background: var(--dark-bg); color: #ccc; padding: 30px 15px 20px; text-align: center; font-size: 0.85rem; border-top: 4px solid var(--primary); }
         footer a { color: var(--primary); text-decoration: none; margin: 5px 8px; font-weight: 600; }
+        footer a:hover { color: var(--primary-light); }
         footer .footer-links { margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 999; text-decoration: none; }
+        footer .copyright { color: #999; font-size: 0.8rem; }
+
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 999; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
         .consult-float { position: fixed; bottom: 85px; right: 20px; width: 55px; height: 55px; background: var(--primary); color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; z-index: 999; text-decoration: none; }
         .back-to-top { position: fixed; bottom: 150px; right: 20px; width: 48px; height: 48px; background: #333; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; z-index: 999; cursor: pointer; opacity: 0; visibility: hidden; transition: 0.3s; border: 2px solid var(--primary); }
         .back-to-top.show { opacity: 1; visibility: visible; }
@@ -49,10 +112,12 @@
 </head>
 <body>
     <div class="reading-progress"></div>
-    
+
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html"><img src="https://imgur.com/x5sJ7l7.png" alt="Kyntrava AI" class="logo-img"></a>
+            <div class="logo-area">
+                <a href="index.html"><img src="https://imgur.com/x5sJ7l7.png" alt="Kyntrava AI" class="logo-img"></a>
+            </div>
             <button class="menu-toggle"><i class="fas fa-bars"></i></button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">الرئيسية</a></li>
@@ -67,49 +132,122 @@
 
     <header class="page-header">
         <h1><span>خدماتنا</span> المتكاملة</h1>
-        <p>حلول برمجية وذكاء اصطناعي متطورة</p>
+        <p>حلول برمجية وذكاء اصطناعي متطورة لعملائنا في الوطن العربي</p>
     </header>
 
-    <main class="container">
+    <main class="services-container">
+        <div class="section-divider">
+            <h2><i class="fas fa-code" style="color:var(--primary); margin-left:8px;"></i> تطوير <span>البرمجيات</span></h2>
+        </div>
+
         <div class="service-card">
-            <div class="service-icon"><i class="fas fa-robot"></i></div>
-            <div class="service-info">
-                <h3>أنظمة ذكاء اصطناعي</h3>
-                <p>نطور حلول ذكاء اصطناعي متكاملة تشمل تعلم الآلة، معالجة اللغة الطبيعية، ورؤية الحاسوب.</p>
-                <div class="service-tags"><span>Machine Learning</span><span>NLP</span><span>Deep Learning</span></div>
+            <div class="service-num">01</div>
+            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #D4AF37, #B49430);"><i class="fas fa-laptop-code"></i></div>
+            <div class="service-content">
+                <h3>تصميم وتطوير مواقع ويب</h3>
+                <p>نصمم ونطور مواقع عصرية متجاوبة مع جميع الأجهزة، بواجهات مستخدم جذابة وتجربة مستخدم سلسة. نستخدم أحدث تقنيات الويب مثل React و Next.js.</p>
+                <div class="service-features"><span>React/Next.js</span><span>واجهات جذابة</span><span>متجاوبة</span><span>SEO متقدم</span></div>
+                <a href="consultation.html" class="service-cta-btn">اطلب موقعك الآن <i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
-        <div class="service-card" style="border-right-color:#C0C0C0;">
-            <div class="service-icon" style="background:#C0C0C0;"><i class="fas fa-code"></i></div>
-            <div class="service-info">
-                <h3>تطوير البرمجيات</h3>
-                <p>تطبيقات ويب وجوال مخصصة باستخدام أحدث التقنيات مثل React و Flutter.</p>
-                <div class="service-tags"><span>React</span><span>Flutter</span><span>Next.js</span></div>
+
+        <div class="service-card">
+            <div class="service-num">02</div>
+            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #C0C0C0, #A0A0A0);"><i class="fas fa-mobile-alt"></i></div>
+            <div class="service-content">
+                <h3>تطبيقات جوال أصلية وهجينة</h3>
+                <p>نطور تطبيقات Android و iOS أصلية أو عبر المنصات باستخدام Flutter و React Native مع أداء عالي وتجربة استخدام استثنائية.</p>
+                <div class="service-features"><span>Flutter</span><span>React Native</span><span>iOS & Android</span><span>أداء عالي</span></div>
+                <a href="consultation.html" class="service-cta-btn">اطلب تطبيقك الآن <i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
-        <div class="service-card" style="border-right-color:#A0A0A0;">
-            <div class="service-icon" style="background:#A0A0A0;"><i class="fas fa-cloud"></i></div>
-            <div class="service-info">
-                <h3>حلول سحابية</h3>
-                <p>بنية تحتية سحابية آمنة وقابلة للتطوير على AWS و Google Cloud.</p>
-                <div class="service-tags"><span>AWS</span><span>Azure</span><span>Cloud</span></div>
+
+        <div class="service-card">
+            <div class="service-num">03</div>
+            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #A0A0A0, #808080);"><i class="fas fa-cloud"></i></div>
+            <div class="service-content">
+                <h3>حلول سحابية وبنية تحتية</h3>
+                <p>نصمم وننشر بنى تحتية سحابية آمنة وقابلة للتطوير على AWS، Google Cloud، و Azure. نضمن لك استضافة موثوقة وأداء عالي.</p>
+                <div class="service-features"><span>AWS</span><span>Google Cloud</span><span>Azure</span><span>أمان عالي</span></div>
+                <a href="consultation.html" class="service-cta-btn">اطلب حل سحابي الآن <i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
-        <div class="service-card" style="border-right-color:#808080;">
-            <div class="service-icon" style="background:#808080;"><i class="fas fa-chart-bar"></i></div>
-            <div class="service-info">
-                <h3>تحليل البيانات</h3>
-                <p>لوحات معلومات تفاعلية وأنظمة تحليل بيانات متقدمة لمساعدتك في اتخاذ القرارات.</p>
-                <div class="service-tags"><span>Power BI</span><span>Dashboards</span></div>
+
+        <div class="section-divider">
+            <h2><i class="fas fa-robot" style="color:var(--primary); margin-left:8px;"></i> الذكاء <span>الاصطناعي</span></h2>
+        </div>
+
+        <div class="service-card">
+            <div class="service-num">04</div>
+            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #D4AF37, #B49430);"><i class="fas fa-robot"></i></div>
+            <div class="service-content">
+                <h3>أنظمة ذكاء اصطناعي وتعلم آلة</h3>
+                <p>نطور حلول ذكاء اصطناعي متكاملة تشمل تعلم الآلة، معالجة اللغة الطبيعية، ورؤية الحاسوب. نساعدك في أتمتة عملياتك واتخاذ قرارات ذكية.</p>
+                <div class="service-features"><span>Machine Learning</span><span>NLP</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                <a href="consultation.html" class="service-cta-btn">اطلب نظام AI الآن <i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
+
+        <div class="service-card">
+            <div class="service-num">05</div>
+            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #C0C0C0, #A0A0A0);"><i class="fas fa-chart-bar"></i></div>
+            <div class="service-content">
+                <h3>تحليل البيانات ولوحات المعلومات</h3>
+                <p>نحول بياناتك الخام إلى رؤى قابلة للتنفيذ. نبني لوحات معلومات تفاعلية وأنظمة تحليل بيانات متقدمة لمساعدتك في مراقبة أداء أعمالك.</p>
+                <div class="service-features"><span>Data Analysis</span><span>Dashboards</span><span>Power BI</span><span>تقارير ذكية</span></div>
+                <a href="consultation.html" class="service-cta-btn">اطلب تحليل بيانات الآن <i class="fas fa-arrow-left"></i></a>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <h2><i class="fas fa-headset" style="color:var(--primary); margin-left:8px;"></i> خدمات <span>إضافية</span></h2>
+        </div>
+
+        <div class="service-card">
+            <div class="service-num">06</div>
+            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #D4AF37, #B49430);"><i class="fas fa-shield-alt"></i></div>
+            <div class="service-content">
+                <h3>الأمن السيبراني وحماية البيانات</h3>
+                <p>نقدم حلول أمنية متكاملة لحماية تطبيقاتك وبياناتك من التهديدات. تقييم الثغرات، اختبار الاختراق، وتأمين البنية التحتية.</p>
+                <div class="service-features"><span>تقييم ثغرات</span><span>حماية بيانات</span><span>أمان تطبيقات</span></div>
+                <a href="consultation.html" class="service-cta-btn">اطلب حماية الآن <i class="fas fa-arrow-left"></i></a>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-num">07</div>
+            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #C0C0C0, #A0A0A0);"><i class="fas fa-paint-brush"></i></div>
+            <div class="service-content">
+                <h3>تصميم UI/UX وتجربة مستخدم</h3>
+                <p>نصمم واجهات مستخدم بديهية وتجربة مستخدم استثنائية. نجري أبحاث المستخدم ونبني نماذج أولية تفاعلية لضمان أفضل تجربة لعملائك.</p>
+                <div class="service-features"><span>UI Design</span><span>UX Research</span><span>Figma</span><span>نماذج تفاعلية</span></div>
+                <a href="consultation.html" class="service-cta-btn">اطلب تصميم الآن <i class="fas fa-arrow-left"></i></a>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-num">08</div>
+            <div class="service-icon-wrapper" style="background:linear-gradient(135deg, #A0A0A0, #808080);"><i class="fas fa-headset"></i></div>
+            <div class="service-content">
+                <h3>استشارات تقنية متخصصة</h3>
+                <p>نقدم استشارات تقنية متخصصة لمساعدتك في اختيار التقنيات المناسبة لمشروعك، وتخطيط البنية التقنية، وتقدير التكاليف والجداول الزمنية.</p>
+                <div class="service-features"><span>تخطيط تقني</span><span>اختيار تقنيات</span><span>تقدير تكاليف</span></div>
+                <a href="consultation.html" class="service-cta-btn">احجز استشارة الآن <i class="fas fa-arrow-left"></i></a>
+            </div>
+        </div>
+
+        <section class="cta-section">
+            <h3>هل أنت جاهز <span>للبدء بمشروعك؟</span></h3>
+            <p>فريقنا التقني على أتم الاستعداد لتقديم استشارة أولية مجانية وتقييم احتياجات مشروعك البرمجي.</p>
+            <a href="consultation.html" class="btn-cta"><i class="fas fa-paper-plane" style="margin-left:8px;"></i> احجز استشارتك الآن</a>
+        </section>
     </main>
 
     <footer>
         <div class="footer-links">
             <a href="index.html">الرئيسية</a><a href="about.html">عن الشركة</a><a href="services.html">خدماتنا</a><a href="portfolio.html">أعمالنا</a><a href="consultation.html">الاستشارات</a><a href="contact.html">اتصل بنا</a><a href="privacy.html">سياسة الخصوصية</a><a href="terms.html">الشروط والأحكام</a>
         </div>
-        <p>© 2026 Kyntrava AI. جميع الحقوق محفوظة.</p>
+        <p class="copyright">© 2026 Kyntrava AI. جميع الحقوق محفوظة. | شركة مسجلة رسمياً</p>
     </footer>
 
     <a href="https://wa.me/963933438019" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -119,13 +257,33 @@
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('show'); menuToggle.querySelector('i').className = navMenu.classList.contains('show') ? 'fas fa-times' : 'fas fa-bars'; });
-        navMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { navMenu.classList.remove('show'); menuToggle.querySelector('i').className = 'fas fa-bars'; }));
-        document.addEventListener('click', (e) => { if (navMenu.classList.contains('show') && !e.target.closest('.nav-container')) { navMenu.classList.remove('show'); menuToggle.querySelector('i').className = 'fas fa-bars'; } });
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
+            const icon = menuToggle.querySelector('i');
+            icon.className = navMenu.classList.contains('show') ? 'fas fa-times' : 'fas fa-bars';
+        });
+        navMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('show');
+                menuToggle.querySelector('i').className = 'fas fa-bars';
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (navMenu.classList.contains('show') && !e.target.closest('.nav-container')) {
+                navMenu.classList.remove('show');
+                menuToggle.querySelector('i').className = 'fas fa-bars';
+            }
+        });
         const progressBar = document.querySelector('.reading-progress');
-        window.addEventListener('scroll', () => { const p = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100; if (progressBar) progressBar.style.width = Math.min(p, 100) + '%'; });
+        window.addEventListener('scroll', function() {
+            const p = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (progressBar) progressBar.style.width = Math.min(p, 100) + '%';
+        });
         const backToTopBtn = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => { if (window.scrollY > 500) backToTopBtn.classList.add('show'); else backToTopBtn.classList.remove('show'); });
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) backToTopBtn.classList.add('show');
+            else backToTopBtn.classList.remove('show');
+        });
     </script>
 </body>
 </html>
