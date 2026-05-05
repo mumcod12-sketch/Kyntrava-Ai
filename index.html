@@ -259,6 +259,17 @@
             z-index: 4;
         }
         .hero-content { max-width: 900px; position: relative; z-index: 3; }
+        
+        /* ===== ✅ لوجو في وسط الهيرو ===== */
+        .hero-logo {
+            display: block;
+            width: 180px;
+            height: auto;
+            margin: 0 auto 25px;
+            filter: drop-shadow(0 0 25px var(--primary-glow));
+            animation: fadeInUp 0.8s ease;
+        }
+        
         .hero-tagline {
             font-size: 2rem;
             font-weight: 800;
@@ -875,6 +886,7 @@
         @media (max-width: 768px) {
             .custom-cursor, .custom-cursor-dot { display: none; }
             body { cursor: auto; }
+            .hero-logo { width: 140px; }
             .hero-tagline { font-size: 1.3rem; }
             .hero-title { font-size: 1.2rem; }
             .quotes-container { grid-template-columns: 1fr; }
@@ -890,6 +902,7 @@
             .nav-menu a { width: 100%; text-align: center; padding: 12px; font-size: 0.95rem; }
         }
         @media (max-width: 480px) {
+            .hero-logo { width: 120px; }
             .hero-tagline { font-size: 1.1rem; }
             .stats-grid { grid-template-columns: 1fr; }
             .services-grid-4 { grid-template-columns: 1fr; }
@@ -956,11 +969,14 @@
         </div>
     </nav>
 
-    <!-- ===== الهيرو ===== -->
+    <!-- ===== الهيرو مع اللوجو في الوسط ===== -->
     <header class="hero">
         <canvas id="heroCanvas"></canvas>
         <div class="hero-overlay"></div>
         <div class="hero-content">
+            <!-- ✅ اللوجو في وسط الهيرو -->
+            <img src="https://imgur.com/JSz0wHv.png" alt="Kyntrava AI" class="hero-logo">
+            
             <p class="hero-tagline"><span>Kyntrava AI</span> للذكاء الاصطناعي والحلول البرمجية المتكاملة</p>
             <div class="hero-divider"></div>
             <h1 class="hero-title">المستقبل <span>بالذكاء الاصطناعي</span></h1>
@@ -1083,23 +1099,25 @@
         // ===== ✅ قائمة الموبايل =====
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('show');
-            const icon = menuToggle.querySelector('i');
-            icon.className = navMenu.classList.contains('show') ? 'fas fa-times' : 'fas fa-bars';
-        });
-        navMenu.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('show');
-                menuToggle.querySelector('i').className = 'fas fa-bars';
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+                const icon = menuToggle.querySelector('i');
+                icon.className = navMenu.classList.contains('show') ? 'fas fa-times' : 'fas fa-bars';
             });
-        });
-        document.addEventListener('click', function(e) {
-            if (navMenu.classList.contains('show') && !e.target.closest('.nav-container')) {
-                navMenu.classList.remove('show');
-                menuToggle.querySelector('i').className = 'fas fa-bars';
-            }
-        });
+            navMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('show');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (navMenu.classList.contains('show') && !e.target.closest('.nav-container')) {
+                    navMenu.classList.remove('show');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                }
+            });
+        }
 
         // ===== مؤشر الفأرة المخصص =====
         const cursor = document.querySelector('.custom-cursor');
@@ -1221,10 +1239,6 @@
             pointLight2.position.set(-5, -2, 3);
             scene.add(pointLight2);
             
-            const gridHelper = new THREE.GridHelper(25, 25, 0xD4AF37, 0x333333);
-            gridHelper.position.y = -5;
-            scene.add(gridHelper);
-            
             const robotsGroup = new THREE.Group();
             scene.add(robotsGroup);
             
@@ -1274,26 +1288,15 @@
                 robot.add(rightArm);
                 
                 robot.position.set(x, y, z);
-                robot.userData = {
-                    floatPhase: Math.random() * Math.PI * 2,
-                    floatSpeed: 0.5 + Math.random() * 1,
-                    rotateSpeed: 0.2 + Math.random() * 0.5,
-                    color: color
-                };
+                robot.userData = { floatPhase: Math.random() * Math.PI * 2, floatSpeed: 0.5 + Math.random() * 1, rotateSpeed: 0.2 + Math.random() * 0.5, color: color };
                 return robot;
             }
             
-            const robots = [];
             const robotColors = [0xD4AF37, 0xC0C0C0, 0xA0A0A0, 0xD4AF37, 0xC0C0C0, 0xA0A0A0];
-            
             for (let i = 0; i < 6; i++) {
                 const angle = (i / 6) * Math.PI * 2;
                 const radius = 8 + Math.random() * 3;
-                const x = Math.cos(angle) * radius;
-                const z = Math.sin(angle) * radius;
-                const y = -3 + Math.random() * 2;
-                const robot = createRobot(x, y, z, robotColors[i]);
-                robots.push(robot);
+                const robot = createRobot(Math.cos(angle) * radius, -3 + Math.random() * 2, Math.sin(angle) * radius, robotColors[i]);
                 robotsGroup.add(robot);
             }
             
@@ -1302,63 +1305,28 @@
             for (let i = 0; i < 80; i++) {
                 const size = Math.random() * 0.06 + 0.02;
                 const geo = new THREE.SphereGeometry(size, 6, 6);
-                const mat = new THREE.MeshPhongMaterial({
-                    color: Math.random() > 0.5 ? 0xD4AF37 : 0xC0C0C0,
-                    emissive: 0xD4AF37, emissiveIntensity: 0.5,
-                    transparent: true, opacity: 0.7
-                });
+                const mat = new THREE.MeshPhongMaterial({ color: Math.random() > 0.5 ? 0xD4AF37 : 0xC0C0C0, emissive: 0xD4AF37, emissiveIntensity: 0.5, transparent: true, opacity: 0.7 });
                 const particle = new THREE.Mesh(geo, mat);
-                particle.position.set(
-                    (Math.random() - 0.5) * 20,
-                    (Math.random() - 0.5) * 12,
-                    (Math.random() - 0.5) * 20
-                );
-                particle.userData = {
-                    speedY: (Math.random() - 0.5) * 0.02,
-                    baseY: particle.position.y,
-                    amplitude: Math.random() * 2,
-                    phase: Math.random() * Math.PI * 2
-                };
+                particle.position.set((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 12, (Math.random() - 0.5) * 20);
+                particle.userData = { speedY: (Math.random() - 0.5) * 0.02, baseY: particle.position.y, amplitude: Math.random() * 2 };
                 particlesGroup.add(particle);
-            }
-            
-            for (let j = 0; j < 4; j++) {
-                const ringGeo = new THREE.TorusGeometry(4 + j * 2, 0.02, 8, 100);
-                const ringMat = new THREE.MeshPhongMaterial({
-                    color: 0xD4AF37, emissive: 0xD4AF37, emissiveIntensity: 0.3,
-                    transparent: true, opacity: 0.25 - j * 0.05
-                });
-                const ring = new THREE.Mesh(ringGeo, ringMat);
-                ring.rotation.x = Math.PI / 2 + j * 0.4;
-                ring.position.y = -3;
-                ring.userData = { speed: 0.003 + j * 0.002 };
-                scene.add(ring);
             }
             
             function animate() {
                 requestAnimationFrame(animate);
                 const time = Date.now() * 0.001;
-                
-                robots.forEach(robot => {
+                robotsGroup.children.forEach(robot => {
                     robot.position.y += Math.sin(time * robot.userData.floatSpeed + robot.userData.floatPhase) * 0.008;
                     robot.rotation.y += robot.userData.rotateSpeed * 0.005;
                 });
-                
                 robotsGroup.rotation.y += 0.001;
                 particlesGroup.rotation.y += 0.0005;
-                
                 particlesGroup.children.forEach(p => {
                     p.position.y += p.userData.speedY;
                     if (Math.abs(p.position.y - p.userData.baseY) > p.userData.amplitude) p.userData.speedY *= -1;
                 });
-                
-                scene.children.forEach(child => {
-                    if (child.geometry && child.geometry.type === 'TorusGeometry') child.rotation.z += child.userData.speed;
-                });
-                
                 renderer.render(scene, camera);
             }
-            
             animate();
             
             window.addEventListener('resize', () => {
@@ -1375,6 +1343,12 @@
                 robotsGroup.rotation.x += (mouseY * 0.1 - robotsGroup.rotation.x) * 0.01;
             });
         })();
+        
+        // ===== تمييز الصفحة النشطة =====
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.nav-menu a').forEach(function(link) {
+            if (link.getAttribute('href') === currentPage) link.classList.add('active');
+        });
     </script>
 </body>
 </html>
