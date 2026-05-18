@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // ========== 2. قائمة الموبايل المتجاوبة ==========
     const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    const navMenu = document.querySelector('.nav-menu') || document.getElementById('navMenu');
     const navbar = document.querySelector('.navbar');
 
     if (menuToggle && navMenu) {
@@ -89,8 +89,10 @@ document.addEventListener("DOMContentLoaded", function() {
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('show');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                if (menuToggle) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
                 document.body.style.overflow = '';
             });
         });
@@ -101,8 +103,10 @@ document.addEventListener("DOMContentLoaded", function() {
             !e.target.closest('.nav-container') && 
             !e.target.closest('.menu-toggle')) {
             navMenu.classList.remove('show');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            if (menuToggle) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
             document.body.style.overflow = '';
         }
     });
@@ -155,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const label = field.previousElementSibling;
                 
                 field.addEventListener('focus', () => {
-                    label.style.color = 'var(--primary, #D4AF37)';
+                    label.style.color = '#00BFFF';
                     label.style.transform = 'translateY(-2px)';
                     label.style.transition = 'all 0.3s ease';
                 });
@@ -305,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 padding: 40px 35px;
                 text-align: center;
                 box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-                border: 2px solid #D4AF37;
+                border: 2px solid #00BFFF;
                 max-width: 480px;
                 width: 90%;
                 animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -313,28 +317,28 @@ document.addEventListener("DOMContentLoaded", function() {
             ">
                 <div style="
                     width: 80px; height: 80px;
-                    background: linear-gradient(135deg, #D4AF37, #B49430);
+                    background: linear-gradient(135deg, #00BFFF, #0099CC);
                     border-radius: 50%;
                     display: flex; align-items: center; justify-content: center;
                     margin: 0 auto 20px;
                     font-size: 2.2rem; color: white;
-                    box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+                    box-shadow: 0 10px 30px rgba(0, 191, 255, 0.3);
                 "><i class="fas fa-check"></i></div>
                 <h3 style="color:#1A1A2E; margin-bottom:12px; font-size:1.4rem; font-weight:800;">
                     ✅ تم إرسال طلبك بنجاح!
                 </h3>
                 <p style="color:#666; margin-bottom:25px; line-height:1.9; font-size:0.95rem;">
-                    شكراً لتواصلك مع <strong style="color:#D4AF37;">Kyntrava AI</strong> 🚀<br>
+                    شكراً لتواصلك مع <strong style="color:#00BFFF;">Kyntrava AI</strong> 🚀<br>
                     سيتواصل معك أحد خبرائنا خلال <strong>24 ساعة</strong>.
                 </p>
                 <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
                     <button class="close-notification" style="
-                        background: linear-gradient(135deg, #D4AF37, #B49430); color: white; border: none;
+                        background: linear-gradient(135deg, #00BFFF, #0099CC); color: white; border: none;
                         padding: 12px 30px; border-radius: 50px;
                         font-weight: 700; cursor: pointer;
                         font-family: 'Cairo'; font-size: 0.95rem;
                         transition: all 0.3s ease;
-                        box-shadow: 0 5px 15px rgba(212,175,55,0.3);
+                        box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
                     ">حسناً 👍</button>
                     <button class="close-notification-outline" style="
                         background: transparent; color: #666; border: 2px solid #ddd;
@@ -393,7 +397,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 if (navMenu && navMenu.classList.contains('show')) {
                     navMenu.classList.remove('show');
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                 }
                 
                 const headerHeight = navbar ? navbar.offsetHeight : 80;
@@ -560,7 +564,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
             if (navMenu && navMenu.classList.contains('show')) {
                 navMenu.classList.remove('show');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
             document.body.style.overflow = '';
         }
@@ -633,7 +637,7 @@ document.addEventListener("DOMContentLoaded", function() {
     © 2026 Kyntrava AI - جميع الحقوق محفوظة
     
     ✨ استمتع بتجربة مستخدم سلسة!
-    🎨 التصميم: Glassmorphism + Neumorphism + 3D + Particles
+    🎨 التصميم: Glassmorphism + Neumorphism + 3D + Particles + Bright Blue
     `);
 });
 
