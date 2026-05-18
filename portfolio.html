@@ -21,6 +21,10 @@
             --primary-dark: #B49430;
             --primary-light: #E0C35A;
             --primary-glow: rgba(212, 175, 55, 0.6);
+            --bright-blue: #00BFFF;
+            --bright-blue-light: #33CCFF;
+            --bright-blue-dark: #0099CC;
+            --blue-glow: rgba(0, 191, 255, 0.6);
             --dark-bg: #1A1A2E;
             --darker-bg: #0a0a1a;
             --silver: #C0C0C0;
@@ -63,17 +67,17 @@
         }
         .custom-cursor.hover {
             width: 60px; height: 60px;
-            border-color: var(--primary-light);
-            background: rgba(212,175,55,0.1);
+            border-color: var(--bright-blue);
+            background: rgba(0, 191, 255, 0.1);
         }
         
         /* ===== شريط التقدم ===== */
         .reading-progress {
             position: fixed; top: 0; left: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--neon-blue), var(--primary));
+            background: linear-gradient(90deg, var(--primary), var(--bright-blue), var(--neon-blue), var(--primary));
             z-index: 10000;
-            box-shadow: 0 0 10px var(--primary-glow);
+            box-shadow: 0 0 10px var(--blue-glow), 0 0 20px var(--primary-glow);
         }
         
         /* ===== خلفية الجسيمات ===== */
@@ -105,8 +109,8 @@
         }
         .theme-toggle:hover, .font-size-toggle:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 20px var(--primary-glow);
-            color: var(--primary);
+            box-shadow: 0 0 20px var(--blue-glow);
+            color: var(--bright-blue);
         }
         
         /* ===== نافبار زجاجي ===== */
@@ -114,7 +118,7 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(0, 191, 255, 0.3);
             box-shadow: 0 8px 32px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
@@ -131,7 +135,7 @@
         }
         .logo-img {
             height: 42px;
-            filter: drop-shadow(0 0 5px var(--primary-glow));
+            filter: drop-shadow(0 0 5px var(--blue-glow));
         }
         .nav-menu {
             display: flex;
@@ -154,16 +158,16 @@
             position: absolute;
             bottom: 0; left: 50%;
             width: 0; height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--neon-blue));
+            background: linear-gradient(90deg, var(--primary), var(--bright-blue));
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
         .nav-menu a:hover::before { width: 70%; }
-        .nav-menu a:hover { color: var(--primary); }
+        .nav-menu a:hover { color: var(--bright-blue); }
         .nav-menu a.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--bright-blue), var(--bright-blue-dark));
             color: white;
-            box-shadow: 0 0 15px var(--primary-glow);
+            box-shadow: 0 0 15px var(--blue-glow);
         }
 
         /* ===== ✅ زر القائمة للموبايل ===== */
@@ -179,13 +183,13 @@
             transition: all 0.3s ease;
         }
         .menu-toggle:hover {
-            color: var(--primary);
-            border-color: var(--primary);
+            color: var(--bright-blue);
+            border-color: var(--bright-blue);
         }
         
         /* ===== هيدر الصفحة ===== */
         .page-header {
-            background: linear-gradient(135deg, #2a2a4a, #1a1a3e);
+            background: linear-gradient(135deg, #1a2a4a, #0d1b3e);
             padding: 80px 20px 70px;
             text-align: center;
             color: white;
@@ -197,8 +201,8 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(0,212,255,0.08) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 50%, rgba(0, 191, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
             animation: rotateBg 20s linear infinite;
         }
         .page-header::after {
@@ -218,8 +222,8 @@
             text-shadow: 0 0 30px rgba(255,255,255,0.2);
         }
         .page-header h1 span { 
-            color: var(--primary);
-            text-shadow: 0 0 30px var(--primary-glow);
+            color: var(--bright-blue);
+            text-shadow: 0 0 30px var(--blue-glow);
         }
         .page-header p { 
             font-size: 1.2rem; 
@@ -267,9 +271,9 @@
             transform: translateY(-8px);
             box-shadow: 8px 8px 16px var(--neu-dark), -8px -8px 16px var(--neu-light);
         }
-        .quick-stat:nth-child(1) .qs-num { color: var(--primary); text-shadow: 0 0 15px var(--primary-glow); }
-        .quick-stat:nth-child(2) .qs-num { color: var(--silver); }
-        .quick-stat:nth-child(3) .qs-num { color: var(--gray); }
+        .quick-stat:nth-child(1) .qs-num { color: var(--bright-blue); text-shadow: 0 0 15px var(--blue-glow); }
+        .quick-stat:nth-child(2) .qs-num { color: var(--primary); text-shadow: 0 0 15px var(--primary-glow); }
+        .quick-stat:nth-child(3) .qs-num { color: var(--silver); }
         .quick-stat:nth-child(4) .qs-num { color: var(--darkgray); }
         .quick-stat .qs-num { 
             font-size: 2.5rem; 
@@ -298,8 +302,8 @@
         }
         .portfolio-card:hover { 
             transform: translateY(-12px); 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15), 0 0 30px var(--primary-glow);
-            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15), 0 0 30px var(--blue-glow);
+            border-color: var(--bright-blue);
         }
         .portfolio-img-container {
             height: 210px;
@@ -337,7 +341,7 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(212,175,55,0.4), rgba(0,0,0,0.5));
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.4), rgba(0,0,0,0.5));
             z-index: 1;
             transition: all 0.3s ease;
         }
@@ -353,7 +357,7 @@
             font-weight: 800;
             transition: all 0.3s ease;
         }
-        .portfolio-card:hover .portfolio-info h3 { color: var(--primary-dark); }
+        .portfolio-card:hover .portfolio-info h3 { color: var(--bright-blue-dark); }
         .portfolio-desc { 
             color: #666; 
             font-size: 0.9rem; 
@@ -368,7 +372,7 @@
         }
         .portfolio-tags span {
             background: #f0f0f0;
-            color: var(--primary-dark);
+            color: var(--bright-blue-dark);
             font-size: 0.73rem;
             font-weight: 700;
             padding: 5px 12px;
@@ -377,34 +381,33 @@
             box-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
         .portfolio-card:hover .portfolio-tags span {
-            background: var(--primary);
+            background: var(--bright-blue);
             color: white;
         }
         .portfolio-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #333;
+            background: linear-gradient(135deg, var(--bright-blue), var(--bright-blue-dark));
+            color: white;
             text-decoration: none;
             padding: 10px 22px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.88rem;
             transition: all 0.3s var(--bounce);
-            box-shadow: 0 4px 15px rgba(212,175,55,0.25);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.25);
             cursor: none;
         }
         .portfolio-btn:hover { 
-            background: var(--primary-dark); 
+            background: linear-gradient(135deg, var(--bright-blue-light), var(--bright-blue)); 
             transform: translateX(-5px);
-            box-shadow: 0 8px 25px rgba(212,175,55,0.4);
-            color: white;
+            box-shadow: 0 8px 25px rgba(0, 191, 255, 0.4);
         }
         
         /* ===== CTA Section ===== */
         .cta-section {
-            background: linear-gradient(135deg, #2a2a4a, #1a1a3e);
+            background: linear-gradient(135deg, #1a2a4a, #0d1b3e);
             border-radius: 25px;
             padding: 55px 40px;
             text-align: center;
@@ -413,7 +416,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            border: 1px solid rgba(212,175,55,0.2);
+            border: 1px solid rgba(0, 191, 255, 0.2);
             transition: all 0.4s var(--bounce);
         }
         .cta-section::before {
@@ -421,7 +424,7 @@
             position: absolute;
             top: -50px; right: -50px;
             width: 200px; height: 200px;
-            background: rgba(212,175,55,0.1);
+            background: rgba(0, 191, 255, 0.1);
             border-radius: 50%;
             animation: floatCircle 6s ease-in-out infinite;
         }
@@ -430,14 +433,14 @@
             position: absolute;
             bottom: -30px; left: -30px;
             width: 150px; height: 150px;
-            background: rgba(0,212,255,0.08);
+            background: rgba(212, 175, 55, 0.08);
             border-radius: 50%;
             animation: floatCircle 8s ease-in-out infinite reverse;
         }
         .cta-section > * { position: relative; z-index: 1; }
         .cta-section:hover {
             transform: scale(1.02);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 50px var(--primary-glow);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 50px var(--blue-glow);
         }
         .cta-section h3 { 
             font-size: 1.8rem; 
@@ -446,27 +449,27 @@
             text-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
         .cta-section h3 span { 
-            color: var(--primary);
-            text-shadow: 0 0 30px var(--primary-glow);
+            color: var(--bright-blue);
+            text-shadow: 0 0 30px var(--blue-glow);
         }
         .cta-section p { opacity: 0.9; margin-bottom: 30px; line-height: 2; font-size: 1.1rem; }
         .btn-cta {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #333;
+            background: linear-gradient(135deg, var(--bright-blue), var(--bright-blue-dark));
+            color: white;
             padding: 16px 42px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
             transition: all 0.3s var(--bounce);
-            box-shadow: 0 10px 30px rgba(212,175,55,0.4), 0 0 20px var(--primary-glow);
+            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.4), 0 0 20px var(--blue-glow);
             cursor: none;
         }
         .btn-cta:hover { 
-            background: var(--primary-dark); 
+            background: linear-gradient(135deg, var(--bright-blue-light), var(--bright-blue)); 
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(212,175,55,0.6), 0 0 40px var(--primary-glow);
+            box-shadow: 0 15px 40px rgba(0, 191, 255, 0.6), 0 0 40px var(--blue-glow);
         }
         
         @keyframes floatCircle {
@@ -490,7 +493,7 @@
             max-width: 90%; max-height: 90%;
             border-radius: 16px;
             animation: zoomIn 0.3s ease;
-            box-shadow: 0 0 50px rgba(212,175,55,0.3);
+            box-shadow: 0 0 50px rgba(0, 191, 255, 0.3);
         }
         .lightbox .close {
             position: absolute;
@@ -503,9 +506,9 @@
             z-index: 10000;
         }
         .lightbox .close:hover { 
-            color: var(--primary);
+            color: var(--bright-blue);
             transform: rotate(90deg);
-            text-shadow: 0 0 20px var(--primary-glow);
+            text-shadow: 0 0 20px var(--blue-glow);
         }
         
         @keyframes fadeIn {
@@ -547,11 +550,12 @@
         .consult-float {
             position: fixed; bottom: 85px; right: 20px;
             width: 55px; height: 55px;
-            background: var(--primary); color: #333;
+            background: linear-gradient(135deg, var(--bright-blue), var(--bright-blue-dark));
+            color: white;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 26px;
-            box-shadow: 0 8px 25px rgba(212,175,55,0.4), 0 0 20px var(--primary-glow);
+            box-shadow: 0 8px 25px rgba(0, 191, 255, 0.4), 0 0 20px var(--blue-glow);
             z-index: 998;
             transition: all 0.3s var(--bounce);
             cursor: none;
@@ -561,7 +565,7 @@
             width: 48px; height: 48px;
             background: rgba(26,26,46,0.8);
             backdrop-filter: blur(10px);
-            color: var(--primary);
+            color: var(--bright-blue);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 22px;
@@ -570,7 +574,7 @@
             opacity: 0; visibility: hidden;
             transform: translateY(20px);
             transition: all 0.4s var(--bounce);
-            border: 1px solid var(--primary);
+            border: 1px solid var(--bright-blue);
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         .back-to-top.show {
@@ -578,9 +582,9 @@
             transform: translateY(0);
         }
         .back-to-top:hover {
-            background: var(--primary); color: #333;
+            background: var(--bright-blue); color: white;
             transform: translateY(-5px);
-            box-shadow: 0 0 25px var(--primary-glow);
+            box-shadow: 0 0 25px var(--blue-glow);
         }
         
         @keyframes pulseGreen {
@@ -596,7 +600,7 @@
             padding: 30px 15px 20px; 
             text-align: center; 
             font-size: 0.85rem; 
-            border-top: 3px solid var(--primary); 
+            border-top: 3px solid var(--bright-blue); 
             position: relative; 
             z-index: 1;
         }
@@ -605,13 +609,37 @@
             position: absolute;
             top: -3px; left: 0; right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--neon-blue), var(--primary));
-            box-shadow: 0 0 20px var(--primary-glow);
+            background: linear-gradient(90deg, var(--bright-blue), var(--primary), var(--neon-blue), var(--bright-blue));
+            box-shadow: 0 0 20px var(--blue-glow);
         }
-        footer a { color: var(--primary); text-decoration: none; margin: 5px 8px; font-weight: 600; transition: 0.3s; }
-        footer a:hover { color: var(--neon-blue); text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        footer a { color: var(--bright-blue); text-decoration: none; margin: 5px 8px; font-weight: 600; transition: 0.3s; }
+        footer a:hover { color: var(--bright-blue-light); text-shadow: 0 0 10px var(--blue-glow); }
         footer .footer-links { margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
         footer .copyright { color: #999; font-size: 0.8rem; }
+        
+        /* ===== تحسينات الوضع الليلي ===== */
+        [data-theme="dark"] body {
+            background: var(--darker-bg);
+            color: #eee;
+        }
+        [data-theme="dark"] .navbar {
+            background: rgba(26, 26, 46, 0.9);
+            border-bottom: 1px solid rgba(0, 191, 255, 0.3);
+        }
+        [data-theme="dark"] .nav-menu a { color: #ccc; }
+        [data-theme="dark"] .nav-menu a:hover { color: var(--bright-blue); }
+        [data-theme="dark"] .nav-menu a.active {
+            background: linear-gradient(135deg, var(--bright-blue), var(--bright-blue-dark));
+            color: white;
+        }
+        [data-theme="dark"] .page-header { background: linear-gradient(135deg, #0a0a1a, #050510); }
+        [data-theme="dark"] .page-header::after { background: var(--darker-bg); }
+        [data-theme="dark"] .quick-stat { background: #1a1a3e; box-shadow: 4px 4px 8px #0a0a1a, -4px -4px 8px #2a2a4e; }
+        [data-theme="dark"] .quick-stat .qs-label { color: #bbb; }
+        [data-theme="dark"] .portfolio-card { background: #1a1a3e; border-color: rgba(0, 191, 255, 0.2); }
+        [data-theme="dark"] .portfolio-info h3 { color: #ddd; }
+        [data-theme="dark"] .portfolio-desc { color: #bbb; }
+        [data-theme="dark"] .portfolio-tags span { background: #2a2a4e; color: #ccc; }
         
         /* ===== ✅ ميديا كويري للموبايل ===== */
         @media (max-width: 992px) { 
@@ -623,9 +651,7 @@
             .page-header h1 { font-size: 2rem; }
             .quick-stats-bar { grid-template-columns: 1fr 1fr; }
             
-            /* ✅ إظهار زر الهمبرغر */
             .menu-toggle { display: block; }
-            /* ✅ إخفاء القائمة وإظهارها عند الضغط */
             .nav-menu { display: none; flex-direction: column; width: 100%; background: white; position: absolute; top: 100%; left: 0; right: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.15); padding: 15px; border-radius: 0 0 15px 15px; gap: 5px; z-index: 1000; }
             .nav-menu.show { display: flex; animation: slideDown 0.3s ease; }
             .nav-menu a { width: 100%; text-align: center; padding: 12px; font-size: 0.95rem; }
@@ -667,9 +693,7 @@
             <div class="logo-area">
                 <a href="index.html"><img src="https://imgur.com/x5sJ7l7.png" alt="Kyntrava AI" class="logo-img"></a>
             </div>
-            <!-- ✅ زر الهمبرغر -->
             <button class="menu-toggle"><i class="fas fa-bars"></i></button>
-            <!-- ✅ أضفنا id="navMenu" -->
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="about.html">عن الشركة</a></li>
@@ -917,12 +941,12 @@
         if (document.getElementById('particles-js')) {
             particlesJS('particles-js', {
                 particles: {
-                    number: { value: 35, density: { enable: true, value_area: 800 } },
-                    color: { value: '#D4AF37' },
+                    number: { value: 40, density: { enable: true, value_area: 800 } },
+                    color: { value: ['#D4AF37', '#00BFFF', '#C0C0C0'] },
                     shape: { type: 'circle' },
-                    opacity: { value: 0.2, random: true, anim: { enable: true, speed: 1, opacity_min: 0.05, sync: false } },
-                    size: { value: 2, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#D4AF37', opacity: 0.1, width: 1 },
+                    opacity: { value: 0.22, random: true, anim: { enable: true, speed: 1, opacity_min: 0.05, sync: false } },
+                    size: { value: 2.5, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#00BFFF', opacity: 0.12, width: 1 },
                     move: { enable: true, speed: 0.8, direction: 'none', random: true }
                 },
                 interactivity: {
@@ -932,6 +956,34 @@
                 },
                 retina_detect: true
             });
+        }
+        
+        // ===== تبديل الثيم =====
+        window.toggleTheme = function() {
+            const body = document.documentElement;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            const icon = document.querySelector('.theme-toggle i');
+            if (icon) icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        };
+        
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // ===== تكبير الخط =====
+        let currentFontSize = 100;
+        window.toggleFontSize = function() {
+            currentFontSize = currentFontSize === 100 ? 120 : currentFontSize === 120 ? 140 : 100;
+            document.documentElement.style.fontSize = currentFontSize + '%';
+            localStorage.setItem('fontSize', currentFontSize);
+        };
+        
+        const savedFontSize = localStorage.getItem('fontSize');
+        if (savedFontSize) {
+            currentFontSize = parseInt(savedFontSize);
+            document.documentElement.style.fontSize = currentFontSize + '%';
         }
         
         // ===== تمييز الصفحة النشطة =====
