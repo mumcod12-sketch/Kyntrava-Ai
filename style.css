@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+:root {
+    --primary-dark: #0A1628;
+    --primary-blue: #0D1B2A;
+    --cyan: #00D4FF;
+    --cyan-dark: #0099CC;
+    --gray-light: #F0F4F8;
+    --gray-medium: #E8ECF0;
+    --text-dark: #1A2A4A;
+    --text-gray: #4A5A6A;
+    --text-light: #7A8A9A;
+    --white: #FFFFFF;
+    --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-hover: 0 12px 35px rgba(0,0,0,0.15);
+    --radius: 18px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    background: var(--gray-light);
+    color: var(--text-dark);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+/* ===== شريط التواصل العلوي ===== */
+.top-bar {
+    background: var(--primary-dark);
+    color: #ccc;
+    font-size: 0.78rem;
+    padding: 6px 0;
+    border-bottom: 2px solid var(--cyan);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+}
+.top-bar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.top-bar .social-text {
+    font-weight: 600;
+    color: #fff;
+}
+.top-bar .social-text i {
+    color: var(--cyan);
+    margin-left: 6px;
+    animation: bellRing 2s infinite;
+}
+@keyframes bellRing {
+    0%, 100% { transform: rotate(0); }
+    10% { transform: rotate(15deg); }
+    20% { transform: rotate(-15deg); }
+    30% { transform: rotate(10deg); }
+    40% { transform: rotate(-10deg); }
+    50% { transform: rotate(0); }
+}
+.top-bar .social-icons a {
+    color: #ccc;
+    font-size: 0.85rem;
+    margin: 0 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,212,255,0.15);
+    transition: all 0.3s ease;
+}
+.top-bar .social-icons a:hover {
+    color: #fff;
+    background: var(--cyan);
+    border-color: var(--cyan);
+    transform: translateY(-2px);
+}
+
+/* ===== أيقونات عائمة ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+    z-index: 999;
+    animation: pulse 2s infinite;
+}
+.consult-float {
+    position: fixed;
+    bottom: 82px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    background: var(--cyan);
+    color: var(--primary-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+    z-index: 999;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+    70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+/* ===== شريط التنقل ===== */
+.navbar {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--cyan);
+}
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.3rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.logo-area {
+    display: flex;
+    align-items: center;
+    padding: 3px 0;
+}
+.logo-img {
+    height: 42px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+}
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+.nav-menu a:hover,
+.nav-menu a.active {
+    background: var(--cyan);
+    color: var(--primary-dark);
+}
+
+/* ===== الفوتر ===== */
+footer {
+    background: var(--primary-dark);
+    color: #ccc;
+    text-align: center;
+    padding: 30px 15px 20px;
+    font-size: 0.85rem;
+    border-top: 4px solid var(--cyan);
+}
+footer a {
+    color: var(--cyan);
+    text-decoration: none;
+    margin: 5px 8px;
+    font-weight: 600;
+}
+footer a:hover {
+    text-decoration: underline;
+    color: var(--cyan-dark);
+}
+footer .footer-links {
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* ===== ميديا كويري ===== */
+@media (max-width: 768px) {
+    .navbar {
+        top: 38px;
+    }
+    .nav-container {
+        flex-direction: column;
+        gap: 4px;
+        padding: 0.3rem 0.8rem;
+    }
+    .nav-menu a {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+    .logo-img {
+        height: 36px;
+        max-width: 140px;
+    }
+    .whatsapp-float,
+    .consult-float {
+        width: 46px;
+        height: 46px;
+        font-size: 22px;
+    }
+    .consult-float {
+        bottom: 75px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        gap: 1px;
+    }
+    .nav-menu a {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        border-radius: 6px;
+    }
+    .logo-img {
+        height: 30px;
+        max-width: 120px;
+    }
+}

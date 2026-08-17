@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyntrava AI | حلول الذكاء الاصطناعي والبرمجيات</title>
+    <meta name="description" content="Kyntrava AI تقدم حلولاً متكاملة في الذكاء الاصطناعي وتطوير البرمجيات والحلول السحابية. حول فكرتك إلى واقع رقمي.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <style>
+        /* ===== الأساسيات ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        :root {
+            --primary-dark: #0A1628;
+            --primary-blue: #0D1B2A;
+            --cyan: #00D4FF;
+            --cyan-dark: #0099CC;
+            --gray-light: #F0F4F8;
+            --gray-medium: #E8ECF0;
+            --text-dark: #1A2A4A;
+            --text-gray: #4A5A6A;
+            --text-light: #7A8A9A;
+            --white: #FFFFFF;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        body {
+            background: var(--gray-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        body.en {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== زر تبديل اللغة - داخل الشريط العلوي ===== */
+        .lang-switch {
+            background: transparent;
+            color: var(--cyan);
+            border: 2px solid var(--cyan);
+            border-radius: 30px;
+            padding: 3px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-right: 5px;
+        }
+        .lang-switch:hover {
+            background: var(--cyan);
+            color: var(--primary-dark);
+        }
+        .lang-switch i {
+            font-size: 0.75rem;
+        }
+
+        /* ===== شريط التواصل العلوي ===== */
+        .top-bar {
+            background: var(--primary-dark);
+            color: #ccc;
+            font-size: 0.78rem;
+            padding: 6px 0;
+            border-bottom: 2px solid var(--cyan);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+        }
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .top-bar .social-text {
+            font-weight: 600;
+            color: #fff;
+        }
+        .top-bar .social-text i {
+            color: var(--cyan);
+            margin-left: 6px;
+            animation: bellRing 2s infinite;
+        }
+        @keyframes bellRing {
+            0%, 100% { transform: rotate(0); }
+            10% { transform: rotate(15deg); }
+            20% { transform: rotate(-15deg); }
+            30% { transform: rotate(10deg); }
+            40% { transform: rotate(-10deg); }
+            50% { transform: rotate(0); }
+        }
+        .top-bar .social-icons a {
+            color: #ccc;
+            font-size: 0.85rem;
+            margin: 0 4px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(0,212,255,0.15);
+            transition: all 0.3s ease;
+        }
+        .top-bar .social-icons a:hover {
+            color: #fff;
+            background: var(--cyan);
+            border-color: var(--cyan);
+            transform: translateY(-2px);
+        }
+
+        /* ===== وضع اللغة الإنجليزية - تعديل اتجاه الشريط العلوي ===== */
+        body.en .top-bar .social-text i {
+            margin-left: 0;
+            margin-right: 6px;
+        }
+        body.en .lang-switch {
+            margin-right: 0;
+            margin-left: 5px;
+        }
+
+        /* ===== أيقونات عائمة ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 52px;
+            height: 52px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+        .consult-float {
+            position: fixed;
+            bottom: 82px;
+            right: 20px;
+            width: 52px;
+            height: 52px;
+            background: var(--cyan);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+            z-index: 999;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+            70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
+
+        /* ===== وضع اللغة الإنجليزية - الأيقونات العائمة في الجهة اليسرى ===== */
+        body.en .whatsapp-float {
+            right: auto;
+            left: 20px;
+        }
+        body.en .consult-float {
+            right: auto;
+            left: 20px;
+            bottom: 82px;
+        }
+
+        /* ===== شريط التنقل ===== */
+        .navbar {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 40px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--cyan);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.3rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            padding: 3px 0;
+        }
+        .logo-img {
+            height: 42px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: var(--cyan);
+            color: var(--primary-dark);
+        }
+
+        /* ===== الهيرو ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 80px 20px 60px;
+            overflow: hidden;
+            background: var(--primary-dark);
+            margin-top: 70px;
+        }
+        #heroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(160deg, rgba(10,22,40,0.92) 0%, rgba(13,27,42,0.88) 50%, rgba(10,22,40,0.92) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-logo-wrapper {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .hero-logo-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(0,212,255,0.2) 0%, rgba(0,212,255,0.05) 40%, transparent 70%);
+            border-radius: 50%;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { width: 280px; height: 280px; opacity: 0.8; }
+            50% { width: 320px; height: 320px; opacity: 1; }
+        }
+        .hero-logo-img {
+            height: 160px;
+            width: auto;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 30px rgba(0,212,255,0.4)) drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .hero-tagline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+        }
+        .hero-tagline span {
+            color: var(--cyan);
+        }
+        .hero-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+            margin: 0 auto 20px;
+            border-radius: 2px;
+        }
+        .hero-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        .hero-title span {
+            color: var(--cyan);
+            font-weight: 800;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 35px;
+            line-height: 2.1;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== الأزرار ===== */
+        .hero-btns {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+        .btn i {
+            margin-left: 8px;
+        }
+        .btn-cyan {
+            background: var(--cyan);
+            color: var(--primary-dark);
+            box-shadow: 0 8px 25px rgba(0,212,255,0.35);
+        }
+        .btn-cyan:hover {
+            background: var(--cyan-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,212,255,0.5);
+        }
+        .btn-outline {
+            border-color: rgba(255,255,255,0.8);
+            color: white;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+        }
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-dark);
+            transform: translateY(-4px);
+            border-color: white;
+        }
+        .wave-bottom {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--gray-light);
+            clip-path: ellipse(70% 100% at 50% 100%);
+            z-index: 3;
+        }
+
+        /* ===== وضع اللغة الإنجليزية - تعديل الأزرار ===== */
+        body.en .btn i {
+            margin-left: 0;
+            margin-right: 8px;
+        }
+        body.en .hero-btns .btn i {
+            margin-left: 0;
+            margin-right: 8px;
+        }
+
+        /* ===== شريط الثقة ===== */
+        .trust-bar {
+            background: var(--white);
+            padding: 20px 15px;
+            border-bottom: 1px solid var(--gray-medium);
+        }
+        .trust-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .trust-item i {
+            color: var(--cyan);
+            font-size: 1.2rem;
+        }
+
+        /* ===== وضع اللغة الإنجليزية - تعديل شريط الثقة ===== */
+        body.en .trust-item i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+
+        /* ===== الأقسام العامة ===== */
+        .section {
+            padding: 60px 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--cyan);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+        .section-title span {
+            color: var(--cyan);
+        }
+
+        /* ===== بطاقات الاقتباس ===== */
+        .quotes-section {
+            background: var(--white);
+            padding: 60px 20px;
+        }
+        .quotes-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .quote-card {
+            background: var(--gray-light);
+            border-radius: 18px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-medium);
+            transition: all 0.3s ease;
+        }
+        .quote-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .quote-card .quote-icon {
+            font-size: 2.5rem;
+            color: var(--cyan);
+            margin-bottom: 15px;
+        }
+        .quote-card p {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 1.9;
+            font-weight: 700;
+        }
+
+        /* ===== الإحصائيات ===== */
+        .stats-section {
+            background: var(--gray-light);
+            padding: 60px 20px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 30px 18px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-medium);
+            transition: all 0.3s ease;
+        }
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .stat-item .num {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--cyan);
+            margin-bottom: 8px;
+        }
+        .stat-item .label {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* ===== الخدمات ===== */
+        .services-section {
+            background: var(--white);
+            padding: 60px 20px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+        .service-box {
+            background: var(--gray-light);
+            border-radius: 18px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-medium);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .service-box:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--cyan);
+        }
+        .service-box .s-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: var(--cyan);
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin: 0 auto 15px;
+            box-shadow: 0 6px 18px rgba(0,212,255,0.25);
+        }
+        .service-box h4 {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+        .service-box p {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        /* ===== لماذا نحن ===== */
+        .why-us-section {
+            background: var(--gray-light);
+            padding: 60px 20px;
+        }
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+        .why-us-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 25px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border-right: 4px solid var(--cyan);
+            transition: all 0.3s ease;
+        }
+        .why-us-item:hover {
+            transform: translateX(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .why-us-item .why-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: var(--cyan);
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .why-us-item h4 {
+            color: var(--text-dark);
+            margin-bottom: 3px;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+        .why-us-item p {
+            color: var(--text-gray);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        /* ===== وضع اللغة الإنجليزية - تعديل قسم لماذا نحن ===== */
+        body.en .why-us-item {
+            border-right: none;
+            border-left: 4px solid var(--cyan);
+        }
+        body.en .why-us-item:hover {
+            transform: translateX(5px);
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            padding: 70px 20px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        .cta-section h2 span {
+            color: var(--cyan);
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 2;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== الفوتر ===== */
+        footer {
+            background: var(--primary-dark);
+            color: #ccc;
+            text-align: center;
+            padding: 30px 15px 20px;
+            font-size: 0.85rem;
+            border-top: 4px solid var(--cyan);
+        }
+        footer a {
+            color: var(--cyan);
+            text-decoration: none;
+            margin: 5px 8px;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+            color: var(--cyan-dark);
+        }
+        footer .footer-links {
+            margin-bottom: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* ===== ميديا كويري ===== */
+        @media (max-width: 768px) {
+            .hero-tagline { font-size: 1.5rem; }
+            .hero-title { font-size: 1.2rem; }
+            .hero-desc { font-size: 0.9rem; }
+            .hero-logo-img { height: 120px; }
+            .quotes-container { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .why-us-grid { grid-template-columns: 1fr; }
+            .nav-container { flex-direction: column; gap: 4px; }
+            .navbar { top: 38px; }
+            .hero { margin-top: 68px; padding-top: 60px; }
+            .top-bar .container { gap: 6px; }
+            .lang-switch {
+                padding: 2px 10px;
+                font-size: 0.6rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-tagline { font-size: 1.2rem; }
+            .hero-logo-img { height: 90px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .hero-btns .btn { width: 100%; max-width: 280px; }
+            .trust-container { gap: 15px; }
+            .lang-switch {
+                padding: 2px 8px;
+                font-size: 0.55rem;
+            }
+            .lang-switch i {
+                font-size: 0.6rem;
+            }
+        }
+
+        /* ===== وضع اللغة الإنجليزية ===== */
+        body.en {
+            direction: ltr;
+            text-align: left;
+        }
+        body.en .hero-tagline,
+        body.en .hero-title,
+        body.en .hero-desc,
+        body.en .section-title,
+        body.en .service-box h4,
+        body.en .service-box p,
+        body.en .why-us-item h4,
+        body.en .why-us-item p,
+        body.en .quote-card p,
+        body.en .stat-item .label,
+        body.en .trust-item,
+        body.en .cta-section h2,
+        body.en .cta-section p,
+        body.en footer p,
+        body.en .top-bar .social-text,
+        body.en .nav-menu a {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body.en .section-title::after {
+            margin: 12px auto 0;
+        }
+        body.en .service-box .s-icon {
+            margin: 0 auto 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== شريط التواصل العلوي ===== -->
+    <div class="top-bar">
+        <div class="container">
+            <span class="social-text" id="socialText">
+                <i class="fas fa-bell"></i> تابعونا على صفحاتنا الرسمية
+            </span>
+            <!-- ===== زر تبديل اللغة داخل الشريط العلوي ===== -->
+            <button class="lang-switch" id="langSwitch" aria-label="تبديل اللغة / Switch Language">
+                <i class="fas fa-globe"></i>
+                <span id="langText">EN</span>
+            </button>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61592891921328" target="_blank" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/kyntravaai" target="_blank" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" title="تويتر"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" title="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== أيقونات عائمة ===== -->
+    <a href="https://wa.me/963981193023" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="consultation.html" class="consult-float" aria-label="احجز استشارة">
+        <i class="fas fa-comment-dots"></i>
+    </a>
+
+    <!-- ===== شريط التنقل ===== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-area">
+                <a href="index.html">
+                    <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active" id="navHome">الرئيسية</a></li>
+                <li><a href="about.html" id="navAbout">عن الشركة</a></li>
+                <li><a href="services.html" id="navServices">خدماتنا</a></li>
+                <li><a href="consultation.html" id="navConsult">الاستشارات</a></li>
+                <li><a href="contact.html" id="navContact">اتصل بنا</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== الهيرو ===== -->
+    <header class="hero">
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-logo-wrapper">
+                <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="hero-logo-img">
+            </div>
+            <h1 class="hero-tagline" id="heroTagline"><span>Kyntrava AI</span> المستقبل بالذكاء الاصطناعي</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-title" id="heroTitle">نبتكر حلولاً رقمية ذكية تواكب تطلعاتك وتدفع أعمالك نحو آفاق جديدة</p>
+            <p class="hero-desc" id="heroDesc">نصنع لك حلولاً ذكية تتكيف مع احتياجاتك وتنمو مع نمو أعمالك. لا تترك منافسيك يسبقونك.. وظف الذكاء الاصطناعي في عملك اليوم.</p>
+            <div class="hero-btns">
+                <a href="services.html" class="btn btn-cyan" id="heroBtn1"><i class="fas fa-robot"></i> اكتشف خدماتنا</a>
+                <a href="consultation.html" class="btn btn-outline" id="heroBtn2"><i class="fas fa-calendar-check"></i> احجز استشارة مجانية</a>
+            </div>
+        </div>
+        <div class="wave-bottom"></div>
+    </header>
+
+    <!-- ===== شريط الثقة ===== -->
+    <section class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item"><i class="fas fa-check-circle"></i><span id="trust1">خبرة 8 سنوات</span></div>
+            <div class="trust-item"><i class="fas fa-check-circle"></i><span id="trust2">+120 مشروع برمجي</span></div>
+            <div class="trust-item"><i class="fas fa-check-circle"></i><span id="trust3">50 عميل حول العالم</span></div>
+            <div class="trust-item"><i class="fas fa-check-circle"></i><span id="trust4">فريق 25 خبير تقني</span></div>
+        </div>
+    </section>
+
+    <!-- ===== بطاقات الاقتباس ===== -->
+    <section class="quotes-section">
+        <div class="quotes-container">
+            <div class="quote-card">
+                <div class="quote-icon"><i class="fas fa-brain"></i></div>
+                <p id="quote1">"الذكاء الاصطناعي ليس مجرد تقنية.. إنه مستقبل كل صناعة."</p>
+            </div>
+            <div class="quote-card">
+                <div class="quote-icon"><i class="fas fa-code"></i></div>
+                <p id="quote2">"كل سطر كود نكتبه يهدف لتحويل فكرتك إلى واقع رقمي ملموس."</p>
+            </div>
+            <div class="quote-card">
+                <div class="quote-icon"><i class="fas fa-rocket"></i></div>
+                <p id="quote3">"مع Kyntrava AI، عملك ليس مجرد مشروع.. إنه رحلة نحو المستقبل."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== الإحصائيات ===== -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title" id="statsTitle"><span>Kyntrava AI</span> في أرقام</h2>
+            <div class="stats-grid">
+                <div class="stat-item"><div class="num">50</div><div class="label" id="stat1">عميل حول العالم</div></div>
+                <div class="stat-item"><div class="num">+120</div><div class="label" id="stat2">مشروع برمجي منجز</div></div>
+                <div class="stat-item"><div class="num">8</div><div class="label" id="stat3">سنوات من الخبرة</div></div>
+                <div class="stat-item"><div class="num">25</div><div class="label" id="stat4">مطور وخبير تقني</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== الخدمات ===== -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title" id="servicesTitle">ماذا <span>نقدم</span> لك؟</h2>
+            <div class="services-grid">
+                <div class="service-box">
+                    <div class="s-icon"><i class="fas fa-brain"></i></div>
+                    <h4 id="srv1">الذكاء الاصطناعي</h4>
+                    <p id="srv1d">حلول AI متقدمة لتحليل البيانات والأتمتة الذكية</p>
+                </div>
+                <div class="service-box">
+                    <div class="s-icon"><i class="fas fa-code"></i></div>
+                    <h4 id="srv2">تطوير البرمجيات</h4>
+                    <p id="srv2d">تطبيقات ويب وجوال مخصصة حسب متطلباتك</p>
+                </div>
+                <div class="service-box">
+                    <div class="s-icon"><i class="fas fa-cloud"></i></div>
+                    <h4 id="srv3">حلول سحابية</h4>
+                    <p id="srv3d">بنية تحتية سحابية آمنة وقابلة للتطوير</p>
+                </div>
+                <div class="service-box">
+                    <div class="s-icon"><i class="fas fa-headset"></i></div>
+                    <h4 id="srv4">استشارة مجانية</h4>
+                    <p id="srv4d">فريقنا التقني جاهز للإجابة على استفساراتك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== لماذا نحن ===== -->
+    <section class="why-us-section">
+        <div class="container">
+            <h2 class="section-title" id="whyTitle">لماذا <span>Kyntrava AI</span>؟</h2>
+            <div class="why-us-grid">
+                <div class="why-us-item">
+                    <div class="why-icon"><i class="fas fa-microchip"></i></div>
+                    <div>
+                        <h4 id="why1">تقنيات متطورة</h4>
+                        <p id="why1d">نستخدم أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي لتقديم حلول مبتكرة تنافسية.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-icon"><i class="fas fa-users"></i></div>
+                    <div>
+                        <h4 id="why2">فريق متكامل</h4>
+                        <p id="why2d">مطورون، مصممون، وخبراء AI يعملون معاً بروح الفريق الواحد لتحقيق رؤيتك.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                        <h4 id="why3">أمان وحماية</h4>
+                        <p id="why3d">نلتزم بأعلى معايير الأمان السيبراني وحماية بيانات عملائنا بكل خصوصية.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-icon"><i class="fas fa-headset"></i></div>
+                    <div>
+                        <h4 id="why4">دعم فني مستمر</h4>
+                        <p id="why4d">نقدم دعماً فنياً متواصلاً وتحديثات دورية لضمان استمرارية عمل حلولك بكفاءة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 id="ctaTitle">هل أنت مستعد <span>للانطلاق نحو المستقبل؟</span></h2>
+            <p id="ctaDesc">لا تدع فكرة مشروعك التقني تبقى حبراً على ورق. فريقنا جاهز لتقديم استشارة أولية مجانية وتقييم فرص نجاح مشروعك.</p>
+            <a href="consultation.html" class="btn btn-cyan" id="ctaBtn"><i class="fas fa-rocket"></i> ابدأ الآن - احجز استشارتك</a>
+        </div>
+    </section>
+
+    <!-- ===== الفوتر ===== -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html" id="footerHome">الرئيسية</a>
+            <a href="about.html" id="footerAbout">عن الشركة</a>
+            <a href="services.html" id="footerServices">خدماتنا</a>
+            <a href="consultation.html" id="footerConsult">الاستشارات</a>
+            <a href="contact.html" id="footerContact">اتصل بنا</a>
+            <a href="privacy.html" id="footerPrivacy">سياسة الخصوصية</a>
+            <a href="terms.html" id="footerTerms">الشروط والأحكام</a>
+        </div>
+        <p id="footerCopy">© 2026 Kyntrava AI. جميع الحقوق محفوظة. | <a href="privacy.html">سياسة الخصوصية</a> | <a href="terms.html">الشروط والأحكام</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // ==========================================
+        // Three.js - روبوتات متحركة في الهيرو
+        // ==========================================
+        (function() {
+            const canvas = document.getElementById('heroCanvas');
+            if (!canvas) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 14;
+            camera.position.y = 1.5;
+
+            const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const ambientLight = new THREE.AmbientLight(0x2C3E50, 0.5);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+
+            const pointLight1 = new THREE.PointLight(0x00D4FF, 0.6, 15);
+            pointLight1.position.set(-4, 2, 4);
+            scene.add(pointLight1);
+
+            const pointLight2 = new THREE.PointLight(0x0099CC, 0.4, 15);
+            pointLight2.position.set(4, -1, 3);
+            scene.add(pointLight2);
+
+            const gridHelper = new THREE.GridHelper(20, 20, 0x00D4FF, 0x1a2a3a);
+            gridHelper.position.y = -4;
+            scene.add(gridHelper);
+
+            const robotsGroup = new THREE.Group();
+            scene.add(robotsGroup);
+
+            const robotPositions = [
+                { x: -4, z: -2, scale: 0.8 },
+                { x: 0, z: -3, scale: 1.0 },
+                { x: 4, z: -1.5, scale: 0.7 },
+                { x: -5, z: 2, scale: 0.6 },
+                { x: 5, z: 2.5, scale: 0.9 },
+                { x: -2, z: 4, scale: 0.7 },
+                { x: 3, z: 4.5, scale: 0.8 },
+            ];
+
+            const robotColors = [0x00D4FF, 0x0099CC, 0x00B8D4, 0x26C6DA, 0x4DD0E1, 0x00D4FF, 0x0099CC];
+
+            robotPositions.forEach((pos, index) => {
+                const group = new THREE.Group();
+                const color = robotColors[index % robotColors.length];
+
+                const bodyGeo = new THREE.BoxGeometry(0.8, 1.2, 0.6);
+                const bodyMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.15, shininess: 80 });
+                const body = new THREE.Mesh(bodyGeo, bodyMat);
+                body.position.y = 0.6;
+                group.add(body);
+
+                const headGeo = new THREE.SphereGeometry(0.35, 16, 16);
+                const headMat = new THREE.MeshPhongMaterial({ color: 0xffffff, emissive: color, emissiveIntensity: 0.1, shininess: 100 });
+                const head = new THREE.Mesh(headGeo, headMat);
+                head.position.y = 1.4;
+                group.add(head);
+
+                const eyeGeo = new THREE.SphereGeometry(0.06, 8, 8);
+                const eyeMat = new THREE.MeshPhongMaterial({ color: 0x00D4FF, emissive: 0x00D4FF, emissiveIntensity: 0.8 });
+                const eye1 = new THREE.Mesh(eyeGeo, eyeMat);
+                eye1.position.set(-0.12, 1.5, 0.35);
+                group.add(eye1);
+                const eye2 = new THREE.Mesh(eyeGeo, eyeMat);
+                eye2.position.set(0.12, 1.5, 0.35);
+                group.add(eye2);
+
+                const armGeo = new THREE.BoxGeometry(0.15, 0.6, 0.15);
+                const armMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.1 });
+                const arm1 = new THREE.Mesh(armGeo, armMat);
+                arm1.position.set(-0.5, 0.6, 0);
+                group.add(arm1);
+                const arm2 = new THREE.Mesh(armGeo, armMat);
+                arm2.position.set(0.5, 0.6, 0);
+                group.add(arm2);
+
+                const legGeo = new THREE.BoxGeometry(0.2, 0.4, 0.2);
+                const legMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.05 });
+                const leg1 = new THREE.Mesh(legGeo, legMat);
+                leg1.position.set(-0.25, -0.2, 0);
+                group.add(leg1);
+                const leg2 = new THREE.Mesh(legGeo, legMat);
+                leg2.position.set(0.25, -0.2, 0);
+                group.add(leg2);
+
+                const antennaGeo = new THREE.CylinderGeometry(0.02, 0.02, 0.3);
+                const antennaMat = new THREE.MeshPhongMaterial({ color: 0x00D4FF, emissive: 0x00D4FF, emissiveIntensity: 0.5 });
+                const antenna = new THREE.Mesh(antennaGeo, antennaMat);
+                antenna.position.set(0, 1.7, 0);
+                group.add(antenna);
+
+                const sphereGeo = new THREE.SphereGeometry(0.06, 8, 8);
+                const sphereMat = new THREE.MeshPhongMaterial({ color: 0x00D4FF, emissive: 0x00D4FF, emissiveIntensity: 0.8 });
+                const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+                sphere.position.set(0, 1.85, 0);
+                group.add(sphere);
+
+                group.position.set(pos.x, -2.5, pos.z);
+                group.scale.set(pos.scale, pos.scale, pos.scale);
+                group.userData = {
+                    rotSpeed: 0.005 + Math.random() * 0.01,
+                    floatSpeed: 0.5 + Math.random() * 0.5,
+                    floatAmp: 0.15 + Math.random() * 0.15,
+                    phase: Math.random() * Math.PI * 2
+                };
+                robotsGroup.add(group);
+            });
+
+            const particlesGroup = new THREE.Group();
+            scene.add(particlesGroup);
+
+            const particlesCount = 80;
+            const particles = [];
+
+            for (let i = 0; i < particlesCount; i++) {
+                const size = Math.random() * 0.06 + 0.02;
+                const geo = new THREE.SphereGeometry(size, 6, 6);
+                const mat = new THREE.MeshPhongMaterial({
+                    color: Math.random() > 0.5 ? 0x00D4FF : 0x0099CC,
+                    emissive: 0x00D4FF,
+                    emissiveIntensity: 0.3,
+                    transparent: true,
+                    opacity: 0.5 + Math.random() * 0.3
+                });
+                const particle = new THREE.Mesh(geo, mat);
+                particle.position.set(
+                    (Math.random() - 0.5) * 18,
+                    (Math.random() - 0.5) * 12,
+                    (Math.random() - 0.5) * 8
+                );
+                particle.userData = {
+                    speedY: (Math.random() - 0.5) * 0.015,
+                    speedX: (Math.random() - 0.5) * 0.008,
+                    speedZ: (Math.random() - 0.5) * 0.008,
+                    baseY: particle.position.y,
+                    amplitude: Math.random() * 1.5,
+                    phase: Math.random() * Math.PI * 2
+                };
+                particles.push(particle);
+                particlesGroup.add(particle);
+            }
+
+            const ringsGroup = new THREE.Group();
+            scene.add(ringsGroup);
+
+            for (let j = 0; j < 3; j++) {
+                const ringGeo = new THREE.TorusGeometry(3.5 + j * 1.8, 0.03, 16, 80);
+                const ringMat = new THREE.MeshPhongMaterial({
+                    color: 0x00D4FF,
+                    emissive: 0x00D4FF,
+                    emissiveIntensity: 0.2,
+                    transparent: true,
+                    opacity: 0.2 - j * 0.05
+                });
+                const ring = new THREE.Mesh(ringGeo, ringMat);
+                ring.rotation.x = Math.PI / 2 + j * 0.25;
+                ring.position.y = -2 + j * 0.5;
+                ring.userData = { rotationSpeed: 0.003 + j * 0.002 };
+                ringsGroup.add(ring);
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                const time = Date.now() * 0.001;
+
+                robotsGroup.children.forEach((robot, i) => {
+                    const data = robot.userData;
+                    robot.rotation.y += data.rotSpeed;
+                    robot.position.y = -2.5 + Math.sin(time * data.floatSpeed + data.phase) * data.floatAmp;
+                });
+
+                robotsGroup.rotation.y += 0.0005;
+
+                particles.forEach(p => {
+                    p.position.y += p.userData.speedY;
+                    p.position.x += Math.sin(time + p.userData.phase) * 0.008;
+                    if (Math.abs(p.position.y - p.userData.baseY) > p.userData.amplitude) {
+                        p.userData.speedY *= -1;
+                    }
+                    p.material.opacity = 0.4 + Math.sin(time * 2 + p.userData.phase) * 0.2;
+                });
+
+                particlesGroup.rotation.y += 0.0003;
+
+                ringsGroup.children.forEach(ring => {
+                    ring.rotation.z += ring.userData.rotationSpeed;
+                });
+
+                pointLight1.intensity = 0.4 + Math.sin(time * 1.5) * 0.2;
+                pointLight2.intensity = 0.4 + Math.cos(time * 1.3) * 0.2;
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            let mouseX = 0, mouseY = 0;
+            window.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+                robotsGroup.rotation.y += (mouseX * 0.2 - robotsGroup.rotation.y) * 0.02;
+                robotsGroup.rotation.x += (mouseY * 0.1 - robotsGroup.rotation.x) * 0.02;
+            });
+        })();
+
+        // ==========================================
+        // نظام الترجمة
+        // ==========================================
+        (function() {
+            const langSwitch = document.getElementById('langSwitch');
+            const langText = document.getElementById('langText');
+            let currentLang = 'ar';
+
+            // ===== قاموس الترجمة =====
+            const translations = {
+                en: {
+                    socialText: 'Follow us on social media',
+                    navHome: 'Home',
+                    navAbout: 'About',
+                    navServices: 'Services',
+                    navConsult: 'Consultation',
+                    navContact: 'Contact',
+                    heroTagline: '<span>Kyntrava AI</span> The Future with AI',
+                    heroTitle: 'We create smart digital solutions that keep up with your ambitions and drive your business to new horizons',
+                    heroDesc: 'We build intelligent solutions that adapt to your needs and grow with your business. Don\'t let your competitors get ahead.. integrate AI into your business today.',
+                    heroBtn1: 'Discover Our Services',
+                    heroBtn2: 'Book Free Consultation',
+                    trust1: '8 Years Experience',
+                    trust2: '+120 Software Projects',
+                    trust3: '50 Clients Worldwide',
+                    trust4: '25 Tech Experts Team',
+                    quote1: '"AI is not just a technology.. it\'s the future of every industry."',
+                    quote2: '"Every line of code we write aims to turn your idea into a tangible digital reality."',
+                    quote3: '"With Kyntrava AI, your business is not just a project.. it\'s a journey to the future."',
+                    statsTitle: '<span>Kyntrava AI</span> in Numbers',
+                    stat1: 'Clients Worldwide',
+                    stat2: 'Software Projects Completed',
+                    stat3: 'Years of Experience',
+                    stat4: 'Developers & Tech Experts',
+                    servicesTitle: 'What <span>We Offer</span> You?',
+                    srv1: 'Artificial Intelligence',
+                    srv1d: 'Advanced AI solutions for data analysis and smart automation',
+                    srv2: 'Software Development',
+                    srv2d: 'Custom web and mobile applications tailored to your needs',
+                    srv3: 'Cloud Solutions',
+                    srv3d: 'Secure and scalable cloud infrastructure',
+                    srv4: 'Free Consultation',
+                    srv4d: 'Our technical team is ready to answer your questions',
+                    whyTitle: 'Why <span>Kyntrava AI</span>?',
+                    why1: 'Advanced Technologies',
+                    why1d: 'We use the latest AI and machine learning technologies to deliver innovative competitive solutions.',
+                    why2: 'Integrated Team',
+                    why2d: 'Developers, designers, and AI experts working together as one team to achieve your vision.',
+                    why3: 'Security & Protection',
+                    why3d: 'We adhere to the highest cybersecurity standards and protect our clients\' data with complete privacy.',
+                    why4: 'Continuous Technical Support',
+                    why4d: 'We provide ongoing technical support and regular updates to ensure your solutions work efficiently.',
+                    ctaTitle: 'Are you ready <span>to launch into the future?</span>',
+                    ctaDesc: 'Don\'t let your tech project idea remain on paper. Our team is ready to provide a free initial consultation and assess your project\'s success opportunities.',
+                    ctaBtn: 'Start Now - Book Your Consultation',
+                    footerHome: 'Home',
+                    footerAbout: 'About',
+                    footerServices: 'Services',
+                    footerConsult: 'Consultation',
+                    footerContact: 'Contact',
+                    footerPrivacy: 'Privacy Policy',
+                    footerTerms: 'Terms & Conditions',
+                    footerCopy: '© 2026 Kyntrava AI. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a>'
+                },
+                ar: {
+                    socialText: 'تابعونا على صفحاتنا الرسمية',
+                    navHome: 'الرئيسية',
+                    navAbout: 'عن الشركة',
+                    navServices: 'خدماتنا',
+                    navConsult: 'الاستشارات',
+                    navContact: 'اتصل بنا',
+                    heroTagline: '<span>Kyntrava AI</span> المستقبل بالذكاء الاصطناعي',
+                    heroTitle: 'نبتكر حلولاً رقمية ذكية تواكب تطلعاتك وتدفع أعمالك نحو آفاق جديدة',
+                    heroDesc: 'نصنع لك حلولاً ذكية تتكيف مع احتياجاتك وتنمو مع نمو أعمالك. لا تترك منافسيك يسبقونك.. وظف الذكاء الاصطناعي في عملك اليوم.',
+                    heroBtn1: 'اكتشف خدماتنا',
+                    heroBtn2: 'احجز استشارة مجانية',
+                    trust1: 'خبرة 8 سنوات',
+                    trust2: '+120 مشروع برمجي',
+                    trust3: '50 عميل حول العالم',
+                    trust4: 'فريق 25 خبير تقني',
+                    quote1: '"الذكاء الاصطناعي ليس مجرد تقنية.. إنه مستقبل كل صناعة."',
+                    quote2: '"كل سطر كود نكتبه يهدف لتحويل فكرتك إلى واقع رقمي ملموس."',
+                    quote3: '"مع Kyntrava AI، عملك ليس مجرد مشروع.. إنه رحلة نحو المستقبل."',
+                    statsTitle: '<span>Kyntrava AI</span> في أرقام',
+                    stat1: 'عميل حول العالم',
+                    stat2: 'مشروع برمجي منجز',
+                    stat3: 'سنوات من الخبرة',
+                    stat4: 'مطور وخبير تقني',
+                    servicesTitle: 'ماذا <span>نقدم</span> لك؟',
+                    srv1: 'الذكاء الاصطناعي',
+                    srv1d: 'حلول AI متقدمة لتحليل البيانات والأتمتة الذكية',
+                    srv2: 'تطوير البرمجيات',
+                    srv2d: 'تطبيقات ويب وجوال مخصصة حسب متطلباتك',
+                    srv3: 'حلول سحابية',
+                    srv3d: 'بنية تحتية سحابية آمنة وقابلة للتطوير',
+                    srv4: 'استشارة مجانية',
+                    srv4d: 'فريقنا التقني جاهز للإجابة على استفساراتك',
+                    whyTitle: 'لماذا <span>Kyntrava AI</span>؟',
+                    why1: 'تقنيات متطورة',
+                    why1d: 'نستخدم أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي لتقديم حلول مبتكرة تنافسية.',
+                    why2: 'فريق متكامل',
+                    why2d: 'مطورون، مصممون، وخبراء AI يعملون معاً بروح الفريق الواحد لتحقيق رؤيتك.',
+                    why3: 'أمان وحماية',
+                    why3d: 'نلتزم بأعلى معايير الأمان السيبراني وحماية بيانات عملائنا بكل خصوصية.',
+                    why4: 'دعم فني مستمر',
+                    why4d: 'نقدم دعماً فنياً متواصلاً وتحديثات دورية لضمان استمرارية عمل حلولك بكفاءة.',
+                    ctaTitle: 'هل أنت مستعد <span>للانطلاق نحو المستقبل؟</span>',
+                    ctaDesc: 'لا تدع فكرة مشروعك التقني تبقى حبراً على ورق. فريقنا جاهز لتقديم استشارة أولية مجانية وتقييم فرص نجاح مشروعك.',
+                    ctaBtn: 'ابدأ الآن - احجز استشارتك',
+                    footerHome: 'الرئيسية',
+                    footerAbout: 'عن الشركة',
+                    footerServices: 'خدماتنا',
+                    footerConsult: 'الاستشارات',
+                    footerContact: 'اتصل بنا',
+                    footerPrivacy: 'سياسة الخصوصية',
+                    footerTerms: 'الشروط والأحكام',
+                    footerCopy: '© 2026 Kyntrava AI. جميع الحقوق محفوظة. | <a href="privacy.html">سياسة الخصوصية</a> | <a href="terms.html">الشروط والأحكام</a>'
+                }
+            };
+
+            // ===== دالة تطبيق الترجمة =====
+            function applyLanguage(lang) {
+                const t = translations[lang];
+                if (!t) return;
+
+                document.getElementById('socialText').innerHTML = t.socialText;
+                document.getElementById('navHome').textContent = t.navHome;
+                document.getElementById('navAbout').textContent = t.navAbout;
+                document.getElementById('navServices').textContent = t.navServices;
+                document.getElementById('navConsult').textContent = t.navConsult;
+                document.getElementById('navContact').textContent = t.navContact;
+                document.getElementById('heroTagline').innerHTML = t.heroTagline;
+                document.getElementById('heroTitle').textContent = t.heroTitle;
+                document.getElementById('heroDesc').textContent = t.heroDesc;
+                document.getElementById('heroBtn1').innerHTML = '<i class="fas fa-robot"></i> ' + t.heroBtn1;
+                document.getElementById('heroBtn2').innerHTML = '<i class="fas fa-calendar-check"></i> ' + t.heroBtn2;
+                document.getElementById('trust1').textContent = t.trust1;
+                document.getElementById('trust2').textContent = t.trust2;
+                document.getElementById('trust3').textContent = t.trust3;
+                document.getElementById('trust4').textContent = t.trust4;
+                document.getElementById('quote1').textContent = t.quote1;
+                document.getElementById('quote2').textContent = t.quote2;
+                document.getElementById('quote3').textContent = t.quote3;
+                document.getElementById('statsTitle').innerHTML = t.statsTitle;
+                document.getElementById('stat1').textContent = t.stat1;
+                document.getElementById('stat2').textContent = t.stat2;
+                document.getElementById('stat3').textContent = t.stat3;
+                document.getElementById('stat4').textContent = t.stat4;
+                document.getElementById('servicesTitle').innerHTML = t.servicesTitle;
+                document.getElementById('srv1').textContent = t.srv1;
+                document.getElementById('srv1d').textContent = t.srv1d;
+                document.getElementById('srv2').textContent = t.srv2;
+                document.getElementById('srv2d').textContent = t.srv2d;
+                document.getElementById('srv3').textContent = t.srv3;
+                document.getElementById('srv3d').textContent = t.srv3d;
+                document.getElementById('srv4').textContent = t.srv4;
+                document.getElementById('srv4d').textContent = t.srv4d;
+                document.getElementById('whyTitle').innerHTML = t.whyTitle;
+                document.getElementById('why1').textContent = t.why1;
+                document.getElementById('why1d').textContent = t.why1d;
+                document.getElementById('why2').textContent = t.why2;
+                document.getElementById('why2d').textContent = t.why2d;
+                document.getElementById('why3').textContent = t.why3;
+                document.getElementById('why3d').textContent = t.why3d;
+                document.getElementById('why4').textContent = t.why4;
+                document.getElementById('why4d').textContent = t.why4d;
+                document.getElementById('ctaTitle').innerHTML = t.ctaTitle;
+                document.getElementById('ctaDesc').textContent = t.ctaDesc;
+                document.getElementById('ctaBtn').innerHTML = '<i class="fas fa-rocket"></i> ' + t.ctaBtn;
+                document.getElementById('footerHome').textContent = t.footerHome;
+                document.getElementById('footerAbout').textContent = t.footerAbout;
+                document.getElementById('footerServices').textContent = t.footerServices;
+                document.getElementById('footerConsult').textContent = t.footerConsult;
+                document.getElementById('footerContact').textContent = t.footerContact;
+                document.getElementById('footerPrivacy').textContent = t.footerPrivacy;
+                document.getElementById('footerTerms').textContent = t.footerTerms;
+                document.getElementById('footerCopy').innerHTML = t.footerCopy;
+
+                if (lang === 'en') {
+                    document.documentElement.dir = 'ltr';
+                    document.documentElement.lang = 'en';
+                    document.body.classList.add('en');
+                    langText.textContent = 'AR';
+                    currentLang = 'en';
+                } else {
+                    document.documentElement.dir = 'rtl';
+                    document.documentElement.lang = 'ar';
+                    document.body.classList.remove('en');
+                    langText.textContent = 'EN';
+                    currentLang = 'ar';
+                }
+            }
+
+            langSwitch.addEventListener('click', function() {
+                const newLang = currentLang === 'ar' ? 'en' : 'ar';
+                applyLanguage(newLang);
+                localStorage.setItem('kyntrava_lang', newLang);
+            });
+
+            const savedLang = localStorage.getItem('kyntrava_lang');
+            if (savedLang && (savedLang === 'ar' || savedLang === 'en')) {
+                applyLanguage(savedLang);
+            } else {
+                applyLanguage('ar');
+            }
+        })();
+    </script>
+</body>
+</html>

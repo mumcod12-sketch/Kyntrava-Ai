@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدماتنا - Kyntrava AI | حلول الذكاء الاصطناعي والبرمجيات</title>
+    <meta name="description" content="خدمات Kyntrava AI المتكاملة في الذكاء الاصطناعي، تطوير البرمجيات، الحلول السحابية، تحليل البيانات، وإنتاج المحتوى.">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background: #F0F4F8; }
+        
+        /* ===== هيدر الصفحة ===== */
+        .services-header {
+            background: linear-gradient(135deg, #0A1628 0%, #0D1B2A 100%);
+            padding: 100px 20px 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+        .services-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0; right: 0;
+            height: 70px;
+            background: #F0F4F8;
+            clip-path: ellipse(65% 100% at 50% 100%);
+        }
+        .services-header h1 { 
+            font-size: 3.2rem; 
+            font-weight: 900; 
+            margin-bottom: 18px; 
+            letter-spacing: -1px;
+        }
+        .services-header h1 span { 
+            color: #00D4FF; 
+            position: relative;
+        }
+        .services-header h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px; left: 0; right: 0;
+            height: 3px;
+            background: #00D4FF;
+            border-radius: 2px;
+        }
+        .services-header .header-subtitle { 
+            font-size: 1.25rem; 
+            opacity: 0.9; 
+            max-width: 650px; 
+            margin: 0 auto; 
+            line-height: 1.9;
+            font-weight: 500;
+        }
+        
+        .services-container {
+            max-width: 1100px;
+            margin: -30px auto 70px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* ===== شريط إحصائي ===== */
+        .stats-mini {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+        .stat-box {
+            background: white;
+            border-radius: 16px;
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: 0 3px 18px rgba(0,0,0,0.04);
+            border: 1px solid #E8ECF0;
+            transition: 0.3s;
+        }
+        .stat-box:hover { transform: translateY(-3px); }
+        .stat-box .stat-icon {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+        .stat-box:nth-child(1) .stat-icon { color: #00D4FF; }
+        .stat-box:nth-child(2) .stat-icon { color: #0099CC; }
+        .stat-box:nth-child(3) .stat-icon { color: #26C6DA; }
+        .stat-box:nth-child(4) .stat-icon { color: #4DD0E1; }
+        .stat-box h4 { color: #1A2A4A; font-size: 0.95rem; }
+        
+        /* ===== عنوان الأقسام ===== */
+        .section-divider {
+            text-align: center;
+            margin: 45px 0 30px;
+        }
+        .section-divider h2 {
+            font-size: 1.8rem;
+            color: #1A2A4A;
+            font-weight: 800;
+            display: inline-block;
+            position: relative;
+        }
+        .section-divider h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #00D4FF;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+        .section-divider h2 span { color: #00D4FF; }
+        
+        /* ===== بطاقة الخدمة ===== */
+        .service-card {
+            background: white;
+            border-radius: 18px;
+            padding: 35px 32px;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            box-shadow: 0 3px 20px rgba(0,0,0,0.04);
+            border: 1px solid #E8ECF0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 5px;
+            height: 100%;
+        }
+        /* ألوان الشريط الجانبي */
+        .service-card:nth-child(1)::before { background: #00D4FF; }
+        .service-card:nth-child(2)::before { background: #0099CC; }
+        .service-card:nth-child(3)::before { background: #26C6DA; }
+        .service-card:nth-child(4)::before { background: #4DD0E1; }
+        .service-card:nth-child(5)::before { background: #00B8D4; }
+        .service-card:nth-child(6)::before { background: #00838F; }
+        .service-card:nth-child(7)::before { background: #00D4FF; }
+        .service-card:nth-child(8)::before { background: #0099CC; }
+        .service-card:nth-child(9)::before { background: #26C6DA; }
+        .service-card:nth-child(10)::before { background: #4DD0E1; }
+        .service-card:nth-child(11)::before { background: #00B8D4; }
+        
+        .service-card:hover {
+            transform: translateX(-6px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .service-num {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #E8ECF0;
+            line-height: 1;
+            min-width: 55px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .service-card:hover .service-num {
+            color: #00D4FF;
+        }
+        
+        .service-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #0A1628;
+            flex-shrink: 0;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+        }
+        .bg-cyan { background: linear-gradient(135deg, #00D4FF, #0099CC); }
+        .bg-cyan-dark { background: linear-gradient(135deg, #0099CC, #0077AA); }
+        .bg-teal { background: linear-gradient(135deg, #26C6DA, #00ACC1); }
+        .bg-light-cyan { background: linear-gradient(135deg, #4DD0E1, #26C6DA); }
+        .bg-blue-dark { background: linear-gradient(135deg, #00B8D4, #00838F); }
+        .bg-ocean { background: linear-gradient(135deg, #00838F, #006064); }
+        
+        .service-content { flex: 1; }
+        .service-content h3 { 
+            font-size: 1.25rem; 
+            color: #1A2A4A; 
+            margin-bottom: 8px; 
+            font-weight: 800;
+        }
+        .service-content p { 
+            color: #4A5A6A; 
+            font-size: 0.93rem; 
+            line-height: 1.9; 
+            text-align: justify;
+        }
+        .service-content .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .service-content .service-features span {
+            background: #F0F4F8;
+            color: #00D4FF;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        
+        /* ===== قسم CTA ===== */
+        .cta-section {
+            background: linear-gradient(135deg, #0A1628, #0D1B2A);
+            border-radius: 22px;
+            padding: 45px 35px;
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+        }
+        .cta-section h3 { 
+            font-size: 1.6rem; 
+            margin-bottom: 12px; 
+            font-weight: 800;
+        }
+        .cta-section h3 span { color: #00D4FF; }
+        .cta-section p { 
+            opacity: 0.9; 
+            margin-bottom: 28px; 
+            line-height: 2; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto;
+        }
+        .cta-section .btn-cta {
+            display: inline-block;
+            background: #00D4FF;
+            color: #0A1628;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,212,255,0.3);
+        }
+        .cta-section .btn-cta:hover {
+            background: #0099CC;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,212,255,0.5);
+        }
+        
+        /* ===== الفوتر ===== */
+        footer {
+            background: #0A1628;
+            color: #ccc;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #00D4FF;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 600;
+        }
+        footer a:hover { text-decoration: underline; }
+        
+        /* ===== ميديا كويري ===== */
+        @media (max-width: 768px) {
+            .services-header h1 { font-size: 2.2rem; }
+            .services-header { padding: 70px 20px; margin-top: 60px; }
+            .stats-mini { grid-template-columns: 1fr 1fr; }
+            .service-card { flex-direction: column; gap: 15px; padding: 25px 20px; }
+            .service-num { display: none; }
+            .section-divider h2 { font-size: 1.4rem; }
+            .cta-section { padding: 30px 20px; }
+        }
+        @media (max-width: 480px) {
+            .stats-mini { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- أزرار التواصل العائمة -->
+    <a href="https://wa.me/963981193023" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="consultation.html" class="consult-float" aria-label="احجز استشارة">
+        <i class="fas fa-comment-dots"></i>
+    </a>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar" aria-label="القائمة الرئيسية">
+        <div class="nav-container">
+            <div class="logo-area">
+                <a href="index.html">
+                    <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن الشركة</a></li>
+                <li><a href="services.html" class="active" aria-current="page">خدماتنا</a></li>
+                <li><a href="consultation.html">الاستشارات</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== هيدر الصفحة ===== -->
+    <header class="services-header">
+        <h1><span>خدماتنا</span> المتكاملة</h1>
+        <p class="header-subtitle">حلول برمجية وذكاء اصطناعي متطورة نقدمها لعملائنا في الوطن العربي</p>
+    </header>
+
+    <!-- ===== المحتوى الرئيسي ===== -->
+    <main class="services-container">
+        
+        <!-- شريط إحصائي سريع -->
+        <section class="stats-mini" aria-label="مميزات خدماتنا">
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-robot"></i></div>
+                <h4>حلول ذكاء اصطناعي</h4>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-code"></i></div>
+                <h4>تطوير برمجيات متكامل</h4>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-cloud"></i></div>
+                <h4>بنية تحتية سحابية</h4>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-headset"></i></div>
+                <h4>دعم فني واستشارات</h4>
+            </div>
+        </section>
+        
+        <!-- ===== القسم الأول: تطوير البرمجيات ===== -->
+        <div class="section-divider">
+            <h2><i class="fas fa-laptop-code" style="color:#00D4FF; margin-left:10px;"></i> تطوير <span>البرمجيات</span></h2>
+        </div>
+
+        <!-- خدمة 1 -->
+        <article class="service-card">
+            <div class="service-num">01</div>
+            <div class="service-icon-wrapper bg-cyan"><i class="fas fa-globe"></i></div>
+            <div class="service-content">
+                <h3>تطوير مواقع الويب</h3>
+                <p>نصمم ونطور مواقع ويب عصرية متجاوبة مع جميع الأجهزة، بواجهات مستخدم جذابة وتجربة مستخدم سلسة. نستخدم أحدث تقنيات الويب مثل React و Next.js و Laravel لضمان أداء عالي وقابلية للتطوير مع تحسين متقدم لمحركات البحث.</p>
+                <div class="service-features">
+                    <span>React/Next.js</span><span>Responsive</span><span>SEO</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- خدمة 2 -->
+        <article class="service-card">
+            <div class="service-num">02</div>
+            <div class="service-icon-wrapper bg-cyan-dark"><i class="fas fa-mobile-alt"></i></div>
+            <div class="service-content">
+                <h3>تطبيقات الجوال</h3>
+                <p>نطور تطبيقات Android و iOS أصلية أو عبر المنصات باستخدام Flutter و React Native، مع أداء عالي وتجربة استخدام استثنائية تلبي احتياجات عملائنا.</p>
+                <div class="service-features">
+                    <span>Flutter</span><span>React Native</span><span>iOS & Android</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- خدمة 3 -->
+        <article class="service-card">
+            <div class="service-num">03</div>
+            <div class="service-icon-wrapper bg-teal"><i class="fas fa-cloud"></i></div>
+            <div class="service-content">
+                <h3>الحلول السحابية</h3>
+                <p>نصمم وننشر بنى تحتية سحابية آمنة وقابلة للتطوير على AWS و Google Cloud و Azure، لضمان أعلى مستويات الأداء والمرونة لتطبيقاتك وخدماتك.</p>
+                <div class="service-features">
+                    <span>AWS</span><span>Google Cloud</span><span>Azure</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- ===== القسم الثاني: الذكاء الاصطناعي ===== -->
+        <div class="section-divider">
+            <h2><i class="fas fa-brain" style="color:#0099CC; margin-left:10px;"></i> الذكاء <span>الاصطناعي</span></h2>
+        </div>
+
+        <!-- خدمة 4 -->
+        <article class="service-card">
+            <div class="service-num">04</div>
+            <div class="service-icon-wrapper bg-light-cyan"><i class="fas fa-brain"></i></div>
+            <div class="service-content">
+                <h3>أنظمة الذكاء الاصطناعي</h3>
+                <p>نطور حلول ذكاء اصطناعي متكاملة تشمل تعلم الآلة، معالجة اللغة الطبيعية، ورؤية الحاسوب. نساعدك على أتمتة عملياتك وتحليل بياناتك بذكاء.</p>
+                <div class="service-features">
+                    <span>ML</span><span>NLP</span><span>Computer Vision</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- خدمة 5 -->
+        <article class="service-card">
+            <div class="service-num">05</div>
+            <div class="service-icon-wrapper bg-blue-dark"><i class="fas fa-chart-bar"></i></div>
+            <div class="service-content">
+                <h3>تحليل البيانات ولوحات المعلومات</h3>
+                <p>نحول بياناتك الخام إلى رؤى قابلة للتنفيذ. نبني لوحات معلومات تفاعلية وأنظمة تحليل بيانات متقدمة تساعدك في اتخاذ القرارات الاستراتيجية.</p>
+                <div class="service-features">
+                    <span>Data Analysis</span><span>Dashboards</span><span>Power BI</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- ===== القسم الثالث: إنتاج المحتوى والإعلام ===== -->
+        <div class="section-divider">
+            <h2><i class="fas fa-video" style="color:#26C6DA; margin-left:10px;"></i> إنتاج المحتوى <span>والإعلام</span></h2>
+        </div>
+
+        <!-- خدمة 6 -->
+        <article class="service-card">
+            <div class="service-num">06</div>
+            <div class="service-icon-wrapper bg-ocean"><i class="fas fa-film"></i></div>
+            <div class="service-content">
+                <h3>إنتاج المحتوى بالفيديوهات بالذكاء الاصطناعي</h3>
+                <p>نقدم خدمات متكاملة لإنتاج المحتوى الإبداعي باستخدام أحدث تقنيات الذكاء الاصطناعي التوليدي، من فيديوهات إلى رسوم متحركة ومحتوى تسويقي مبتكر.</p>
+                <div class="service-features">
+                    <span>AI Video</span><span>Animation</span><span>Marketing</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- خدمة 7 -->
+        <article class="service-card">
+            <div class="service-num">07</div>
+            <div class="service-icon-wrapper bg-cyan"><i class="fas fa-pen-fancy"></i></div>
+            <div class="service-content">
+                <h3>كتابة المحتوى الإبداعي والتسويقي</h3>
+                <p>ننتج محتوى نصياً إبداعياً يشمل كتابة السيناريوهات والحوارات، نصوصاً إعلانية وتسويقية، ومقالات تقنية متخصصة تلفت انتباه جمهورك المستهدف.</p>
+                <div class="service-features">
+                    <span>Scriptwriting</span><span>Copywriting</span><span>Articles</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- خدمة 8 -->
+        <article class="service-card">
+            <div class="service-num">08</div>
+            <div class="service-icon-wrapper bg-cyan-dark"><i class="fas fa-cut"></i></div>
+            <div class="service-content">
+                <h3>تحرير الفيديو والمونتاج الاحترافي</h3>
+                <p>نقدم خدمات مونتاج وتحرير فيديو احترافية مدعومة بالذكاء الاصطناعي، مع إضافة مؤثرات بصرية وتدرج ألوان احترافي لإنتاج فيديوهات عالية الجودة.</p>
+                <div class="service-features">
+                    <span>Montage</span><span>VFX</span><span>Color Grading</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- ===== القسم الرابع: خدمات إضافية ===== -->
+        <div class="section-divider">
+            <h2><i class="fas fa-cogs" style="color:#4DD0E1; margin-left:10px;"></i> خدمات <span>إضافية</span></h2>
+        </div>
+
+        <!-- خدمة 9 -->
+        <article class="service-card">
+            <div class="service-num">09</div>
+            <div class="service-icon-wrapper bg-teal"><i class="fas fa-shield-alt"></i></div>
+            <div class="service-content">
+                <h3>الأمن السيبراني وحماية البيانات</h3>
+                <p>نقدم حلول أمنية متكاملة لحماية تطبيقاتك وبياناتك من التهديدات الإلكترونية، مع اختبارات اختراق ومراقبة مستمرة لضمان سلامة أنظمتك.</p>
+                <div class="service-features">
+                    <span>Security</span><span>Pen Testing</span><span>Protection</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- خدمة 10 -->
+        <article class="service-card">
+            <div class="service-num">10</div>
+            <div class="service-icon-wrapper bg-light-cyan"><i class="fas fa-paint-brush"></i></div>
+            <div class="service-content">
+                <h3>تصميم UI/UX وتجربة المستخدم</h3>
+                <p>نصمم واجهات مستخدم بديهية وتجربة مستخدم استثنائية باستخدام أحدث أدوات التصميم مثل Figma، مع التركيز على سهولة الاستخدام والجماليات.</p>
+                <div class="service-features">
+                    <span>UI Design</span><span>UX Research</span><span>Figma</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- خدمة 11 -->
+        <article class="service-card">
+            <div class="service-num">11</div>
+            <div class="service-icon-wrapper bg-blue-dark"><i class="fas fa-lightbulb"></i></div>
+            <div class="service-content">
+                <h3>استشارات تقنية متخصصة</h3>
+                <p>نقدم استشارات تقنية متخصصة لمساعدتك في اختيار التقنيات المناسبة لمشروعك، مع تقدير التكاليف وخطط التنفيذ لضمان نجاح مشروعك التقني.</p>
+                <div class="service-features">
+                    <span>Planning</span><span>Tech Selection</span><span>Cost Estimation</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- ===== قسم CTA ===== -->
+        <section class="cta-section">
+            <h3>هل أنت جاهز <span>لبدء مشروعك؟</span></h3>
+            <p>
+                فريقنا التقني المتخصص على أتم الاستعداد لتقديم استشارة أولية مجانية وتقييم احتياجات مشروعك.
+                لا تتردد في التواصل معنا لمناقشة كيف يمكننا مساعدتك في تحقيق أهدافك التقنية.
+            </p>
+            <a href="consultation.html" class="btn-cta">
+                <i class="fas fa-paper-plane" style="margin-left:8px;"></i> احجز استشارتك الآن
+            </a>
+        </section>
+
+    </main>
+
+    <!-- ===== تذييل الصفحة ===== -->
+    <footer role="contentinfo">
+        <div class="footer-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">عن الشركة</a>
+            <a href="services.html">خدماتنا</a>
+            <a href="consultation.html">الاستشارات</a>
+            <a href="contact.html">اتصل بنا</a>
+            <a href="privacy.html">سياسة الخصوصية</a>
+            <a href="terms.html">الشروط والأحكام</a>
+        </div>
+        <p>© 2026 Kyntrava AI. جميع الحقوق محفوظة. | <a href="privacy.html">سياسة الخصوصية</a> | <a href="terms.html">الشروط والأحكام</a></p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
