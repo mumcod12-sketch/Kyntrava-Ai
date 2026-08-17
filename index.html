@@ -6,15 +6,11 @@
     <title>Kyntrava AI | حلول الذكاء الاصطناعي والبرمجيات</title>
     <meta name="description" content="Kyntrava AI تقدم حلولاً متكاملة في الذكاء الاصطناعي وتطوير البرمجيات والحلول السحابية. حول فكرتك إلى واقع رقمي.">
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
     <style>
-        /* ===== الأساسيات ===== */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +27,6 @@
             --gray-medium: #E8ECF0;
             --text-dark: #1A2A4A;
             --text-gray: #4A5A6A;
-            --text-light: #7A8A9A;
             --white: #FFFFFF;
             --shadow: 0 4px 20px rgba(0,0,0,0.08);
             --shadow-hover: 0 12px 35px rgba(0,0,0,0.15);
@@ -42,11 +37,7 @@
             color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
-            transition: all 0.3s ease;
-        }
-
-        body.en {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 80px;
         }
 
         a {
@@ -55,133 +46,37 @@
             transition: all 0.3s ease;
         }
 
-        /* ===== زر تبديل اللغة - داخل الشريط العلوي ===== */
-        .lang-switch {
-            background: transparent;
-            color: var(--cyan);
-            border: 2px solid var(--cyan);
-            border-radius: 30px;
-            padding: 3px 12px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Cairo', sans-serif;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-right: 5px;
-        }
-        .lang-switch:hover {
-            background: var(--cyan);
-            color: var(--primary-dark);
-        }
-        .lang-switch i {
-            font-size: 0.75rem;
-        }
-
-        /* ===== شريط التواصل العلوي ===== */
-        .top-bar {
-            background: var(--primary-dark);
-            color: #ccc;
-            font-size: 0.78rem;
-            padding: 6px 0;
-            border-bottom: 2px solid var(--cyan);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1001;
-        }
-        .top-bar .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .top-bar .social-text {
-            font-weight: 600;
-            color: #fff;
-        }
-        .top-bar .social-text i {
-            color: var(--cyan);
-            margin-left: 6px;
-            animation: bellRing 2s infinite;
-        }
-        @keyframes bellRing {
-            0%, 100% { transform: rotate(0); }
-            10% { transform: rotate(15deg); }
-            20% { transform: rotate(-15deg); }
-            30% { transform: rotate(10deg); }
-            40% { transform: rotate(-10deg); }
-            50% { transform: rotate(0); }
-        }
-        .top-bar .social-icons a {
-            color: #ccc;
-            font-size: 0.85rem;
-            margin: 0 4px;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(0,212,255,0.15);
-            transition: all 0.3s ease;
-        }
-        .top-bar .social-icons a:hover {
-            color: #fff;
-            background: var(--cyan);
-            border-color: var(--cyan);
-            transform: translateY(-2px);
-        }
-
-        /* ===== وضع اللغة الإنجليزية - تعديل اتجاه الشريط العلوي ===== */
-        body.en .top-bar .social-text i {
-            margin-left: 0;
-            margin-right: 6px;
-        }
-        body.en .lang-switch {
-            margin-right: 0;
-            margin-left: 5px;
-        }
-
         /* ===== أيقونات عائمة ===== */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 52px;
-            height: 52px;
+            width: 56px;
+            height: 56px;
             background: #25D366;
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
+            font-size: 28px;
             box-shadow: 0 4px 15px rgba(37,211,102,0.4);
             z-index: 999;
             animation: pulse 2s infinite;
         }
         .consult-float {
             position: fixed;
-            bottom: 82px;
+            bottom: 86px;
             right: 20px;
-            width: 52px;
-            height: 52px;
+            width: 56px;
+            height: 56px;
             background: var(--cyan);
             color: var(--primary-dark);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 26px;
             box-shadow: 0 4px 15px rgba(0,212,255,0.3);
             z-index: 999;
         }
@@ -191,63 +86,53 @@
             100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
         }
 
-        /* ===== وضع اللغة الإنجليزية - الأيقونات العائمة في الجهة اليسرى ===== */
-        body.en .whatsapp-float {
-            right: auto;
-            left: 20px;
-        }
-        body.en .consult-float {
-            right: auto;
-            left: 20px;
-            bottom: 82px;
-        }
-
-        /* ===== شريط التنقل ===== */
+        /* ===== شريط التنقل الجديد ===== */
         .navbar {
             background: var(--white);
-            box-shadow: var(--shadow);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: fixed;
-            top: 40px;
+            top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             border-bottom: 3px solid var(--cyan);
         }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.3rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+
         .logo-area {
             display: flex;
             align-items: center;
-            padding: 3px 0;
+            flex-shrink: 0;
         }
         .logo-img {
-            height: 42px;
+            height: 45px;
             width: auto;
-            max-width: 160px;
+            max-width: 150px;
             object-fit: contain;
         }
+
+        /* ===== قائمة التنقل ===== */
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2px;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 5px;
+            align-items: center;
+        }
+        .nav-menu li {
+            position: relative;
         }
         .nav-menu a {
-            text-decoration: none;
             color: var(--text-gray);
             font-weight: 600;
-            font-size: 0.8rem;
-            padding: 6px 12px;
-            border-radius: 8px;
+            font-size: 0.85rem;
+            padding: 8px 16px;
+            border-radius: 10px;
             transition: all 0.3s ease;
+            display: block;
             white-space: nowrap;
         }
         .nav-menu a:hover,
@@ -256,19 +141,34 @@
             color: var(--primary-dark);
         }
 
+        /* ===== زر القائمة للجوال ===== */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle:hover {
+            color: var(--cyan);
+        }
+
         /* ===== الهيرو ===== */
         .hero {
             position: relative;
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            padding: 80px 20px 60px;
+            padding: 60px 20px 50px;
             overflow: hidden;
             background: var(--primary-dark);
-            margin-top: 70px;
+            margin-top: 0;
         }
         #heroCanvas {
             position: absolute;
@@ -303,18 +203,18 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 280px;
-            height: 280px;
+            width: 250px;
+            height: 250px;
             background: radial-gradient(circle, rgba(0,212,255,0.2) 0%, rgba(0,212,255,0.05) 40%, transparent 70%);
             border-radius: 50%;
             animation: glowPulse 3s ease-in-out infinite;
         }
         @keyframes glowPulse {
-            0%, 100% { width: 280px; height: 280px; opacity: 0.8; }
-            50% { width: 320px; height: 320px; opacity: 1; }
+            0%, 100% { width: 250px; height: 250px; opacity: 0.8; }
+            50% { width: 290px; height: 290px; opacity: 1; }
         }
         .hero-logo-img {
-            height: 160px;
+            height: 140px;
             width: auto;
             position: relative;
             z-index: 1;
@@ -326,7 +226,7 @@
             50% { transform: translateY(-10px); }
         }
         .hero-tagline {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             color: #fff;
             margin-bottom: 10px;
@@ -336,16 +236,16 @@
             color: var(--cyan);
         }
         .hero-divider {
-            width: 80px;
+            width: 60px;
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            margin: 0 auto 20px;
+            margin: 0 auto 18px;
             border-radius: 2px;
         }
         .hero-title {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             line-height: 1.6;
             opacity: 0.95;
         }
@@ -354,19 +254,17 @@
             font-weight: 800;
         }
         .hero-desc {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.9;
-            margin-bottom: 35px;
-            line-height: 2.1;
+            margin-bottom: 30px;
+            line-height: 2;
             max-width: 650px;
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* ===== الأزرار ===== */
         .hero-btns {
             display: flex;
-            gap: 18px;
+            gap: 15px;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
@@ -376,13 +274,12 @@
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
             border: 2px solid transparent;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            white-space: nowrap;
         }
         .btn i {
             margin-left: 8px;
@@ -414,26 +311,16 @@
             bottom: -2px;
             left: 0;
             right: 0;
-            height: 60px;
+            height: 50px;
             background: var(--gray-light);
             clip-path: ellipse(70% 100% at 50% 100%);
             z-index: 3;
         }
 
-        /* ===== وضع اللغة الإنجليزية - تعديل الأزرار ===== */
-        body.en .btn i {
-            margin-left: 0;
-            margin-right: 8px;
-        }
-        body.en .hero-btns .btn i {
-            margin-left: 0;
-            margin-right: 8px;
-        }
-
         /* ===== شريط الثقة ===== */
         .trust-bar {
             background: var(--white);
-            padding: 20px 15px;
+            padding: 18px 15px;
             border-bottom: 1px solid var(--gray-medium);
         }
         .trust-container {
@@ -442,7 +329,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 35px;
+            gap: 30px;
             flex-wrap: wrap;
         }
         .trust-item {
@@ -451,22 +338,16 @@
             gap: 10px;
             color: var(--text-dark);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         .trust-item i {
             color: var(--cyan);
-            font-size: 1.2rem;
-        }
-
-        /* ===== وضع اللغة الإنجليزية - تعديل شريط الثقة ===== */
-        body.en .trust-item i {
-            margin-left: 8px;
-            margin-right: 0;
+            font-size: 1.1rem;
         }
 
         /* ===== الأقسام العامة ===== */
         .section {
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
         .container {
             max-width: 1100px;
@@ -474,18 +355,18 @@
         }
         .section-title {
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--text-dark);
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             font-weight: 800;
         }
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 50px;
             height: 3px;
             background: var(--cyan);
-            margin: 12px auto 0;
+            margin: 10px auto 0;
             border-radius: 2px;
         }
         .section-title span {
@@ -495,205 +376,194 @@
         /* ===== بطاقات الاقتباس ===== */
         .quotes-section {
             background: var(--white);
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
         .quotes-container {
             max-width: 1000px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            gap: 20px;
         }
         .quote-card {
             background: var(--gray-light);
-            border-radius: 18px;
-            padding: 35px 25px;
+            border-radius: 16px;
+            padding: 30px 20px;
             text-align: center;
             box-shadow: var(--shadow);
             border: 1px solid var(--gray-medium);
             transition: all 0.3s ease;
         }
         .quote-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
         }
         .quote-card .quote-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--cyan);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .quote-card p {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--text-dark);
-            line-height: 1.9;
+            line-height: 1.8;
             font-weight: 700;
         }
 
         /* ===== الإحصائيات ===== */
         .stats-section {
             background: var(--gray-light);
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
+            gap: 18px;
         }
         .stat-item {
             text-align: center;
-            padding: 30px 18px;
+            padding: 25px 15px;
             background: var(--white);
-            border-radius: 16px;
+            border-radius: 14px;
             box-shadow: var(--shadow);
             border: 1px solid var(--gray-medium);
             transition: all 0.3s ease;
         }
         .stat-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-hover);
         }
         .stat-item .num {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 900;
             color: var(--cyan);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .stat-item .label {
             color: var(--text-gray);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
         }
 
         /* ===== الخدمات ===== */
         .services-section {
             background: var(--white);
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
         .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
+            gap: 18px;
         }
         .service-box {
             background: var(--gray-light);
-            border-radius: 18px;
-            padding: 30px 20px;
+            border-radius: 16px;
+            padding: 25px 18px;
             text-align: center;
             box-shadow: var(--shadow);
             border: 1px solid var(--gray-medium);
             transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
         }
         .service-box:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
             border-color: var(--cyan);
         }
         .service-box .s-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            background: var(--cyan);
-            color: var(--primary-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            margin: 0 auto 15px;
-            box-shadow: 0 6px 18px rgba(0,212,255,0.25);
-        }
-        .service-box h4 {
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-            font-weight: 800;
-        }
-        .service-box p {
-            color: var(--text-gray);
-            font-size: 0.85rem;
-            line-height: 1.7;
-        }
-
-        /* ===== لماذا نحن ===== */
-        .why-us-section {
-            background: var(--gray-light);
-            padding: 60px 20px;
-        }
-        .why-us-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
-        }
-        .why-us-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            padding: 25px;
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            border-right: 4px solid var(--cyan);
-            transition: all 0.3s ease;
-        }
-        .why-us-item:hover {
-            transform: translateX(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-        .why-us-item .why-icon {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 14px;
             background: var(--cyan);
             color: var(--primary-dark);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            margin: 0 auto 12px;
+            box-shadow: 0 6px 18px rgba(0,212,255,0.25);
+        }
+        .service-box h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+        .service-box p {
+            color: var(--text-gray);
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+
+        /* ===== لماذا نحن ===== */
+        .why-us-section {
+            background: var(--gray-light);
+            padding: 50px 20px;
+        }
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+        .why-us-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 22px;
+            background: var(--white);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            border-right: 4px solid var(--cyan);
+            transition: all 0.3s ease;
+        }
+        .why-us-item:hover {
+            transform: translateX(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .why-us-item .why-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: var(--cyan);
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
         .why-us-item h4 {
             color: var(--text-dark);
             margin-bottom: 3px;
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         .why-us-item p {
             color: var(--text-gray);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             line-height: 1.7;
-        }
-
-        /* ===== وضع اللغة الإنجليزية - تعديل قسم لماذا نحن ===== */
-        body.en .why-us-item {
-            border-right: none;
-            border-left: 4px solid var(--cyan);
-        }
-        body.en .why-us-item:hover {
-            transform: translateX(5px);
         }
 
         /* ===== CTA ===== */
         .cta-section {
-            padding: 70px 20px;
+            padding: 60px 20px;
             background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
             text-align: center;
             color: white;
         }
         .cta-section h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .cta-section h2 span {
             color: var(--cyan);
         }
         .cta-section p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.9;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             line-height: 2;
-            max-width: 650px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -703,14 +573,14 @@
             background: var(--primary-dark);
             color: #ccc;
             text-align: center;
-            padding: 30px 15px 20px;
-            font-size: 0.85rem;
+            padding: 25px 15px 18px;
+            font-size: 0.82rem;
             border-top: 4px solid var(--cyan);
         }
         footer a {
             color: var(--cyan);
             text-decoration: none;
-            margin: 5px 8px;
+            margin: 4px 8px;
             font-weight: 600;
         }
         footer a:hover {
@@ -718,101 +588,192 @@
             color: var(--cyan-dark);
         }
         footer .footer-links {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 5px;
+            gap: 4px;
         }
 
-        /* ===== ميديا كويري ===== */
+        /* ===== ميديا كويري - جوال ===== */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero-tagline { font-size: 1.5rem; }
-            .hero-title { font-size: 1.2rem; }
-            .hero-desc { font-size: 0.9rem; }
-            .hero-logo-img { height: 120px; }
-            .quotes-container { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .services-grid { grid-template-columns: 1fr 1fr; }
-            .why-us-grid { grid-template-columns: 1fr; }
-            .nav-container { flex-direction: column; gap: 4px; }
-            .navbar { top: 38px; }
-            .hero { margin-top: 68px; padding-top: 60px; }
-            .top-bar .container { gap: 6px; }
-            .lang-switch {
-                padding: 2px 10px;
-                font-size: 0.6rem;
+            body {
+                padding-top: 65px;
             }
-        }
-        @media (max-width: 480px) {
-            .hero-tagline { font-size: 1.2rem; }
-            .hero-logo-img { height: 90px; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .services-grid { grid-template-columns: 1fr; }
-            .hero-btns .btn { width: 100%; max-width: 280px; }
-            .trust-container { gap: 15px; }
-            .lang-switch {
-                padding: 2px 8px;
-                font-size: 0.55rem;
+
+            .navbar {
+                height: 60px;
+                padding: 0 15px;
             }
-            .lang-switch i {
-                font-size: 0.6rem;
+            .logo-img {
+                height: 38px;
+                max-width: 130px;
+            }
+
+            /* ===== قائمة الجوال ===== */
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 60px);
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px 0;
+                gap: 2px;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto;
+                align-items: stretch;
+            }
+            .nav-menu.open {
+                right: 0;
+            }
+            .nav-menu li {
+                width: 100%;
+            }
+            .nav-menu a {
+                padding: 14px 25px;
+                font-size: 0.95rem;
+                border-radius: 0;
+                white-space: normal;
+                border-right: 3px solid transparent;
+            }
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: rgba(0,212,255,0.1);
+                border-right-color: var(--cyan);
+                color: var(--cyan);
+            }
+
+            /* ===== باقي التعديلات ===== */
+            .hero {
+                min-height: 80vh;
+                padding: 50px 15px 40px;
+            }
+            .hero-logo-img {
+                height: 100px;
+            }
+            .hero-tagline {
+                font-size: 1.5rem;
+            }
+            .hero-title {
+                font-size: 1.1rem;
+            }
+            .hero-desc {
+                font-size: 0.9rem;
+            }
+            .hero-logo-wrapper::before {
+                width: 180px;
+                height: 180px;
+            }
+            @keyframes glowPulse {
+                0%, 100% { width: 180px; height: 180px; }
+                50% { width: 210px; height: 210px; }
+            }
+
+            .quotes-container {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .btn {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
+            .trust-container {
+                gap: 15px;
+            }
+            .trust-item {
+                font-size: 0.78rem;
+            }
+            .whatsapp-float,
+            .consult-float {
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+            }
+            .consult-float {
+                bottom: 74px;
             }
         }
 
-        /* ===== وضع اللغة الإنجليزية ===== */
-        body.en {
-            direction: ltr;
-            text-align: left;
+        @media (max-width: 480px) {
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+            .hero-logo-img {
+                height: 80px;
+            }
+            .hero-logo-wrapper::before {
+                width: 140px;
+                height: 140px;
+            }
+            @keyframes glowPulse {
+                0%, 100% { width: 140px; height: 140px; }
+                50% { width: 170px; height: 170px; }
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 260px;
+            }
+            .nav-menu {
+                width: 100%;
+                right: -100%;
+            }
+            .nav-menu.open {
+                right: 0;
+            }
         }
-        body.en .hero-tagline,
-        body.en .hero-title,
-        body.en .hero-desc,
-        body.en .section-title,
-        body.en .service-box h4,
-        body.en .service-box p,
-        body.en .why-us-item h4,
-        body.en .why-us-item p,
-        body.en .quote-card p,
-        body.en .stat-item .label,
-        body.en .trust-item,
-        body.en .cta-section h2,
-        body.en .cta-section p,
-        body.en footer p,
-        body.en .top-bar .social-text,
-        body.en .nav-menu a {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        /* ===== إضافة ظل خلفي عند فتح القائمة ===== */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 999;
         }
-        body.en .section-title::after {
-            margin: 12px auto 0;
+        .nav-overlay.active {
+            display: block;
         }
-        body.en .service-box .s-icon {
-            margin: 0 auto 15px;
+
+        @media (min-width: 769px) {
+            .nav-overlay {
+                display: none !important;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- ===== شريط التواصل العلوي ===== -->
-    <div class="top-bar">
-        <div class="container">
-            <span class="social-text" id="socialText">
-                <i class="fas fa-bell"></i> تابعونا على صفحاتنا الرسمية
-            </span>
-            <!-- ===== زر تبديل اللغة داخل الشريط العلوي ===== -->
-            <button class="lang-switch" id="langSwitch" aria-label="تبديل اللغة / Switch Language">
-                <i class="fas fa-globe"></i>
-                <span id="langText">EN</span>
-            </button>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/profile.php?id=61592891921328" target="_blank" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/kyntravaai" target="_blank" title="إنستغرام"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" title="تويتر"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank" title="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank" title="يوتيوب"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </div>
 
     <!-- ===== أيقونات عائمة ===== -->
     <a href="https://wa.me/963981193023" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
@@ -824,21 +785,23 @@
 
     <!-- ===== شريط التنقل ===== -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo-area">
-                <a href="index.html">
-                    <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="logo-img">
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active" id="navHome">الرئيسية</a></li>
-                <li><a href="about.html" id="navAbout">عن الشركة</a></li>
-                <li><a href="services.html" id="navServices">خدماتنا</a></li>
-                <li><a href="consultation.html" id="navConsult">الاستشارات</a></li>
-                <li><a href="contact.html" id="navContact">اتصل بنا</a></li>
-            </ul>
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="logo-img">
+            </a>
         </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="active">الرئيسية</a></li>
+            <li><a href="about.html">عن الشركة</a></li>
+            <li><a href="services.html">خدماتنا</a></li>
+            <li><a href="consultation.html">الاستشارات</a></li>
+            <li><a href="contact.html">اتصل بنا</a></li>
+        </ul>
     </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- ===== الهيرو ===== -->
     <header class="hero">
@@ -848,13 +811,13 @@
             <div class="hero-logo-wrapper">
                 <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="hero-logo-img">
             </div>
-            <h1 class="hero-tagline" id="heroTagline"><span>Kyntrava AI</span> المستقبل بالذكاء الاصطناعي</h1>
+            <h1 class="hero-tagline"><span>Kyntrava AI</span> المستقبل بالذكاء الاصطناعي</h1>
             <div class="hero-divider"></div>
-            <p class="hero-title" id="heroTitle">نبتكر حلولاً رقمية ذكية تواكب تطلعاتك وتدفع أعمالك نحو آفاق جديدة</p>
-            <p class="hero-desc" id="heroDesc">نصنع لك حلولاً ذكية تتكيف مع احتياجاتك وتنمو مع نمو أعمالك. لا تترك منافسيك يسبقونك.. وظف الذكاء الاصطناعي في عملك اليوم.</p>
+            <p class="hero-title">نبتكر حلولاً رقمية ذكية تواكب تطلعاتك وتدفع أعمالك نحو آفاق جديدة</p>
+            <p class="hero-desc">نصنع لك حلولاً ذكية تتكيف مع احتياجاتك وتنمو مع نمو أعمالك. لا تترك منافسيك يسبقونك.. وظف الذكاء الاصطناعي في عملك اليوم.</p>
             <div class="hero-btns">
-                <a href="services.html" class="btn btn-cyan" id="heroBtn1"><i class="fas fa-robot"></i> اكتشف خدماتنا</a>
-                <a href="consultation.html" class="btn btn-outline" id="heroBtn2"><i class="fas fa-calendar-check"></i> احجز استشارة مجانية</a>
+                <a href="services.html" class="btn btn-cyan"><i class="fas fa-robot"></i> اكتشف خدماتنا</a>
+                <a href="consultation.html" class="btn btn-outline"><i class="fas fa-calendar-check"></i> احجز استشارة مجانية</a>
             </div>
         </div>
         <div class="wave-bottom"></div>
@@ -863,10 +826,10 @@
     <!-- ===== شريط الثقة ===== -->
     <section class="trust-bar">
         <div class="trust-container">
-            <div class="trust-item"><i class="fas fa-check-circle"></i><span id="trust1">خبرة 8 سنوات</span></div>
-            <div class="trust-item"><i class="fas fa-check-circle"></i><span id="trust2">+120 مشروع برمجي</span></div>
-            <div class="trust-item"><i class="fas fa-check-circle"></i><span id="trust3">50 عميل حول العالم</span></div>
-            <div class="trust-item"><i class="fas fa-check-circle"></i><span id="trust4">فريق 25 خبير تقني</span></div>
+            <div class="trust-item"><i class="fas fa-check-circle"></i><span>خبرة 8 سنوات</span></div>
+            <div class="trust-item"><i class="fas fa-check-circle"></i><span>+120 مشروع برمجي</span></div>
+            <div class="trust-item"><i class="fas fa-check-circle"></i><span>50 عميل حول العالم</span></div>
+            <div class="trust-item"><i class="fas fa-check-circle"></i><span>فريق 25 خبير تقني</span></div>
         </div>
     </section>
 
@@ -875,15 +838,15 @@
         <div class="quotes-container">
             <div class="quote-card">
                 <div class="quote-icon"><i class="fas fa-brain"></i></div>
-                <p id="quote1">"الذكاء الاصطناعي ليس مجرد تقنية.. إنه مستقبل كل صناعة."</p>
+                <p>"الذكاء الاصطناعي ليس مجرد تقنية.. إنه مستقبل كل صناعة."</p>
             </div>
             <div class="quote-card">
                 <div class="quote-icon"><i class="fas fa-code"></i></div>
-                <p id="quote2">"كل سطر كود نكتبه يهدف لتحويل فكرتك إلى واقع رقمي ملموس."</p>
+                <p>"كل سطر كود نكتبه يهدف لتحويل فكرتك إلى واقع رقمي ملموس."</p>
             </div>
             <div class="quote-card">
                 <div class="quote-icon"><i class="fas fa-rocket"></i></div>
-                <p id="quote3">"مع Kyntrava AI، عملك ليس مجرد مشروع.. إنه رحلة نحو المستقبل."</p>
+                <p>"مع Kyntrava AI، عملك ليس مجرد مشروع.. إنه رحلة نحو المستقبل."</p>
             </div>
         </div>
     </section>
@@ -891,12 +854,12 @@
     <!-- ===== الإحصائيات ===== -->
     <section class="stats-section">
         <div class="container">
-            <h2 class="section-title" id="statsTitle"><span>Kyntrava AI</span> في أرقام</h2>
+            <h2 class="section-title"><span>Kyntrava AI</span> في أرقام</h2>
             <div class="stats-grid">
-                <div class="stat-item"><div class="num">50</div><div class="label" id="stat1">عميل حول العالم</div></div>
-                <div class="stat-item"><div class="num">+120</div><div class="label" id="stat2">مشروع برمجي منجز</div></div>
-                <div class="stat-item"><div class="num">8</div><div class="label" id="stat3">سنوات من الخبرة</div></div>
-                <div class="stat-item"><div class="num">25</div><div class="label" id="stat4">مطور وخبير تقني</div></div>
+                <div class="stat-item"><div class="num">50</div><div class="label">عميل حول العالم</div></div>
+                <div class="stat-item"><div class="num">+120</div><div class="label">مشروع برمجي منجز</div></div>
+                <div class="stat-item"><div class="num">8</div><div class="label">سنوات من الخبرة</div></div>
+                <div class="stat-item"><div class="num">25</div><div class="label">مطور وخبير تقني</div></div>
             </div>
         </div>
     </section>
@@ -904,27 +867,27 @@
     <!-- ===== الخدمات ===== -->
     <section class="services-section">
         <div class="container">
-            <h2 class="section-title" id="servicesTitle">ماذا <span>نقدم</span> لك؟</h2>
+            <h2 class="section-title">ماذا <span>نقدم</span> لك؟</h2>
             <div class="services-grid">
                 <div class="service-box">
                     <div class="s-icon"><i class="fas fa-brain"></i></div>
-                    <h4 id="srv1">الذكاء الاصطناعي</h4>
-                    <p id="srv1d">حلول AI متقدمة لتحليل البيانات والأتمتة الذكية</p>
+                    <h4>الذكاء الاصطناعي</h4>
+                    <p>حلول AI متقدمة لتحليل البيانات والأتمتة الذكية</p>
                 </div>
                 <div class="service-box">
                     <div class="s-icon"><i class="fas fa-code"></i></div>
-                    <h4 id="srv2">تطوير البرمجيات</h4>
-                    <p id="srv2d">تطبيقات ويب وجوال مخصصة حسب متطلباتك</p>
+                    <h4>تطوير البرمجيات</h4>
+                    <p>تطبيقات ويب وجوال مخصصة حسب متطلباتك</p>
                 </div>
                 <div class="service-box">
                     <div class="s-icon"><i class="fas fa-cloud"></i></div>
-                    <h4 id="srv3">حلول سحابية</h4>
-                    <p id="srv3d">بنية تحتية سحابية آمنة وقابلة للتطوير</p>
+                    <h4>حلول سحابية</h4>
+                    <p>بنية تحتية سحابية آمنة وقابلة للتطوير</p>
                 </div>
                 <div class="service-box">
                     <div class="s-icon"><i class="fas fa-headset"></i></div>
-                    <h4 id="srv4">استشارة مجانية</h4>
-                    <p id="srv4d">فريقنا التقني جاهز للإجابة على استفساراتك</p>
+                    <h4>استشارة مجانية</h4>
+                    <p>فريقنا التقني جاهز للإجابة على استفساراتك</p>
                 </div>
             </div>
         </div>
@@ -933,34 +896,34 @@
     <!-- ===== لماذا نحن ===== -->
     <section class="why-us-section">
         <div class="container">
-            <h2 class="section-title" id="whyTitle">لماذا <span>Kyntrava AI</span>؟</h2>
+            <h2 class="section-title">لماذا <span>Kyntrava AI</span>؟</h2>
             <div class="why-us-grid">
                 <div class="why-us-item">
                     <div class="why-icon"><i class="fas fa-microchip"></i></div>
                     <div>
-                        <h4 id="why1">تقنيات متطورة</h4>
-                        <p id="why1d">نستخدم أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي لتقديم حلول مبتكرة تنافسية.</p>
+                        <h4>تقنيات متطورة</h4>
+                        <p>نستخدم أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي لتقديم حلول مبتكرة تنافسية.</p>
                     </div>
                 </div>
                 <div class="why-us-item">
                     <div class="why-icon"><i class="fas fa-users"></i></div>
                     <div>
-                        <h4 id="why2">فريق متكامل</h4>
-                        <p id="why2d">مطورون، مصممون، وخبراء AI يعملون معاً بروح الفريق الواحد لتحقيق رؤيتك.</p>
+                        <h4>فريق متكامل</h4>
+                        <p>مطورون، مصممون، وخبراء AI يعملون معاً بروح الفريق الواحد لتحقيق رؤيتك.</p>
                     </div>
                 </div>
                 <div class="why-us-item">
                     <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
                     <div>
-                        <h4 id="why3">أمان وحماية</h4>
-                        <p id="why3d">نلتزم بأعلى معايير الأمان السيبراني وحماية بيانات عملائنا بكل خصوصية.</p>
+                        <h4>أمان وحماية</h4>
+                        <p>نلتزم بأعلى معايير الأمان السيبراني وحماية بيانات عملائنا بكل خصوصية.</p>
                     </div>
                 </div>
                 <div class="why-us-item">
                     <div class="why-icon"><i class="fas fa-headset"></i></div>
                     <div>
-                        <h4 id="why4">دعم فني مستمر</h4>
-                        <p id="why4d">نقدم دعماً فنياً متواصلاً وتحديثات دورية لضمان استمرارية عمل حلولك بكفاءة.</p>
+                        <h4>دعم فني مستمر</h4>
+                        <p>نقدم دعماً فنياً متواصلاً وتحديثات دورية لضمان استمرارية عمل حلولك بكفاءة.</p>
                     </div>
                 </div>
             </div>
@@ -970,31 +933,57 @@
     <!-- ===== CTA ===== -->
     <section class="cta-section">
         <div class="container">
-            <h2 id="ctaTitle">هل أنت مستعد <span>للانطلاق نحو المستقبل؟</span></h2>
-            <p id="ctaDesc">لا تدع فكرة مشروعك التقني تبقى حبراً على ورق. فريقنا جاهز لتقديم استشارة أولية مجانية وتقييم فرص نجاح مشروعك.</p>
-            <a href="consultation.html" class="btn btn-cyan" id="ctaBtn"><i class="fas fa-rocket"></i> ابدأ الآن - احجز استشارتك</a>
+            <h2>هل أنت مستعد <span>للانطلاق نحو المستقبل؟</span></h2>
+            <p>لا تدع فكرة مشروعك التقني تبقى حبراً على ورق. فريقنا جاهز لتقديم استشارة أولية مجانية وتقييم فرص نجاح مشروعك.</p>
+            <a href="consultation.html" class="btn btn-cyan"><i class="fas fa-rocket"></i> ابدأ الآن - احجز استشارتك</a>
         </div>
     </section>
 
     <!-- ===== الفوتر ===== -->
     <footer>
         <div class="footer-links">
-            <a href="index.html" id="footerHome">الرئيسية</a>
-            <a href="about.html" id="footerAbout">عن الشركة</a>
-            <a href="services.html" id="footerServices">خدماتنا</a>
-            <a href="consultation.html" id="footerConsult">الاستشارات</a>
-            <a href="contact.html" id="footerContact">اتصل بنا</a>
-            <a href="privacy.html" id="footerPrivacy">سياسة الخصوصية</a>
-            <a href="terms.html" id="footerTerms">الشروط والأحكام</a>
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">عن الشركة</a>
+            <a href="services.html">خدماتنا</a>
+            <a href="consultation.html">الاستشارات</a>
+            <a href="contact.html">اتصل بنا</a>
+            <a href="privacy.html">سياسة الخصوصية</a>
+            <a href="terms.html">الشروط والأحكام</a>
         </div>
-        <p id="footerCopy">© 2026 Kyntrava AI. جميع الحقوق محفوظة. | <a href="privacy.html">سياسة الخصوصية</a> | <a href="terms.html">الشروط والأحكام</a></p>
+        <p>© 2026 Kyntrava AI. جميع الحقوق محفوظة. | <a href="privacy.html">سياسة الخصوصية</a> | <a href="terms.html">الشروط والأحكام</a></p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- ===== جافا سكريبت للقائمة ===== -->
     <script>
-        // ==========================================
-        // Three.js - روبوتات متحركة في الهيرو
-        // ==========================================
+        // ===== قائمة الجوال =====
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function toggleMenu() {
+            navMenu.classList.toggle('open');
+            navOverlay.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navMenu.classList.contains('open')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+
+        // إغلاق القائمة عند الضغط على رابط
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('open')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // ===== Three.js - روبوتات متحركة =====
         (function() {
             const canvas = document.getElementById('heroCanvas');
             if (!canvas) return;
@@ -1165,7 +1154,7 @@
                 requestAnimationFrame(animate);
                 const time = Date.now() * 0.001;
 
-                robotsGroup.children.forEach((robot, i) => {
+                robotsGroup.children.forEach((robot) => {
                     const data = robot.userData;
                     robot.rotation.y += data.rotSpeed;
                     robot.position.y = -2.5 + Math.sin(time * data.floatSpeed + data.phase) * data.floatAmp;
@@ -1209,213 +1198,6 @@
                 robotsGroup.rotation.y += (mouseX * 0.2 - robotsGroup.rotation.y) * 0.02;
                 robotsGroup.rotation.x += (mouseY * 0.1 - robotsGroup.rotation.x) * 0.02;
             });
-        })();
-
-        // ==========================================
-        // نظام الترجمة
-        // ==========================================
-        (function() {
-            const langSwitch = document.getElementById('langSwitch');
-            const langText = document.getElementById('langText');
-            let currentLang = 'ar';
-
-            // ===== قاموس الترجمة =====
-            const translations = {
-                en: {
-                    socialText: 'Follow us on social media',
-                    navHome: 'Home',
-                    navAbout: 'About',
-                    navServices: 'Services',
-                    navConsult: 'Consultation',
-                    navContact: 'Contact',
-                    heroTagline: '<span>Kyntrava AI</span> The Future with AI',
-                    heroTitle: 'We create smart digital solutions that keep up with your ambitions and drive your business to new horizons',
-                    heroDesc: 'We build intelligent solutions that adapt to your needs and grow with your business. Don\'t let your competitors get ahead.. integrate AI into your business today.',
-                    heroBtn1: 'Discover Our Services',
-                    heroBtn2: 'Book Free Consultation',
-                    trust1: '8 Years Experience',
-                    trust2: '+120 Software Projects',
-                    trust3: '50 Clients Worldwide',
-                    trust4: '25 Tech Experts Team',
-                    quote1: '"AI is not just a technology.. it\'s the future of every industry."',
-                    quote2: '"Every line of code we write aims to turn your idea into a tangible digital reality."',
-                    quote3: '"With Kyntrava AI, your business is not just a project.. it\'s a journey to the future."',
-                    statsTitle: '<span>Kyntrava AI</span> in Numbers',
-                    stat1: 'Clients Worldwide',
-                    stat2: 'Software Projects Completed',
-                    stat3: 'Years of Experience',
-                    stat4: 'Developers & Tech Experts',
-                    servicesTitle: 'What <span>We Offer</span> You?',
-                    srv1: 'Artificial Intelligence',
-                    srv1d: 'Advanced AI solutions for data analysis and smart automation',
-                    srv2: 'Software Development',
-                    srv2d: 'Custom web and mobile applications tailored to your needs',
-                    srv3: 'Cloud Solutions',
-                    srv3d: 'Secure and scalable cloud infrastructure',
-                    srv4: 'Free Consultation',
-                    srv4d: 'Our technical team is ready to answer your questions',
-                    whyTitle: 'Why <span>Kyntrava AI</span>?',
-                    why1: 'Advanced Technologies',
-                    why1d: 'We use the latest AI and machine learning technologies to deliver innovative competitive solutions.',
-                    why2: 'Integrated Team',
-                    why2d: 'Developers, designers, and AI experts working together as one team to achieve your vision.',
-                    why3: 'Security & Protection',
-                    why3d: 'We adhere to the highest cybersecurity standards and protect our clients\' data with complete privacy.',
-                    why4: 'Continuous Technical Support',
-                    why4d: 'We provide ongoing technical support and regular updates to ensure your solutions work efficiently.',
-                    ctaTitle: 'Are you ready <span>to launch into the future?</span>',
-                    ctaDesc: 'Don\'t let your tech project idea remain on paper. Our team is ready to provide a free initial consultation and assess your project\'s success opportunities.',
-                    ctaBtn: 'Start Now - Book Your Consultation',
-                    footerHome: 'Home',
-                    footerAbout: 'About',
-                    footerServices: 'Services',
-                    footerConsult: 'Consultation',
-                    footerContact: 'Contact',
-                    footerPrivacy: 'Privacy Policy',
-                    footerTerms: 'Terms & Conditions',
-                    footerCopy: '© 2026 Kyntrava AI. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a>'
-                },
-                ar: {
-                    socialText: 'تابعونا على صفحاتنا الرسمية',
-                    navHome: 'الرئيسية',
-                    navAbout: 'عن الشركة',
-                    navServices: 'خدماتنا',
-                    navConsult: 'الاستشارات',
-                    navContact: 'اتصل بنا',
-                    heroTagline: '<span>Kyntrava AI</span> المستقبل بالذكاء الاصطناعي',
-                    heroTitle: 'نبتكر حلولاً رقمية ذكية تواكب تطلعاتك وتدفع أعمالك نحو آفاق جديدة',
-                    heroDesc: 'نصنع لك حلولاً ذكية تتكيف مع احتياجاتك وتنمو مع نمو أعمالك. لا تترك منافسيك يسبقونك.. وظف الذكاء الاصطناعي في عملك اليوم.',
-                    heroBtn1: 'اكتشف خدماتنا',
-                    heroBtn2: 'احجز استشارة مجانية',
-                    trust1: 'خبرة 8 سنوات',
-                    trust2: '+120 مشروع برمجي',
-                    trust3: '50 عميل حول العالم',
-                    trust4: 'فريق 25 خبير تقني',
-                    quote1: '"الذكاء الاصطناعي ليس مجرد تقنية.. إنه مستقبل كل صناعة."',
-                    quote2: '"كل سطر كود نكتبه يهدف لتحويل فكرتك إلى واقع رقمي ملموس."',
-                    quote3: '"مع Kyntrava AI، عملك ليس مجرد مشروع.. إنه رحلة نحو المستقبل."',
-                    statsTitle: '<span>Kyntrava AI</span> في أرقام',
-                    stat1: 'عميل حول العالم',
-                    stat2: 'مشروع برمجي منجز',
-                    stat3: 'سنوات من الخبرة',
-                    stat4: 'مطور وخبير تقني',
-                    servicesTitle: 'ماذا <span>نقدم</span> لك؟',
-                    srv1: 'الذكاء الاصطناعي',
-                    srv1d: 'حلول AI متقدمة لتحليل البيانات والأتمتة الذكية',
-                    srv2: 'تطوير البرمجيات',
-                    srv2d: 'تطبيقات ويب وجوال مخصصة حسب متطلباتك',
-                    srv3: 'حلول سحابية',
-                    srv3d: 'بنية تحتية سحابية آمنة وقابلة للتطوير',
-                    srv4: 'استشارة مجانية',
-                    srv4d: 'فريقنا التقني جاهز للإجابة على استفساراتك',
-                    whyTitle: 'لماذا <span>Kyntrava AI</span>؟',
-                    why1: 'تقنيات متطورة',
-                    why1d: 'نستخدم أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي لتقديم حلول مبتكرة تنافسية.',
-                    why2: 'فريق متكامل',
-                    why2d: 'مطورون، مصممون، وخبراء AI يعملون معاً بروح الفريق الواحد لتحقيق رؤيتك.',
-                    why3: 'أمان وحماية',
-                    why3d: 'نلتزم بأعلى معايير الأمان السيبراني وحماية بيانات عملائنا بكل خصوصية.',
-                    why4: 'دعم فني مستمر',
-                    why4d: 'نقدم دعماً فنياً متواصلاً وتحديثات دورية لضمان استمرارية عمل حلولك بكفاءة.',
-                    ctaTitle: 'هل أنت مستعد <span>للانطلاق نحو المستقبل؟</span>',
-                    ctaDesc: 'لا تدع فكرة مشروعك التقني تبقى حبراً على ورق. فريقنا جاهز لتقديم استشارة أولية مجانية وتقييم فرص نجاح مشروعك.',
-                    ctaBtn: 'ابدأ الآن - احجز استشارتك',
-                    footerHome: 'الرئيسية',
-                    footerAbout: 'عن الشركة',
-                    footerServices: 'خدماتنا',
-                    footerConsult: 'الاستشارات',
-                    footerContact: 'اتصل بنا',
-                    footerPrivacy: 'سياسة الخصوصية',
-                    footerTerms: 'الشروط والأحكام',
-                    footerCopy: '© 2026 Kyntrava AI. جميع الحقوق محفوظة. | <a href="privacy.html">سياسة الخصوصية</a> | <a href="terms.html">الشروط والأحكام</a>'
-                }
-            };
-
-            // ===== دالة تطبيق الترجمة =====
-            function applyLanguage(lang) {
-                const t = translations[lang];
-                if (!t) return;
-
-                document.getElementById('socialText').innerHTML = t.socialText;
-                document.getElementById('navHome').textContent = t.navHome;
-                document.getElementById('navAbout').textContent = t.navAbout;
-                document.getElementById('navServices').textContent = t.navServices;
-                document.getElementById('navConsult').textContent = t.navConsult;
-                document.getElementById('navContact').textContent = t.navContact;
-                document.getElementById('heroTagline').innerHTML = t.heroTagline;
-                document.getElementById('heroTitle').textContent = t.heroTitle;
-                document.getElementById('heroDesc').textContent = t.heroDesc;
-                document.getElementById('heroBtn1').innerHTML = '<i class="fas fa-robot"></i> ' + t.heroBtn1;
-                document.getElementById('heroBtn2').innerHTML = '<i class="fas fa-calendar-check"></i> ' + t.heroBtn2;
-                document.getElementById('trust1').textContent = t.trust1;
-                document.getElementById('trust2').textContent = t.trust2;
-                document.getElementById('trust3').textContent = t.trust3;
-                document.getElementById('trust4').textContent = t.trust4;
-                document.getElementById('quote1').textContent = t.quote1;
-                document.getElementById('quote2').textContent = t.quote2;
-                document.getElementById('quote3').textContent = t.quote3;
-                document.getElementById('statsTitle').innerHTML = t.statsTitle;
-                document.getElementById('stat1').textContent = t.stat1;
-                document.getElementById('stat2').textContent = t.stat2;
-                document.getElementById('stat3').textContent = t.stat3;
-                document.getElementById('stat4').textContent = t.stat4;
-                document.getElementById('servicesTitle').innerHTML = t.servicesTitle;
-                document.getElementById('srv1').textContent = t.srv1;
-                document.getElementById('srv1d').textContent = t.srv1d;
-                document.getElementById('srv2').textContent = t.srv2;
-                document.getElementById('srv2d').textContent = t.srv2d;
-                document.getElementById('srv3').textContent = t.srv3;
-                document.getElementById('srv3d').textContent = t.srv3d;
-                document.getElementById('srv4').textContent = t.srv4;
-                document.getElementById('srv4d').textContent = t.srv4d;
-                document.getElementById('whyTitle').innerHTML = t.whyTitle;
-                document.getElementById('why1').textContent = t.why1;
-                document.getElementById('why1d').textContent = t.why1d;
-                document.getElementById('why2').textContent = t.why2;
-                document.getElementById('why2d').textContent = t.why2d;
-                document.getElementById('why3').textContent = t.why3;
-                document.getElementById('why3d').textContent = t.why3d;
-                document.getElementById('why4').textContent = t.why4;
-                document.getElementById('why4d').textContent = t.why4d;
-                document.getElementById('ctaTitle').innerHTML = t.ctaTitle;
-                document.getElementById('ctaDesc').textContent = t.ctaDesc;
-                document.getElementById('ctaBtn').innerHTML = '<i class="fas fa-rocket"></i> ' + t.ctaBtn;
-                document.getElementById('footerHome').textContent = t.footerHome;
-                document.getElementById('footerAbout').textContent = t.footerAbout;
-                document.getElementById('footerServices').textContent = t.footerServices;
-                document.getElementById('footerConsult').textContent = t.footerConsult;
-                document.getElementById('footerContact').textContent = t.footerContact;
-                document.getElementById('footerPrivacy').textContent = t.footerPrivacy;
-                document.getElementById('footerTerms').textContent = t.footerTerms;
-                document.getElementById('footerCopy').innerHTML = t.footerCopy;
-
-                if (lang === 'en') {
-                    document.documentElement.dir = 'ltr';
-                    document.documentElement.lang = 'en';
-                    document.body.classList.add('en');
-                    langText.textContent = 'AR';
-                    currentLang = 'en';
-                } else {
-                    document.documentElement.dir = 'rtl';
-                    document.documentElement.lang = 'ar';
-                    document.body.classList.remove('en');
-                    langText.textContent = 'EN';
-                    currentLang = 'ar';
-                }
-            }
-
-            langSwitch.addEventListener('click', function() {
-                const newLang = currentLang === 'ar' ? 'en' : 'ar';
-                applyLanguage(newLang);
-                localStorage.setItem('kyntrava_lang', newLang);
-            });
-
-            const savedLang = localStorage.getItem('kyntrava_lang');
-            if (savedLang && (savedLang === 'ar' || savedLang === 'en')) {
-                applyLanguage(savedLang);
-            } else {
-                applyLanguage('ar');
-            }
         })();
     </script>
 </body>
