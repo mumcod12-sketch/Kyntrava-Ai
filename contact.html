@@ -14,6 +14,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
         body { background: #F0F4F8; padding-top: 70px; }
         
+        /* ===== هيدر الصفحة ===== */
         .page-header {
             background: linear-gradient(135deg, #0A1628 0%, #0D1B2A 100%);
             padding: 80px 20px 60px;
@@ -42,6 +43,7 @@
             z-index: 2;
         }
         
+        /* ===== بطاقات الاتصال السريع ===== */
         .quick-contact-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -57,7 +59,10 @@
             border: 1px solid #E8ECF0;
             transition: all 0.3s ease;
         }
-        .quick-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.1); }
+        .quick-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 28px rgba(0,0,0,0.1); 
+        }
         .quick-card .qc-icon {
             width: 52px; height: 52px;
             border-radius: 14px;
@@ -80,12 +85,20 @@
             direction: ltr;
         }
         .quick-card .btn-contact {
-            display: inline-block; margin-top: 8px; padding: 6px 18px;
-            background: #00D4FF; color: #0A1628; text-decoration: none;
-            border-radius: 20px; font-size: 0.78rem; font-weight: 600; transition: 0.3s;
+            display: inline-block; 
+            margin-top: 8px; 
+            padding: 6px 18px;
+            background: #00D4FF; 
+            color: #0A1628; 
+            text-decoration: none;
+            border-radius: 20px; 
+            font-size: 0.78rem; 
+            font-weight: 600; 
+            transition: 0.3s;
         }
         .quick-card .btn-contact:hover { background: #0099CC; }
         
+        /* ===== قسم السوشيال ميديا ===== */
         .social-section {
             background: white;
             border-radius: 16px;
@@ -112,6 +125,7 @@
         .social-icons .li { background: #0A66C2; }
         .social-icons .yt { background: #FF0000; }
         
+        /* ===== ساعات العمل ===== */
         .hours-section {
             background: white;
             border-radius: 16px;
@@ -130,42 +144,91 @@
         
         /* ===== قائمة التنقل ===== */
         .navbar {
-            background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            padding: 0 20px; height: 65px;
-            display: flex; align-items: center; justify-content: space-between;
+            background: white; 
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 1000;
+            padding: 0 20px; 
+            height: 65px;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
             border-bottom: 3px solid #00D4FF;
         }
+        .logo-area { display: flex; align-items: center; flex-shrink: 0; }
         .logo-img { height: 40px; width: auto; max-width: 140px; object-fit: contain; }
         .nav-menu { display: flex; list-style: none; gap: 4px; align-items: center; }
         .nav-menu a {
-            color: #4A5A6A; font-weight: 600; font-size: 0.8rem;
-            padding: 7px 14px; border-radius: 8px;
-            transition: all 0.3s ease; display: block; white-space: nowrap;
+            color: #4A5A6A; 
+            font-weight: 600; 
+            font-size: 0.8rem;
+            padding: 7px 14px; 
+            border-radius: 8px;
+            transition: all 0.3s ease; 
+            display: block; 
+            white-space: nowrap;
         }
         .nav-menu a:hover, .nav-menu a.active {
-            background: #00D4FF; color: #0A1628;
+            background: #00D4FF; 
+            color: #0A1628;
         }
-        .menu-toggle { display: none; background: none; border: none; font-size: 1.6rem; color: #1A2A4A; cursor: pointer; padding: 4px; }
-        .nav-overlay { display: none; position: fixed; top: 65px; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 999; }
+        .menu-toggle { 
+            display: none; 
+            background: none; 
+            border: none; 
+            font-size: 1.6rem; 
+            color: #1A2A4A; 
+            cursor: pointer; 
+            padding: 4px; 
+        }
+        .menu-toggle:hover { color: #00D4FF; }
+        .nav-overlay { 
+            display: none; 
+            position: fixed; 
+            top: 65px; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            background: rgba(0,0,0,0.4); 
+            z-index: 999; 
+        }
         .nav-overlay.active { display: block; }
         
+        /* ===== أيقونات عائمة ===== */
         .whatsapp-float {
-            position: fixed; bottom: 20px; right: 20px;
-            width: 48px; height: 48px;
-            background: #25D366; color: white;
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px;
+            width: 48px; 
+            height: 48px;
+            background: #25D366; 
+            color: white;
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 24px; box-shadow: 0 4px 15px rgba(37,211,102,0.4);
-            z-index: 999; animation: pulse 2s infinite;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 24px; 
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            z-index: 999; 
+            animation: pulse 2s infinite;
         }
         .consult-float {
-            position: fixed; bottom: 76px; right: 20px;
-            width: 48px; height: 48px;
-            background: #00D4FF; color: #0A1628;
+            position: fixed; 
+            bottom: 76px; 
+            right: 20px;
+            width: 48px; 
+            height: 48px;
+            background: #00D4FF; 
+            color: #0A1628;
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 22px; box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 22px; 
+            box-shadow: 0 4px 15px rgba(0,212,255,0.3);
             z-index: 999;
         }
         @keyframes pulse {
@@ -174,60 +237,111 @@
             100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
         }
         
+        /* ===== الفوتر ===== */
         footer {
-            background: #0A1628; color: #ccc;
-            text-align: center; padding: 25px 15px 18px;
-            font-size: 0.82rem; border-top: 4px solid #00D4FF;
+            background: #0A1628; 
+            color: #ccc;
+            text-align: center; 
+            padding: 25px 15px 18px;
+            font-size: 0.82rem; 
+            border-top: 4px solid #00D4FF;
         }
-        footer a { color: #00D4FF; text-decoration: none; margin: 4px 8px; font-weight: 600; }
-        footer a:hover { text-decoration: underline; color: #0099CC; }
-        footer .footer-links { margin-bottom: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+        footer a { 
+            color: #00D4FF; 
+            text-decoration: none; 
+            margin: 4px 8px; 
+            font-weight: 600; 
+        }
+        footer a:hover { 
+            text-decoration: underline; 
+            color: #0099CC; 
+        }
+        footer .footer-links { 
+            margin-bottom: 10px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 4px; 
+        }
         
+        /* ===== ميديا كويري ===== */
         @media (max-width: 768px) {
             body { padding-top: 56px; }
             .navbar { height: 56px; padding: 0 12px; }
             .logo-img { height: 34px; max-width: 120px; }
             .menu-toggle { display: block; font-size: 1.5rem; }
             .nav-menu {
-                position: fixed; top: 56px; right: -100%; width: 260px;
-                height: calc(100vh - 56px); background: white;
-                flex-direction: column; padding: 16px 0; gap: 2px;
+                position: fixed; 
+                top: 56px; 
+                right: -100%; 
+                width: 260px;
+                height: calc(100vh - 56px); 
+                background: white;
+                flex-direction: column; 
+                padding: 16px 0; 
+                gap: 2px;
                 box-shadow: -5px 0 30px rgba(0,0,0,0.12);
                 transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                overflow-y: auto; align-items: stretch;
+                overflow-y: auto; 
+                align-items: stretch;
             }
             .nav-menu.open { right: 0; }
+            .nav-menu li { width: 100%; }
             .nav-menu a {
-                padding: 12px 20px; font-size: 0.9rem;
-                border-radius: 0; border-right: 3px solid transparent;
+                padding: 12px 20px; 
+                font-size: 0.9rem;
+                border-radius: 0; 
+                border-right: 3px solid transparent;
+                white-space: normal;
             }
             .nav-menu a:hover, .nav-menu a.active {
                 background: rgba(0,212,255,0.08);
-                border-right-color: #00D4FF; color: #00D4FF;
+                border-right-color: #00D4FF; 
+                color: #00D4FF;
             }
+            .nav-overlay { top: 56px; }
+            
             .page-header h1 { font-size: 2rem; }
             .page-header { padding: 60px 16px 50px; }
             .quick-contact-grid { grid-template-columns: 1fr 1fr; }
             .hours-grid { gap: 18px; }
         }
+        
         @media (max-width: 480px) {
             .page-header h1 { font-size: 1.6rem; }
             .quick-contact-grid { grid-template-columns: 1fr; }
             .nav-menu { width: 100%; }
+            .whatsapp-float, .consult-float {
+                width: 44px; height: 44px;
+                font-size: 20px;
+            }
+            .consult-float { bottom: 70px; }
+        }
+        
+        @media (min-width: 769px) {
+            .nav-overlay { display: none !important; }
         }
     </style>
 </head>
 <body>
-    <a href="https://wa.me/963981193023" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="consultation.html" class="consult-float"><i class="fas fa-comment-dots"></i></a>
+    <!-- ===== أيقونات عائمة ===== -->
+    <a href="https://wa.me/963981193023" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="consultation.html" class="consult-float" aria-label="احجز استشارة">
+        <i class="fas fa-comment-dots"></i>
+    </a>
 
+    <!-- ===== شريط التنقل ===== -->
     <nav class="navbar">
         <div class="logo-area">
             <a href="index.html">
                 <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="logo-img">
             </a>
         </div>
-        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html">الرئيسية</a></li>
             <li><a href="about.html">عن الشركة</a></li>
@@ -238,12 +352,16 @@
     </nav>
     <div class="nav-overlay" id="navOverlay"></div>
 
+    <!-- ===== هيدر الصفحة ===== -->
     <header class="page-header">
         <h1>تواصل <span>معنا</span></h1>
         <p class="subtitle">نحن هنا للإجابة على استفساراتكم وتقديم الدعم التقني اللازم</p>
     </header>
 
+    <!-- ===== المحتوى الرئيسي ===== -->
     <main class="contact-container">
+        
+        <!-- ===== بطاقات الاتصال السريع ===== -->
         <div class="quick-contact-grid">
             <div class="quick-card">
                 <div class="qc-icon bg-cyan"><i class="fas fa-phone-alt"></i></div>
@@ -252,6 +370,7 @@
                 <span class="contact-value">+963 981 193 023</span>
                 <a href="tel:+963981193023" class="btn-contact"><i class="fas fa-phone"></i> اتصل الآن</a>
             </div>
+            
             <div class="quick-card">
                 <div class="qc-icon bg-cyan-dark"><i class="fas fa-envelope"></i></div>
                 <h4>البريد الإلكتروني</h4>
@@ -259,6 +378,7 @@
                 <span class="contact-value" style="direction:ltr;">kyntravaai@gmail.com</span>
                 <a href="mailto:kyntravaai@gmail.com" class="btn-contact"><i class="fas fa-envelope"></i> أرسل بريد</a>
             </div>
+            
             <div class="quick-card">
                 <div class="qc-icon bg-teal"><i class="fab fa-whatsapp"></i></div>
                 <h4>واتساب الأعمال</h4>
@@ -268,28 +388,51 @@
             </div>
         </div>
         
+        <!-- ===== قسم السوشيال ميديا ===== -->
         <section class="social-section">
             <h3><i class="fas fa-share-alt" style="color:#00D4FF; margin-left:8px;"></i> تابعنا على وسائل التواصل الاجتماعي</h3>
             <div class="social-icons">
-                <a href="https://www.facebook.com/profile.php?id=61592891921328" target="_blank" class="fb"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/kyntravaai" target="_blank" class="ig"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" class="tw"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank" class="li"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank" class="yt"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61592891921328" target="_blank" class="fb" aria-label="فيسبوك">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/kyntravaai" target="_blank" class="ig" aria-label="إنستغرام">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" target="_blank" class="tw" aria-label="تويتر">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" target="_blank" class="li" aria-label="لينكد إن">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" target="_blank" class="yt" aria-label="يوتيوب">
+                    <i class="fab fa-youtube"></i>
+                </a>
             </div>
         </section>
         
+        <!-- ===== ساعات العمل ===== -->
         <section class="hours-section">
             <h3><i class="far fa-clock" style="color:#00D4FF; margin-left:6px;"></i> ساعات العمل الرسمية</h3>
             <div class="hours-grid">
-                <div class="hours-item"><div class="day">الأحد - الخميس</div><div class="time">9:00 ص - 6:00 م</div></div>
-                <div class="hours-item"><div class="day">الجمعة</div><div class="time">عطلة رسمية</div></div>
-                <div class="hours-item"><div class="day">السبت</div><div class="time">10:00 ص - 3:00 م</div></div>
+                <div class="hours-item">
+                    <div class="day">الأحد - الخميس</div>
+                    <div class="time">9:00 ص - 6:00 م</div>
+                </div>
+                <div class="hours-item">
+                    <div class="day">الجمعة</div>
+                    <div class="time">عطلة رسمية</div>
+                </div>
+                <div class="hours-item">
+                    <div class="day">السبت</div>
+                    <div class="time">10:00 ص - 3:00 م</div>
+                </div>
             </div>
             <p class="hours-note">* يمكنكم التواصل عبر الواتساب أو البريد الإلكتروني على مدار الساعة.</p>
         </section>
+
     </main>
 
+    <!-- ===== الفوتر ===== -->
     <footer>
         <div class="footer-links">
             <a href="index.html">الرئيسية</a>
@@ -303,6 +446,7 @@
         <p>© 2026 Kyntrava AI. جميع الحقوق محفوظة. | <a href="privacy.html">سياسة الخصوصية</a> | <a href="terms.html">الشروط والأحكام</a></p>
     </footer>
 
+    <!-- ===== جافا سكريبت للقائمة ===== -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
@@ -312,12 +456,23 @@
             navMenu.classList.toggle('open');
             navOverlay.classList.toggle('active');
             const icon = menuToggle.querySelector('i');
-            icon.className = navMenu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+            if (navMenu.classList.contains('open')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
         }
+
         menuToggle.addEventListener('click', toggleMenu);
         navOverlay.addEventListener('click', toggleMenu);
+
+        // إغلاق القائمة عند الضغط على رابط
         document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => { if (navMenu.classList.contains('open')) toggleMenu(); });
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('open')) {
+                    toggleMenu();
+                }
+            });
         });
     </script>
     <script src="script.js"></script>
