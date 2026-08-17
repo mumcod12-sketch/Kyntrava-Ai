@@ -12,42 +12,41 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background: #F0F4F8; }
+        body { background: #F0F4F8; padding-top: 70px; }
         
         .page-header {
             background: linear-gradient(135deg, #0A1628 0%, #0D1B2A 100%);
-            padding: 100px 20px 80px;
+            padding: 80px 20px 60px;
             text-align: center;
             color: white;
             position: relative;
             overflow: hidden;
-            margin-top: 70px;
         }
         .page-header::after {
             content: '';
             position: absolute;
             bottom: -2px; left: 0; right: 0;
-            height: 60px;
+            height: 50px;
             background: #F0F4F8;
             clip-path: ellipse(65% 100% at 50% 100%);
         }
-        .page-header h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 15px; }
+        .page-header h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 12px; }
         .page-header h1 span { color: #00D4FF; }
-        .page-header .subtitle { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 2; }
+        .page-header .subtitle { font-size: 1.05rem; opacity: 0.9; max-width: 600px; margin: 0 auto; line-height: 1.9; font-weight: 500; }
         
         .content-container {
             max-width: 900px;
-            margin: -30px auto 60px;
-            padding: 0 20px;
+            margin: -30px auto 50px;
+            padding: 0 16px;
             position: relative;
             z-index: 2;
         }
         
         .terms-card {
             background: white;
-            border-radius: 22px;
-            padding: 45px 40px;
-            box-shadow: 0 6px 30px rgba(0,0,0,0.07);
+            border-radius: 18px;
+            padding: 35px 30px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.06);
             border: 1px solid #E8ECF0;
             position: relative;
         }
@@ -55,42 +54,42 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 5px;
+            height: 4px;
             background: linear-gradient(90deg, #00D4FF, #0099CC);
-            border-radius: 22px 22px 0 0;
+            border-radius: 18px 18px 0 0;
         }
         
         .terms-card h2 {
             color: #1A2A4A;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
-            margin: 30px 0 15px;
-            padding-bottom: 8px;
+            margin: 25px 0 12px;
+            padding-bottom: 6px;
             border-bottom: 2px solid #00D4FF;
         }
-        .terms-card h2:first-of-type { margin-top: 10px; }
+        .terms-card h2:first-of-type { margin-top: 8px; }
         .terms-card h3 {
             color: #00D4FF;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            margin: 20px 0 10px;
+            margin: 16px 0 8px;
         }
         .terms-card p {
             color: #4A5A6A;
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 2;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             text-align: justify;
         }
         .terms-card ul {
-            padding-right: 25px;
-            margin-bottom: 15px;
+            padding-right: 22px;
+            margin-bottom: 12px;
         }
         .terms-card ul li {
             color: #4A5A6A;
-            font-size: 0.98rem;
+            font-size: 0.92rem;
             line-height: 2;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
         .terms-card ul li strong {
             color: #1A2A4A;
@@ -98,43 +97,112 @@
         
         .terms-card .highlight-box {
             background: #F0F4F8;
-            border-radius: 14px;
-            padding: 20px 25px;
-            margin: 20px 0;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 16px 0;
             border-right: 4px solid #00D4FF;
         }
         .terms-card .highlight-box p {
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             font-weight: 600;
             color: #1A2A4A;
         }
+        .terms-card .highlight-box p:last-child { margin-bottom: 0; }
         
         .last-updated {
             color: #7A8A9A;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 25px;
+            padding-top: 16px;
             border-top: 1px solid #E8ECF0;
         }
         
-        footer {
-            background: #0A1628;
-            color: #ccc;
-            text-align: center;
-            padding: 30px 15px 20px;
-            font-size: 0.85rem;
-            border-top: 4px solid #00D4FF;
+        /* ===== قائمة التنقل ===== */
+        .navbar {
+            background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 0 20px; height: 65px;
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 3px solid #00D4FF;
         }
-        footer a { color: #00D4FF; text-decoration: none; margin: 5px 8px; font-weight: 600; }
+        .logo-img { height: 40px; width: auto; max-width: 140px; object-fit: contain; }
+        .nav-menu { display: flex; list-style: none; gap: 4px; align-items: center; }
+        .nav-menu a {
+            color: #4A5A6A; font-weight: 600; font-size: 0.8rem;
+            padding: 7px 14px; border-radius: 8px;
+            transition: all 0.3s ease; display: block; white-space: nowrap;
+        }
+        .nav-menu a:hover, .nav-menu a.active {
+            background: #00D4FF; color: #0A1628;
+        }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.6rem; color: #1A2A4A; cursor: pointer; padding: 4px; }
+        .nav-overlay { display: none; position: fixed; top: 65px; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 999; }
+        .nav-overlay.active { display: block; }
+        
+        .whatsapp-float {
+            position: fixed; bottom: 20px; right: 20px;
+            width: 48px; height: 48px;
+            background: #25D366; color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            z-index: 999; animation: pulse 2s infinite;
+        }
+        .consult-float {
+            position: fixed; bottom: 76px; right: 20px;
+            width: 48px; height: 48px;
+            background: #00D4FF; color: #0A1628;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+            z-index: 999;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+            70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
+        
+        footer {
+            background: #0A1628; color: #ccc;
+            text-align: center; padding: 25px 15px 18px;
+            font-size: 0.82rem; border-top: 4px solid #00D4FF;
+        }
+        footer a { color: #00D4FF; text-decoration: none; margin: 4px 8px; font-weight: 600; }
         footer a:hover { text-decoration: underline; color: #0099CC; }
-        footer .footer-links { margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+        footer .footer-links { margin-bottom: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
         
         @media (max-width: 768px) {
+            body { padding-top: 56px; }
+            .navbar { height: 56px; padding: 0 12px; }
+            .logo-img { height: 34px; max-width: 120px; }
+            .menu-toggle { display: block; font-size: 1.5rem; }
+            .nav-menu {
+                position: fixed; top: 56px; right: -100%; width: 260px;
+                height: calc(100vh - 56px); background: white;
+                flex-direction: column; padding: 16px 0; gap: 2px;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.12);
+                transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto; align-items: stretch;
+            }
+            .nav-menu.open { right: 0; }
+            .nav-menu a {
+                padding: 12px 20px; font-size: 0.9rem;
+                border-radius: 0; border-right: 3px solid transparent;
+            }
+            .nav-menu a:hover, .nav-menu a.active {
+                background: rgba(0,212,255,0.08);
+                border-right-color: #00D4FF; color: #00D4FF;
+            }
             .page-header h1 { font-size: 2rem; }
-            .page-header { padding: 70px 20px; margin-top: 60px; }
-            .terms-card { padding: 30px 22px; }
-            .terms-card h2 { font-size: 1.2rem; }
+            .page-header { padding: 60px 16px 50px; }
+            .terms-card { padding: 25px 18px; }
+            .terms-card h2 { font-size: 1.1rem; }
+        }
+        @media (max-width: 480px) {
+            .page-header h1 { font-size: 1.6rem; }
+            .nav-menu { width: 100%; }
         }
     </style>
 </head>
@@ -143,21 +211,21 @@
     <a href="consultation.html" class="consult-float"><i class="fas fa-comment-dots"></i></a>
 
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo-area">
-                <a href="index.html">
-                    <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="logo-img">
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="about.html">عن الشركة</a></li>
-                <li><a href="services.html">خدماتنا</a></li>
-                <li><a href="consultation.html">الاستشارات</a></li>
-                <li><a href="contact.html">اتصل بنا</a></li>
-            </ul>
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="logo-img">
+            </a>
         </div>
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="about.html">عن الشركة</a></li>
+            <li><a href="services.html">خدماتنا</a></li>
+            <li><a href="consultation.html">الاستشارات</a></li>
+            <li><a href="contact.html">اتصل بنا</a></li>
+        </ul>
     </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <header class="page-header">
         <h1>الشروط <span>والأحكام</span></h1>
@@ -241,7 +309,7 @@
             </p>
             <div class="highlight-box">
                 <p>🔹 نسبة الأداء 60% → نسبة الزيادة السنوية 8%</p>
-                <p style="font-weight:400; color:#4A5A6A; margin-top:5px;">* يتم تحديد نسب إضافية للزيادة عند تحقيق نسب أداء أعلى.</p>
+                <p style="font-weight:400; color:#4A5A6A;">* يتم تحديد نسب إضافية للزيادة عند تحقيق نسب أداء أعلى.</p>
             </div>
 
             <h2>الفصل السادس: أحكام ختامية</h2>
@@ -285,7 +353,24 @@
         </div>
         <p>© 2026 Kyntrava AI. جميع الحقوق محفوظة. | شركة مسجلة رسمياً</p>
     </footer>
-    
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function toggleMenu() {
+            navMenu.classList.toggle('open');
+            navOverlay.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.className = navMenu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+        }
+        menuToggle.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => { if (navMenu.classList.contains('open')) toggleMenu(); });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
