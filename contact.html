@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -12,33 +12,32 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background: #F0F4F8; }
+        body { background: #F0F4F8; padding-top: 70px; }
         
         .page-header {
             background: linear-gradient(135deg, #0A1628 0%, #0D1B2A 100%);
-            padding: 100px 20px 80px;
+            padding: 80px 20px 60px;
             text-align: center;
             color: white;
             position: relative;
             overflow: hidden;
-            margin-top: 70px;
         }
         .page-header::after {
             content: '';
             position: absolute;
             bottom: -2px; left: 0; right: 0;
-            height: 60px;
+            height: 50px;
             background: #F0F4F8;
             clip-path: ellipse(65% 100% at 50% 100%);
         }
-        .page-header h1 { font-size: 3rem; font-weight: 900; margin-bottom: 15px; }
+        .page-header h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 12px; }
         .page-header h1 span { color: #00D4FF; }
-        .page-header .subtitle { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 2; font-weight: 600; }
+        .page-header .subtitle { font-size: 1.05rem; opacity: 0.9; max-width: 600px; margin: 0 auto; line-height: 1.9; font-weight: 600; }
         
         .contact-container {
             max-width: 1100px;
-            margin: -30px auto 60px;
-            padding: 0 20px;
+            margin: -30px auto 50px;
+            padding: 0 16px;
             position: relative;
             z-index: 2;
         }
@@ -46,67 +45,67 @@
         .quick-contact-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-            margin-bottom: 35px;
+            gap: 18px;
+            margin-bottom: 30px;
         }
         .quick-card {
             background: white;
-            border-radius: 18px;
-            padding: 30px 22px;
+            border-radius: 14px;
+            padding: 24px 18px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 16px rgba(0,0,0,0.04);
             border: 1px solid #E8ECF0;
             transition: all 0.3s ease;
         }
-        .quick-card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
+        .quick-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.1); }
         .quick-card .qc-icon {
-            width: 60px; height: 60px;
-            border-radius: 16px;
+            width: 52px; height: 52px;
+            border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: #0A1628;
-            margin: 0 auto 15px;
+            font-size: 1.3rem; color: #0A1628;
+            margin: 0 auto 12px;
         }
         .bg-cyan { background: linear-gradient(135deg, #00D4FF, #0099CC); }
         .bg-cyan-dark { background: linear-gradient(135deg, #0099CC, #0077AA); }
         .bg-teal { background: linear-gradient(135deg, #26C6DA, #00ACC1); }
         
-        .quick-card h4 { font-size: 1.1rem; color: #1A2A4A; margin-bottom: 6px; font-weight: 800; }
-        .quick-card p { color: #4A5A6A; font-size: 0.9rem; }
+        .quick-card h4 { font-size: 1rem; color: #1A2A4A; margin-bottom: 4px; font-weight: 800; }
+        .quick-card p { color: #4A5A6A; font-size: 0.85rem; }
         .quick-card .contact-value {
             display: block;
             color: #00D4FF;
             font-weight: 700;
-            font-size: 1rem;
-            margin: 6px 0;
+            font-size: 0.95rem;
+            margin: 4px 0;
             direction: ltr;
         }
         .quick-card .btn-contact {
-            display: inline-block; margin-top: 10px; padding: 8px 20px;
+            display: inline-block; margin-top: 8px; padding: 6px 18px;
             background: #00D4FF; color: #0A1628; text-decoration: none;
-            border-radius: 25px; font-size: 0.82rem; font-weight: 600; transition: 0.3s;
+            border-radius: 20px; font-size: 0.78rem; font-weight: 600; transition: 0.3s;
         }
         .quick-card .btn-contact:hover { background: #0099CC; }
         
         .social-section {
             background: white;
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            padding: 28px 20px;
+            box-shadow: 0 3px 16px rgba(0,0,0,0.04);
             border: 1px solid #E8ECF0;
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
-        .social-section h3 { font-size: 1.4rem; color: #1A2A4A; margin-bottom: 20px; font-weight: 800; }
+        .social-section h3 { font-size: 1.2rem; color: #1A2A4A; margin-bottom: 16px; font-weight: 800; }
         .social-icons {
-            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+            display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
         }
         .social-icons a {
-            width: 55px; height: 55px; border-radius: 50%;
+            width: 48px; height: 48px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: white; transition: 0.3s;
+            font-size: 1.3rem; color: white; transition: 0.3s;
             text-decoration: none;
         }
-        .social-icons a:hover { transform: translateY(-5px) scale(1.05); }
+        .social-icons a:hover { transform: translateY(-4px) scale(1.05); }
         .social-icons .fb { background: #1877F2; }
         .social-icons .ig { background: #E4405F; }
         .social-icons .tw { background: #000; }
@@ -115,36 +114,106 @@
         
         .hours-section {
             background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            padding: 25px 20px;
+            box-shadow: 0 3px 16px rgba(0,0,0,0.04);
             border: 1px solid #E8ECF0;
             text-align: center;
         }
-        .hours-section h3 { font-size: 1.3rem; color: #1A2A4A; margin-bottom: 18px; font-weight: 800; }
+        .hours-section h3 { font-size: 1.2rem; color: #1A2A4A; margin-bottom: 14px; font-weight: 800; }
         .hours-grid {
-            display: flex; justify-content: center; gap: 35px; flex-wrap: wrap;
+            display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
         }
-        .hours-item .day { font-weight: 700; color: #1A2A4A; margin-bottom: 3px; }
-        .hours-item .time { color: #00D4FF; font-weight: 700; font-size: 1.05rem; }
-        .hours-note { margin-top: 18px; color: #7A8A9A; font-size: 0.82rem; }
+        .hours-item .day { font-weight: 700; color: #1A2A4A; margin-bottom: 2px; font-size: 0.95rem; }
+        .hours-item .time { color: #00D4FF; font-weight: 700; font-size: 1rem; }
+        .hours-note { margin-top: 14px; color: #7A8A9A; font-size: 0.78rem; }
+        
+        /* ===== قائمة التنقل ===== */
+        .navbar {
+            background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 0 20px; height: 65px;
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 3px solid #00D4FF;
+        }
+        .logo-img { height: 40px; width: auto; max-width: 140px; object-fit: contain; }
+        .nav-menu { display: flex; list-style: none; gap: 4px; align-items: center; }
+        .nav-menu a {
+            color: #4A5A6A; font-weight: 600; font-size: 0.8rem;
+            padding: 7px 14px; border-radius: 8px;
+            transition: all 0.3s ease; display: block; white-space: nowrap;
+        }
+        .nav-menu a:hover, .nav-menu a.active {
+            background: #00D4FF; color: #0A1628;
+        }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.6rem; color: #1A2A4A; cursor: pointer; padding: 4px; }
+        .nav-overlay { display: none; position: fixed; top: 65px; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 999; }
+        .nav-overlay.active { display: block; }
+        
+        .whatsapp-float {
+            position: fixed; bottom: 20px; right: 20px;
+            width: 48px; height: 48px;
+            background: #25D366; color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            z-index: 999; animation: pulse 2s infinite;
+        }
+        .consult-float {
+            position: fixed; bottom: 76px; right: 20px;
+            width: 48px; height: 48px;
+            background: #00D4FF; color: #0A1628;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+            z-index: 999;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+            70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
         
         footer {
-            background: #0A1628; color: #ccc; text-align: center; padding: 30px 15px 20px;
-            font-size: 0.85rem; border-top: 4px solid #00D4FF;
+            background: #0A1628; color: #ccc;
+            text-align: center; padding: 25px 15px 18px;
+            font-size: 0.82rem; border-top: 4px solid #00D4FF;
         }
-        footer a { color: #00D4FF; text-decoration: none; margin: 5px 8px; font-weight: 600; }
+        footer a { color: #00D4FF; text-decoration: none; margin: 4px 8px; font-weight: 600; }
         footer a:hover { text-decoration: underline; color: #0099CC; }
-        footer .footer-links { margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+        footer .footer-links { margin-bottom: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
         
         @media (max-width: 768px) {
-            .page-header h1 { font-size: 2.2rem; }
-            .page-header { padding: 70px 20px; margin-top: 60px; }
+            body { padding-top: 56px; }
+            .navbar { height: 56px; padding: 0 12px; }
+            .logo-img { height: 34px; max-width: 120px; }
+            .menu-toggle { display: block; font-size: 1.5rem; }
+            .nav-menu {
+                position: fixed; top: 56px; right: -100%; width: 260px;
+                height: calc(100vh - 56px); background: white;
+                flex-direction: column; padding: 16px 0; gap: 2px;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.12);
+                transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto; align-items: stretch;
+            }
+            .nav-menu.open { right: 0; }
+            .nav-menu a {
+                padding: 12px 20px; font-size: 0.9rem;
+                border-radius: 0; border-right: 3px solid transparent;
+            }
+            .nav-menu a:hover, .nav-menu a.active {
+                background: rgba(0,212,255,0.08);
+                border-right-color: #00D4FF; color: #00D4FF;
+            }
+            .page-header h1 { font-size: 2rem; }
+            .page-header { padding: 60px 16px 50px; }
             .quick-contact-grid { grid-template-columns: 1fr 1fr; }
-            .hours-grid { gap: 20px; }
+            .hours-grid { gap: 18px; }
         }
         @media (max-width: 480px) {
+            .page-header h1 { font-size: 1.6rem; }
             .quick-contact-grid { grid-template-columns: 1fr; }
+            .nav-menu { width: 100%; }
         }
     </style>
 </head>
@@ -153,21 +222,21 @@
     <a href="consultation.html" class="consult-float"><i class="fas fa-comment-dots"></i></a>
 
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo-area">
-                <a href="index.html">
-                    <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="logo-img">
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="about.html">عن الشركة</a></li>
-                <li><a href="services.html">خدماتنا</a></li>
-                <li><a href="consultation.html">الاستشارات</a></li>
-                <li><a href="contact.html" class="active">اتصل بنا</a></li>
-            </ul>
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://imgur.com/d2YNdZQ.png" alt="شعار Kyntrava AI" class="logo-img">
+            </a>
         </div>
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="about.html">عن الشركة</a></li>
+            <li><a href="services.html">خدماتنا</a></li>
+            <li><a href="consultation.html">الاستشارات</a></li>
+            <li><a href="contact.html" class="active">اتصل بنا</a></li>
+        </ul>
     </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <header class="page-header">
         <h1>تواصل <span>معنا</span></h1>
@@ -175,7 +244,6 @@
     </header>
 
     <main class="contact-container">
-        
         <div class="quick-contact-grid">
             <div class="quick-card">
                 <div class="qc-icon bg-cyan"><i class="fas fa-phone-alt"></i></div>
@@ -184,7 +252,6 @@
                 <span class="contact-value">+963 981 193 023</span>
                 <a href="tel:+963981193023" class="btn-contact"><i class="fas fa-phone"></i> اتصل الآن</a>
             </div>
-            
             <div class="quick-card">
                 <div class="qc-icon bg-cyan-dark"><i class="fas fa-envelope"></i></div>
                 <h4>البريد الإلكتروني</h4>
@@ -192,7 +259,6 @@
                 <span class="contact-value" style="direction:ltr;">kyntravaai@gmail.com</span>
                 <a href="mailto:kyntravaai@gmail.com" class="btn-contact"><i class="fas fa-envelope"></i> أرسل بريد</a>
             </div>
-            
             <div class="quick-card">
                 <div class="qc-icon bg-teal"><i class="fab fa-whatsapp"></i></div>
                 <h4>واتساب الأعمال</h4>
@@ -203,7 +269,7 @@
         </div>
         
         <section class="social-section">
-            <h3><i class="fas fa-share-alt" style="color:#00D4FF; margin-left:10px;"></i> تابعنا على وسائل التواصل الاجتماعي</h3>
+            <h3><i class="fas fa-share-alt" style="color:#00D4FF; margin-left:8px;"></i> تابعنا على وسائل التواصل الاجتماعي</h3>
             <div class="social-icons">
                 <a href="https://www.facebook.com/profile.php?id=61592891921328" target="_blank" class="fb"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/kyntravaai" target="_blank" class="ig"><i class="fab fa-instagram"></i></a>
@@ -214,24 +280,14 @@
         </section>
         
         <section class="hours-section">
-            <h3><i class="far fa-clock" style="color:#00D4FF; margin-left:8px;"></i> ساعات العمل الرسمية</h3>
+            <h3><i class="far fa-clock" style="color:#00D4FF; margin-left:6px;"></i> ساعات العمل الرسمية</h3>
             <div class="hours-grid">
-                <div class="hours-item">
-                    <div class="day">الأحد - الخميس</div>
-                    <div class="time">9:00 ص - 6:00 م</div>
-                </div>
-                <div class="hours-item">
-                    <div class="day">الجمعة</div>
-                    <div class="time">عطلة رسمية</div>
-                </div>
-                <div class="hours-item">
-                    <div class="day">السبت</div>
-                    <div class="time">10:00 ص - 3:00 م</div>
-                </div>
+                <div class="hours-item"><div class="day">الأحد - الخميس</div><div class="time">9:00 ص - 6:00 م</div></div>
+                <div class="hours-item"><div class="day">الجمعة</div><div class="time">عطلة رسمية</div></div>
+                <div class="hours-item"><div class="day">السبت</div><div class="time">10:00 ص - 3:00 م</div></div>
             </div>
             <p class="hours-note">* يمكنكم التواصل عبر الواتساب أو البريد الإلكتروني على مدار الساعة.</p>
         </section>
-
     </main>
 
     <footer>
@@ -246,7 +302,24 @@
         </div>
         <p>© 2026 Kyntrava AI. جميع الحقوق محفوظة. | <a href="privacy.html">سياسة الخصوصية</a> | <a href="terms.html">الشروط والأحكام</a></p>
     </footer>
-    
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function toggleMenu() {
+            navMenu.classList.toggle('open');
+            navOverlay.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.className = navMenu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+        }
+        menuToggle.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => { if (navMenu.classList.contains('open')) toggleMenu(); });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
