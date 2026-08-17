@@ -37,13 +37,81 @@
             color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
-            padding-top: 80px;
+            padding-top: 100px;
         }
 
         a {
             text-decoration: none;
             color: inherit;
             transition: all 0.3s ease;
+        }
+
+        /* ===== شريط التواصل العلوي ===== */
+        .top-bar {
+            background: var(--primary-dark);
+            color: #ccc;
+            font-size: 0.78rem;
+            padding: 6px 0;
+            border-bottom: 2px solid var(--cyan);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+        }
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .top-bar .social-text {
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.8rem;
+        }
+        .top-bar .social-text i {
+            color: var(--cyan);
+            margin-left: 6px;
+            animation: bellRing 2s infinite;
+        }
+        @keyframes bellRing {
+            0%, 100% { transform: rotate(0); }
+            10% { transform: rotate(15deg); }
+            20% { transform: rotate(-15deg); }
+            30% { transform: rotate(10deg); }
+            40% { transform: rotate(-10deg); }
+            50% { transform: rotate(0); }
+        }
+        .top-bar .social-icons {
+            display: flex;
+            gap: 6px;
+        }
+        .top-bar .social-icons a {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s ease;
+        }
+        .top-bar .social-icons a:hover {
+            color: #fff;
+            background: var(--cyan);
+            border-color: var(--cyan);
+            transform: translateY(-2px);
+        }
+        .top-bar .social-icons a:hover i {
+            color: var(--primary-dark);
         }
 
         /* ===== أيقونات عائمة ===== */
@@ -86,36 +154,33 @@
             100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
         }
 
-        /* ===== شريط التنقل الجديد ===== */
+        /* ===== شريط التنقل ===== */
         .navbar {
             background: var(--white);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: fixed;
-            top: 0;
+            top: 38px;
             left: 0;
             right: 0;
             z-index: 1000;
             padding: 0 20px;
-            height: 70px;
+            height: 62px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             border-bottom: 3px solid var(--cyan);
         }
-
         .logo-area {
             display: flex;
             align-items: center;
             flex-shrink: 0;
         }
         .logo-img {
-            height: 45px;
+            height: 40px;
             width: auto;
             max-width: 150px;
             object-fit: contain;
         }
-
-        /* ===== قائمة التنقل ===== */
         .nav-menu {
             display: flex;
             list-style: none;
@@ -128,7 +193,7 @@
         .nav-menu a {
             color: var(--text-gray);
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             padding: 8px 16px;
             border-radius: 10px;
             transition: all 0.3s ease;
@@ -154,6 +219,19 @@
         }
         .menu-toggle:hover {
             color: var(--cyan);
+        }
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 100px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 999;
+        }
+        .nav-overlay.active {
+            display: block;
         }
 
         /* ===== الهيرو ===== */
@@ -604,28 +682,45 @@
 
         @media (max-width: 768px) {
             body {
-                padding-top: 65px;
+                padding-top: 90px;
+            }
+
+            .top-bar {
+                padding: 5px 0;
+                font-size: 0.7rem;
+            }
+            .top-bar .container {
+                gap: 8px;
+                padding: 0 12px;
+            }
+            .top-bar .social-text {
+                font-size: 0.72rem;
+            }
+            .top-bar .social-icons a {
+                width: 26px;
+                height: 26px;
+                font-size: 0.75rem;
             }
 
             .navbar {
-                height: 60px;
-                padding: 0 15px;
+                top: 34px;
+                height: 56px;
+                padding: 0 12px;
             }
             .logo-img {
-                height: 38px;
-                max-width: 130px;
+                height: 34px;
+                max-width: 120px;
             }
-
-            /* ===== قائمة الجوال ===== */
             .menu-toggle {
                 display: block;
+                font-size: 1.5rem;
             }
             .nav-menu {
                 position: fixed;
-                top: 60px;
+                top: 90px;
                 right: -100%;
                 width: 280px;
-                height: calc(100vh - 60px);
+                height: calc(100vh - 90px);
                 background: var(--white);
                 flex-direction: column;
                 padding: 20px 0;
@@ -654,8 +749,10 @@
                 border-right-color: var(--cyan);
                 color: var(--cyan);
             }
+            .nav-overlay {
+                top: 90px;
+            }
 
-            /* ===== باقي التعديلات ===== */
             .hero {
                 min-height: 80vh;
                 padding: 50px 15px 40px;
@@ -718,6 +815,28 @@
         }
 
         @media (max-width: 480px) {
+            body {
+                padding-top: 80px;
+            }
+            .top-bar .social-text {
+                font-size: 0.65rem;
+            }
+            .top-bar .social-icons a {
+                width: 24px;
+                height: 24px;
+                font-size: 0.65rem;
+            }
+            .navbar {
+                top: 30px;
+            }
+            .nav-menu {
+                top: 86px;
+                height: calc(100vh - 86px);
+                width: 100%;
+            }
+            .nav-overlay {
+                top: 86px;
+            }
             .hero-tagline {
                 font-size: 1.2rem;
             }
@@ -742,28 +861,6 @@
                 width: 100%;
                 max-width: 260px;
             }
-            .nav-menu {
-                width: 100%;
-                right: -100%;
-            }
-            .nav-menu.open {
-                right: 0;
-            }
-        }
-
-        /* ===== إضافة ظل خلفي عند فتح القائمة ===== */
-        .nav-overlay {
-            display: none;
-            position: fixed;
-            top: 60px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.4);
-            z-index: 999;
-        }
-        .nav-overlay.active {
-            display: block;
         }
 
         @media (min-width: 769px) {
@@ -774,6 +871,32 @@
     </style>
 </head>
 <body>
+
+    <!-- ===== شريط التواصل العلوي ===== -->
+    <div class="top-bar">
+        <div class="container">
+            <span class="social-text">
+                <i class="fas fa-bell"></i> تابعنا على صفحاتنا الرسمية
+            </span>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61592891921328" target="_blank" title="فيسبوك">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/kyntravaai" target="_blank" title="إنستغرام">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" target="_blank" title="تويتر">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" target="_blank" title="لينكد إن">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" target="_blank" title="يوتيوب">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- ===== أيقونات عائمة ===== -->
     <a href="https://wa.me/963981193023" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
@@ -953,7 +1076,7 @@
         <p>© 2026 Kyntrava AI. جميع الحقوق محفوظة. | <a href="privacy.html">سياسة الخصوصية</a> | <a href="terms.html">الشروط والأحكام</a></p>
     </footer>
 
-    <!-- ===== جافا سكريبت للقائمة ===== -->
+    <!-- ===== جافا سكريبت ===== -->
     <script>
         // ===== قائمة الجوال =====
         const menuToggle = document.getElementById('menuToggle');
@@ -974,7 +1097,6 @@
         menuToggle.addEventListener('click', toggleMenu);
         navOverlay.addEventListener('click', toggleMenu);
 
-        // إغلاق القائمة عند الضغط على رابط
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navMenu.classList.contains('open')) {
